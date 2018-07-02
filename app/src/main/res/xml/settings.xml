@@ -1,0 +1,37 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="계정">
+
+        <Preference
+            android:key="checkbox_preference"
+            android:title="비밀번호" />
+
+        <Preference
+            android:key="checkbox_preference"
+            android:title="회원님이 좋아한 게시물" />
+
+        <Preference
+            android:key="checkbox_preference"
+            android:title="언어" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="공개 범위 및 보안">
+
+        <Preference
+            android:key="checkbox_preference"
+            android:title="계정 공개 범위" />
+
+        <Preference
+            android:key="checkbox_preference"
+            android:title="facebook 연동" />
+
+        <Preference
+            android:key="checkbox_preference"
+            android:title="비밀번호" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
