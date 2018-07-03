@@ -10,10 +10,11 @@ import org.weatherook.weatherook.api.glide.GlideApp
 import android.provider.MediaStore
 import android.provider.MediaStore.MediaColumns
 import android.app.Activity
+import android.content.Context
 
 
+class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var context : Context) : RecyclerView.Adapter<GalleryRecyclerViewHolder>() {
 
-class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>) : RecyclerView.Adapter<GalleryRecyclerViewHolder>() {
 
     private lateinit var v : View.OnClickListener
 
@@ -37,7 +38,7 @@ class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>) : R
         val imgview = holder.GalleryImgview
         val currentUrl = galleryItem.get(position)
 
-        GlideApp.with(Activity()).load(currentUrl).override(imageWidthPixels, imageHeightPixels)
+        GlideApp.with(context).load(currentUrl).override(imageWidthPixels, imageHeightPixels)
                 .into(imgview)
     }
 }
