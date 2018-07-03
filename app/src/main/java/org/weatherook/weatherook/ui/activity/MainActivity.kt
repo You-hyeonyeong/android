@@ -9,11 +9,14 @@ import android.support.v4.app.FragmentManager
 import android.view.MenuItem
 import android.view.View
 import org.weatherook.weatherook.api.camera.Camera2BasicFragment
+import org.weatherook.weatherook.ui.adapter.WeatherAdapter
 import org.weatherook.weatherook.ui.fragment.*
+import org.weatherook.weatherook.ui.item.WeatherItem
 import org.weatherook.weatherook.utils.BottomNavigationViewHelper
 
 
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +37,14 @@ class MainActivity : AppCompatActivity() {
                 var fragmentTransaction = fragmentManager.beginTransaction()
 
                 when (item.getItemId()) {
-                    R.id.action_home ->
-                        //741dff
+                    R.id.action_home -> {
+
+
                         fragmentTransaction.replace(R.id.main_container, homeFragment).commit()
+                    }
+                        //741dff
+
+
                         // do something here
                     R.id.action_search ->
                         fragmentTransaction.replace(R.id.main_container, searchFragment).commit()
