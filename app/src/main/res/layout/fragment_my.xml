@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/setting_top"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/weatherookTheme"
-        android:orientation="horizontal"
-        android:id="@+id/setting_top">
+        android:layout_height="40dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
 
-       <ImageView
-           android:layout_width="50dp"
-           android:layout_height="50dp"
-           android:src="@drawable/cam"
-           android:layout_centerInParent="true" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/mainlogo_mini" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/weatherookTheme"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:textSize="20dp"
+            android:layout_alignParentEnd="true"
+            android:background="#ffffff"
             android:text="설정"
-            android:layout_alignParentEnd="true"/>
+            android:textColor="#aaaaaa"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/setting_top"
+        android:background="#707070" />
+
     <LinearLayout
+        android:id="@+id/setting_center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/setting_top">
+        android:layout_below="@+id/setting_top"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -40,17 +48,12 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/setting_profile_img"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
+                android:layout_margin="8dp"
                 android:src="@drawable/heartcolor" />
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/heart"
-                android:layout_alignBottom="@+id/setting_profile_img"
-                android:layout_alignRight="@+id/setting_profile_img"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -58,88 +61,139 @@
             android:layout_height="wrap_content">
 
             <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/setting_id_tv"
-            android:layout_centerHorizontal="true"
-            android:text="hiriyo"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-            <TextView
+                android:id="@+id/setting_id_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/setting_self_tv"
                 android:layout_centerHorizontal="true"
+                android:text="hiriyo"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/setting_self_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/setting_id_tv"
+                android:layout_centerHorizontal="true"
                 android:text="뉸누냔나 뉸뉴누냔나나~ 신나는 대학생"
-                android:textSize="15dp" />
+                android:textSize="12dp" />
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:layout_margin="10dp">
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="35"
+                    android:textColor="@color/weatherookTheme"
                     android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/weatherookTheme"/>
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="게시물"/>
+                    android:text="게시물" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:layout_margin="10dp">
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="35"
+                    android:textColor="@color/weatherookTheme"
                     android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/weatherookTheme"/>
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="팔로워"/>
+                    android:text="팔로워" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_margin="10dp"
                 android:gravity="center"
-                android:layout_margin="10dp">
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="35"
+                    android:textColor="@color/weatherookTheme"
                     android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/weatherookTheme"/>
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="팔로잉"/>
+                    android:text="팔로잉" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/setting_center"
+        android:background="#707070" />
+
+    <LinearLayout
+        android:id="@+id/setting_listtab"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/setting_center"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@drawable/mypagelist1_state"
+            android:layout_margin="10dp"/>
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@drawable/mypagelist2_state"
+            android:layout_margin="10dp"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="17dp"
+            android:layout_gravity="end"
+            android:src="@drawable/follow_state"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/setting_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/setting_listtab">
+
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
