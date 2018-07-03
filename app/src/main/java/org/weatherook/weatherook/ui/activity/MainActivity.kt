@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         val cameraFragment = CamHomeFragment()
         val likedFragment = LikedFragment()
         val myFragment = MyFragment()
+        fragmentManager.beginTransaction().replace(R.id.main_container, homeFragment).commit()
 
         val bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)
@@ -43,8 +44,6 @@ class MainActivity : AppCompatActivity() {
                         fragmentTransaction.replace(R.id.main_container, homeFragment).commit()
                     }
                         //741dff
-
-
                         // do something here
                     R.id.action_search ->
                         fragmentTransaction.replace(R.id.main_container, searchFragment).commit()
