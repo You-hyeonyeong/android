@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,14 +28,14 @@ import com.gun0912.tedpermission.TedPermission
 
 class CamHomeFragment : Fragment() , View.OnClickListener{
 
-    lateinit var myUrls: ArrayList<String>
+    var myUrls: ArrayList<String> = ArrayList()
     lateinit var galleryRecyclerviewAdapter: GalleryRecyclerviewAdapter
 
     val imageWidthPixels = 320
     val imageHeightPixels = 240
 
     override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //do nothing
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,11 +49,11 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
         val permissionlistener = object : PermissionListener {
             override fun onPermissionGranted() {
                 Toast.makeText(activity, "Permission Granted", Toast.LENGTH_SHORT).show()
-                myUrls = getAllShownImagesPath()
                 camhome_gallery_rv.addOnScrollListener(preloader)
                 camhome_gallery_rv.addOnScrollListener(mScrollListener)
                 camhome_gallery_rv.layoutManager = GridLayoutManager(activity, 3)
                 galleryRecyclerviewAdapter = GalleryRecyclerviewAdapter(myUrls, context!!)
+                myUrls = getAllShownImagesPath()
                 galleryRecyclerviewAdapter.setOnItemClickListener(this@CamHomeFragment)
                 camhome_gallery_rv.adapter = galleryRecyclerviewAdapter
             }
@@ -76,20 +77,17 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
     var mScrollListener: RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
             if (!recyclerView!!.canScrollVertically(1)) {
+                Log.i("gallery", "top")
+                maxUri +=18
+                myUrls = getAllShownImagesPath()
+                galleryRecyclerviewAdapter.notifyDataSetChanged()
                 //Top of list
             } else if (!recyclerView!!.canScrollVertically(1)) {
                 //Bottom of list
-                maxUri +=3
-                myUrls = getAllShownImagesPath()
-                galleryRecyclerviewAdapter.notifyDataSetChanged()
+                Log.i("gallery", "bottom")
             }
         }
     }
-
-    var pastVisiblesItems: Int = 0
-    var visibleItemCount:Int = 0
-    var totalItemCount:Int = 0
-    private var loading = true
 
     private inner class MyPreloadModelProvider : ListPreloader.PreloadModelProvider<Any> {
         override fun getPreloadItems(position: Int): MutableList<Any> {
@@ -107,12 +105,12 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
         }
     }
 
-    private lateinit var cursor:Cursor
+
     var maxUri : Int = 18
 
     private fun getAllShownImagesPath() : ArrayList<String> {
         val uri: Uri
-
+        val cursor:Cursor
         val column_index_data: Int
         val column_index_folder_name: Int
         val listOfAllImages = ArrayList<String>()
@@ -124,12 +122,15 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
 
         column_index_data = cursor!!.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
         column_index_folder_name = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
-        while (cursor!!.moveToNext()&&listOfAllImages.size<maxUri) {
+        while (cursor!!.moveToNext()&&myUrls.size<maxUri) {
             absolutePathOfImage = cursor!!.getString(column_index_data)
 
-            listOfAllImages.add(absolutePathOfImage)
+            if(!myUrls.contains(absolutePathOfImage)){
+                myUrls.add(absolutePathOfImage)
+                galleryRecyclerviewAdapter.notifyDataSetChanged()
+            }
         }
-        return listOfAllImages
+        return myUrls
     }
 
     override fun onDetach() {
