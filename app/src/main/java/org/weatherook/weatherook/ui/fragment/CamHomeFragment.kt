@@ -75,9 +75,9 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
 
     var mScrollListener: RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
-            if (!camhome_gallery_rv.canScrollVertically(1)) {
+            if (!recyclerView!!.canScrollVertically(1)) {
                 //Top of list
-            } else if (!camhome_gallery_rv.canScrollVertically(1)) {
+            } else if (!recyclerView!!.canScrollVertically(1)) {
                 //Bottom of list
                 maxUri +=3
                 myUrls = getAllShownImagesPath()
@@ -85,6 +85,11 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
             }
         }
     }
+
+    var pastVisiblesItems: Int = 0
+    var visibleItemCount:Int = 0
+    var totalItemCount:Int = 0
+    private var loading = true
 
     private inner class MyPreloadModelProvider : ListPreloader.PreloadModelProvider<Any> {
         override fun getPreloadItems(position: Int): MutableList<Any> {
