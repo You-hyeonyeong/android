@@ -28,7 +28,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".api.camera.CameraActivity" />
-        <activity android:name=".MySettingActivity"></activity>
+        <activity android:name=".MySettingActivity" />
+        <activity android:name=".MyStoryActivity"></activity>
     </application>
 
 </manifest>
