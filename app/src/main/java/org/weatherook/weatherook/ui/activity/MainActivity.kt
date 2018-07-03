@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val homeFragment = HomeFragment()
         val searchFragment = SearchFragment()
-        val cameraFragment = Camera2BasicFragment()
+        val cameraFragment = CamHomeFragment()
         val likedFragment = LikedFragment()
         val myFragment = MyFragment()
 
