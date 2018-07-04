@@ -3,6 +3,7 @@ package org.weatherook.weatherook
 /**
  * Created by HYEON on 2018-07-04.
  */
+
 data class MyListRecyclerviewData(
         var mystoryprofile: Int,
         var mystroryname: String,

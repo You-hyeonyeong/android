@@ -12,6 +12,7 @@ import org.weatherook.weatherook.api.glide.GlideApp
 /**
  * Created by HYEON on 2018-07-03.
  */
+
 class MyGridRecyclerviewAdapter(private var myrecyclerviewItems: ArrayList<MyGridRecyclerviewdata>, val context: Context) : RecyclerView.Adapter<MyRecyclerviewViewHolder>() {
 
     lateinit var onItemClick: View.OnClickListener

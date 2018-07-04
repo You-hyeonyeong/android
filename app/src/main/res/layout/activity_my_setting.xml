@@ -76,8 +76,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:gravity="center">
 
             <TextView
@@ -144,8 +144,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
             android:text="개인정보"
             android:textSize="14dp"
             android:textStyle="bold" />
@@ -237,8 +237,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
             android:text="스타일"
             android:textSize="14dp"
             android:textStyle="bold" />
@@ -250,15 +250,22 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
-
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/graybtn_state"
                 android:gravity="center"
+                android:textSize="13dp"
                 android:text="빈티지"
-                android:textSize="13dp" />
+                android:background="@drawable/graybtn_state"/>
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textSize="13dp"
+                android:text="스트릿"
+                android:background="@drawable/graybtn_state"/>
 
             <TextView
                 android:layout_width="80dp"
@@ -283,9 +290,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
+            android:orientation="horizontal"
             android:layout_marginLeft="20dp"
-            android:orientation="horizontal">
+            android:layout_marginBottom="7dp">
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textSize="13dp"
+                android:text="모던"
+                android:background="@drawable/graybtn_state"/>
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textSize="13dp"
+                android:text="캐쥬얼"
+                android:background="@drawable/graybtn_state"/>
 
             <TextView
                 android:layout_width="80dp"
@@ -322,16 +345,14 @@
             android:layout_marginBottom="7dp"
             android:layout_marginLeft="20dp"
             android:orientation="horizontal">
-
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/graybtn_state"
                 android:gravity="center"
+                android:textSize="13dp"
                 android:text="엘레강스"
-                android:textSize="13dp" />
-
+                android:background="@drawable/graybtn_state"/>
             <TextView
                 android:layout_width="80dp"
                 android:layout_height="30dp"

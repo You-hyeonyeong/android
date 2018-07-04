@@ -20,6 +20,7 @@ class MyGridFragment : Fragment(), View.OnClickListener {
 
     }
 
+
     var myitems: ArrayList<MyGridRecyclerviewdata> = ArrayList()
 
     lateinit var myGridRecyclerviewAdapter: MyGridRecyclerviewAdapter
@@ -32,7 +33,9 @@ class MyGridFragment : Fragment(), View.OnClickListener {
 
     override fun onStart() {
         super.onStart()
+
         val mypage_recycle: RecyclerView = view!!.findViewById(R.id.setting_grid_recycle)
+
 
         myitems = ArrayList()
         myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
@@ -41,6 +44,7 @@ class MyGridFragment : Fragment(), View.OnClickListener {
         myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
         myitems.add(MyGridRecyclerviewdata(R.drawable.heartcolor))
         myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
+
 
         myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
         myGridRecyclerviewAdapter.setOnItemClickListener(this)

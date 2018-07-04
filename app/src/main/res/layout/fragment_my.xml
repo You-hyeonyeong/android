@@ -166,7 +166,7 @@
         android:layout_below="@+id/setting_center"
         android:background="#707070" />
 
-        <android.support.constraint.ConstraintLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/setting_listtab"
         android:layout_width="match_parent"
         android:layout_height="40dp"

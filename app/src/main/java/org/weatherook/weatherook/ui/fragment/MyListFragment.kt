@@ -14,6 +14,7 @@ import org.weatherook.weatherook.adapter.MyListRecyclerviewAdapter
 /**
  * Created by HYEON on 2018-07-04.
  */
+
 class MyListFragment : Fragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
 
@@ -45,7 +46,5 @@ class MyListFragment : Fragment(), View.OnClickListener {
         mypage_recycle.layoutManager = LinearLayoutManager(activity)
         //myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
         mypage_recycle.adapter = myListRecyclerviewAdapter
-
-
     }
 }
