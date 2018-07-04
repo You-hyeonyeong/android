@@ -1,19 +1,20 @@
-package org.weatherook.weatherook
+package org.weatherook.weatherook.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import org.weatherook.weatherook.MyGridRecyclerviewdata
+import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
-import org.weatherook.weatherook.utils.MyRecyclerviewViewHolder
 
 /**
  * Created by HYEON on 2018-07-03.
  */
-class MyRecyclerviewAdapter (private var myrecyclerviewItems : ArrayList<Mydata>, val context : Context) : RecyclerView.Adapter<MyRecyclerviewViewHolder>() {
+class MyGridRecyclerviewAdapter(private var myrecyclerviewItems: ArrayList<MyGridRecyclerviewdata>, val context: Context) : RecyclerView.Adapter<MyRecyclerviewViewHolder>() {
 
-    private lateinit var onItemClick : View.OnClickListener
+    lateinit var onItemClick: View.OnClickListener
 
     fun setOnItemClickListener(l : View.OnClickListener){
         onItemClick = l

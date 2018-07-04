@@ -1,4 +1,4 @@
-package org.weatherook.weatherook.utils
+package org.weatherook.weatherook.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
