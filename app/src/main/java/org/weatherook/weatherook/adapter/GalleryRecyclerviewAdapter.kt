@@ -7,6 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
+import android.provider.MediaStore
+import android.provider.MediaStore.MediaColumns
+import android.app.Activity
+import org.greenrobot.eventbus.EventBus
+import java.util.*
 
 
 class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var context : Context) : RecyclerView.Adapter<GalleryRecyclerViewHolder>() {
@@ -36,5 +41,6 @@ class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var
 
         GlideApp.with(context).load(currentUrl).override(imageWidthPixels, imageHeightPixels)
                 .into(imgview)
+        imgview.setOnClickListener { EventBus.getDefault().post(GalleryEventbus(currentUrl)) }
     }
 }

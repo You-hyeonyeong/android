@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/setting_top"
         android:layout_width="match_parent"
@@ -173,24 +174,24 @@
         android:layout_centerInParent="true"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/my_grid_img"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/mypagelist1_state"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/my_grid_img"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/mypagelist1_state"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/my_list_img"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/mypagelist2_state"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/my_grid_img"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/my_list_img"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/mypagelist2_state"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/my_grid_img"
+                app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/my_profile_edit_btn"
@@ -201,16 +202,15 @@
             android:src="@drawable/profile_state"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
 
 
-
-    <FrameLayout
-        android:id="@+id/mypage_recycle"
+        <FrameLayout
+            android:id="@+id/mypage_recycle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            android:layout_height="wrap_content"
         android:layout_below="@+id/setting_listtab">
 
-    </FrameLayout>
-</LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
 </ScrollView>

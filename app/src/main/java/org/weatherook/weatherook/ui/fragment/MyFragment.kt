@@ -15,8 +15,8 @@ import org.weatherook.weatherook.adapter.MyGridRecyclerviewAdapter
 import org.weatherook.weatherook.adapter.MyListRecyclerviewAdapter
 import org.weatherook.weatherook.ui.activity.SettingsActivity
 
-class MyFragment : Fragment(), View.OnClickListener{
-    var i :Int = 0
+class MyFragment : Fragment(), View.OnClickListener {
+    var i: Int = 0
     override fun onClick(p0: View?) {
         /*val idx : Int = mypage_recycle.getAdapterPosition(p0) //몇번째 인지에 대한 정보를 알려줌
         val myimage : Int = myitems[idx].myimage
@@ -24,7 +24,7 @@ class MyFragment : Fragment(), View.OnClickListener{
         intent.putExtra("myimage",myimage)
         requireActivity().startActivity(intent!!)*/
 
-        when(p0) {
+        when (p0) {
             my_grid_img -> {
                 /*setting_recycle.layoutManager = GridLayoutManager(activity,2)
                 myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
@@ -60,11 +60,12 @@ class MyFragment : Fragment(), View.OnClickListener{
         }
 
     }
-    var myitems : ArrayList<MyGridRecyclerviewdata> = ArrayList()
-    var mylistitems : ArrayList<MyListRecyclerviewData> = ArrayList()
 
-    lateinit var myGridRecyclerviewAdapter : MyGridRecyclerviewAdapter
-    lateinit var myListRecyclerviewAdapter : MyListRecyclerviewAdapter
+    var myitems: ArrayList<MyGridRecyclerviewdata> = ArrayList()
+    var mylistitems: ArrayList<MyListRecyclerviewData> = ArrayList()
+
+    lateinit var myGridRecyclerviewAdapter: MyGridRecyclerviewAdapter
+    lateinit var myListRecyclerviewAdapter: MyListRecyclerviewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = View.inflate(activity, R.layout.fragment_my, null)

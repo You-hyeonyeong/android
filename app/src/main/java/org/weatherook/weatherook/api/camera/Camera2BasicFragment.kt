@@ -240,6 +240,7 @@ class Camera2BasicFragment : Fragment(), View.OnClickListener,
     ): View? = inflater.inflate(R.layout.fragment_camera2_basic, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        view.findViewById<View>(R.id.reverse).setOnClickListener(this)
         view.findViewById<View>(R.id.picture).setOnClickListener(this)
         view.findViewById<View>(R.id.info).setOnClickListener(this)
         textureView = view.findViewById(R.id.texture)
@@ -307,7 +308,7 @@ class Camera2BasicFragment : Fragment(), View.OnClickListener,
                 // We don't use a front facing camera in this sample.
                 val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
                 if (cameraDirection != null &&
-                        cameraDirection == CameraCharacteristics.LENS_FACING_FRONT) {
+                        cameraDirection != mCameraLensFacingDirection) {
                     continue
                 }
 
@@ -445,6 +446,32 @@ class Camera2BasicFragment : Fragment(), View.OnClickListener,
             throw RuntimeException("Interrupted while trying to lock camera closing.", e)
         } finally {
             cameraOpenCloseLock.release()
+        }
+    }
+
+    private fun reopenCamera() {
+        if (textureView.isAvailable()) {
+            openCamera(textureView.getWidth(), textureView.getHeight());
+        } else {
+            textureView.setSurfaceTextureListener(surfaceTextureListener);
+        }
+    }
+
+
+    private var mCameraLensFacingDirection  = CameraCharacteristics.LENS_FACING_BACK
+
+    fun switchCamera() {
+        if (mCameraLensFacingDirection.equals(CameraCharacteristics.LENS_FACING_BACK)) {
+            mCameraLensFacingDirection = CameraCharacteristics.LENS_FACING_FRONT
+            closeCamera()
+            reopenCamera()
+            //switchCameraButton.setImageResource(R.drawable.ic_camera_front)
+
+        } else if (mCameraLensFacingDirection.equals(CameraCharacteristics.LENS_FACING_FRONT)) {
+            mCameraLensFacingDirection = CameraCharacteristics.LENS_FACING_BACK
+            closeCamera()
+            reopenCamera()
+            //switchCameraButton.setImageResource(R.drawable.ic_camera_back)
         }
     }
 
@@ -678,6 +705,11 @@ class Camera2BasicFragment : Fragment(), View.OnClickListener,
                             .show()
                 }
             }
+            R.id.reverse -> {
+                if (activity != null) {
+                    switchCamera()
+                }
+            }
         }
     }
 
@@ -759,7 +791,8 @@ class Camera2BasicFragment : Fragment(), View.OnClickListener,
          * @param aspectRatio       The aspect ratio
          * @return The optimal `Size`, or an arbitrary one if none were big enough
          */
-        @JvmStatic private fun chooseOptimalSize(
+        @JvmStatic
+        private fun chooseOptimalSize(
                 choices: Array<Size>,
                 textureViewWidth: Int,
                 textureViewHeight: Int,
@@ -797,6 +830,7 @@ class Camera2BasicFragment : Fragment(), View.OnClickListener,
             }
         }
 
-        @JvmStatic fun newInstance(): Camera2BasicFragment = Camera2BasicFragment()
+        @JvmStatic
+        fun newInstance(): Camera2BasicFragment = Camera2BasicFragment()
     }
 }

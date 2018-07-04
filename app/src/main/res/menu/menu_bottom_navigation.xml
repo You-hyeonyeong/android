@@ -27,7 +27,7 @@
         android:enabled="true"
         android:title="liked"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/search_state"
+        android:icon="@drawable/heart_state"
         android:visible="true"/>
     <item
         android:id="@+id/action_my"
