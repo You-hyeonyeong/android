@@ -127,11 +127,12 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
 
         val projection = arrayOf(MediaStore.MediaColumns.DATA, MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
         cursor = context!!.contentResolver.query(uri, projection, null, null, null)
+        cursor.moveToLast()
 
-        column_index_data = cursor!!.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
-        column_index_folder_name = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
-        while (cursor!!.moveToNext()&&myUrls.size<maxUri) {
-            absolutePathOfImage = cursor!!.getString(column_index_data)
+        column_index_data = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
+        column_index_folder_name = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
+        while (cursor.moveToPrevious()&&myUrls.size<maxUri) {
+            absolutePathOfImage = cursor.getString(column_index_data)
 
             if(!myUrls.contains(absolutePathOfImage)){
                 myUrls.add(absolutePathOfImage)

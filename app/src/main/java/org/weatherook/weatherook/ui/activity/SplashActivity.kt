@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.SigninActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
 
         val handler = Handler()
         handler.postDelayed({
-            startActivity(Intent(applicationContext, MainActivity::class.java))
+            startActivity(Intent(applicationContext, SigninActivity::class.java))
             finish()
         }, 2000)
     }

@@ -177,7 +177,7 @@
         <ImageView
             android:layout_width="17dp"
             android:layout_height="17dp"
-            android:src="@drawable/mypagelist2_state"
+
             android:layout_margin="10dp"/>
 
         <ImageView
