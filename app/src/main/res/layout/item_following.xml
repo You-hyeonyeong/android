@@ -1,11 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hihihi"
-        />
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/following_profile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                />
+
+            <TextView
+                android:id="@+id/following_id"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/following_profile"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="ss_sd"
+                android:textColor="#707070"
+                />
+
+            <ImageView
+                android:id="@+id/following_heart"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:src="@drawable/under_color_4"
+                android:layout_toStartOf="@+id/following_count"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:id="@+id/following_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="328"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="15dp"
+                android:textColor="#707070"
+                />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="#c7d8a8ff"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            >
+
+            <TextView
+                android:id="@+id/following_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="7월 4일"
+                android:textStyle="bold"
+                android:textColor="#741dff"
+                />
+
+            <TextView
+                android:id="@+id/following_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/following_date"
+                android:text="맑음"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#741dff"
+                android:layout_marginLeft="20dp"
+                />
+
+            <TextView
+                android:id="@+id/following_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/following_weather"
+                android:text="27/20"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#741dff"
+                android:layout_marginLeft="20dp"
+                />
+
+            <TextView
+                android:id="@+id/following_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="얇은 긴팔 티 하나 걸치고 나오니 딱 좋았던 아침."
+                android:textSize="12sp"
+                android:textColor="#707070"
+                android:layout_below="@id/following_date"
+                android:layout_marginTop="8dp"
+                />
+
+            <TextView
+                android:id="@+id/following_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/following_content"
+                android:text="#오후엔더워쥬금"
+                android:textSize="12sp"
+                android:textColor="#707070"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="24dp"
+                android:text="댓글 모두 보기"
+                android:textSize="8sp"
+                android:textColor="#707070"
+                android:layout_below="@id/following_tag"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
