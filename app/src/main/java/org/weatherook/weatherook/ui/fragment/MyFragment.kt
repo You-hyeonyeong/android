@@ -88,20 +88,5 @@ class MyFragment : Fragment(), View.OnClickListener {
         my_setting_btn.setOnClickListener(this)
         my_profile_edit_btn.setOnClickListener(this)
 
-        //val fragmentManager : FragmentManager = activity!!.supportFragmentManager
-
-        return view
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.mypage_recycle, MyGridFragment()).commit()
-        my_grid_img.isSelected = true
-        my_grid_img.setOnClickListener(this)
-        my_list_img.setOnClickListener(this)
-        my_setting_btn.setOnClickListener(this)
-        my_profile_edit_btn.setOnClickListener(this)
-
     }
 }

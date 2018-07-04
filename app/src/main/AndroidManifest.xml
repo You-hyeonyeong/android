@@ -32,7 +32,6 @@
         <activity android:name=".MyStoryActivity" />
         <activity android:name=".SigninActivity"/>
         <activity android:name=".SignupActivity"/>
-        <activity android:name=".MyStoryActivity" />
         <activity android:name=".ui.activity.SettingsActivity" />
 
     </application>
