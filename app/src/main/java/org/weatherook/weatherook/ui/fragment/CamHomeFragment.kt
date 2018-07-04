@@ -12,18 +12,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bumptech.glide.ListPreloader
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader
 import com.bumptech.glide.util.FixedPreloadSizeProvider
 import com.gun0912.tedpermission.PermissionListener
-import kotlinx.android.synthetic.main.fragment_camhome.*
+import com.gun0912.tedpermission.TedPermission
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.GalleryRecyclerviewAdapter
 import org.weatherook.weatherook.api.glide.GlideApp
 import java.util.*
-import android.widget.Toast
-import com.gun0912.tedpermission.TedPermission
 
 
 class CamHomeFragment : Fragment() , View.OnClickListener{

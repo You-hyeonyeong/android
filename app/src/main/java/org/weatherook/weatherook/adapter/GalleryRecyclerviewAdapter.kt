@@ -1,16 +1,12 @@
 package org.weatherook.weatherook.adapter
 
-import android.graphics.Bitmap
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
-import android.provider.MediaStore
-import android.provider.MediaStore.MediaColumns
-import android.app.Activity
-import android.content.Context
 
 
 class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var context : Context) : RecyclerView.Adapter<GalleryRecyclerViewHolder>() {

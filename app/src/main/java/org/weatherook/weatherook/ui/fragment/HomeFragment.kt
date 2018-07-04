@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home_recommend.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.ui.adapter.RecommendAdapter
 import org.weatherook.weatherook.ui.adapter.WeatherAdapter
@@ -50,6 +49,10 @@ class HomeFragment : Fragment() {
 
         recommendItems = ArrayList()
 
+        recommendItems.add(RecommendItem(R.drawable.heartcolor))
+        recommendItems.add(RecommendItem(R.drawable.heartcolor))
+        recommendItems.add(RecommendItem(R.drawable.heartcolor))
+        recommendItems.add(RecommendItem(R.drawable.heartcolor))
         recommendItems.add(RecommendItem(R.drawable.heartcolor))
         recommendItems.add(RecommendItem(R.drawable.heartcolor))
         recommendItems.add(RecommendItem(R.drawable.heartcolor))

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context="org.weatherook.weatherook.MyStoryActivity">
 
@@ -11,102 +11,120 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/my_story_profile_img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:src="@drawable/heartcolor" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/story_profile_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/brown" />
+
         <TextView
-            android:id="@+id/my_story_id"
+            android:id="@+id/story_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:text="ss_sd"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
-</LinearLayout>
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
-            android:id="@+id/my_story_pic"
+            android:id="@+id/story_pic"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@drawable/brown"/>
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/brown" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/my_story_date"
+            android:id="@+id/story_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/weatherookTheme"
+            android:layout_marginRight="15dp"
             android:text="7월 25일"
-            android:layout_marginRight="15dp"
-            android:textStyle="bold"/>
+            android:textColor="@color/weatherookTheme"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/my_story_weather"
+            android:id="@+id/story_weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/weatherookTheme"
+            android:layout_marginRight="15dp"
             android:text="맑음"
-            android:layout_marginRight="15dp"
-            android:textStyle="bold"/>
+            android:textColor="@color/weatherookTheme"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/my_story_temp"
+            android:id="@+id/story_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/weatherookTheme"
-            android:text="25 / 31"
             android:layout_marginRight="15dp"
-            android:textStyle="bold"/>
+            android:text="25 / 31"
+            android:textColor="@color/weatherookTheme"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/photo_menu" />
+        </RelativeLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/my_story_txt"
+            android:id="@+id/story_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="얇은 긴팔 티 하나 걸치고 나오기 딱 좋았던 아침."
-            />
+            android:text="얇은 긴팔 티 하나 걸치고 나오기 딱 좋았던 아침." />
+
         <TextView
-            android:id="@+id/my_story_hash"
+            android:id="@+id/story_hash"
             android:layout_width="wrap_content"
-            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:text="#오후엔더워쥬금"
-            />
+            android:textStyle="bold" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="댓글 n개 모두보기"
-            />
+            android:text="댓글 n개 모두보기" />
+
         <TextView
             android:layout_width="wrap_content"
-            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:text="Ahhh_ 오늘 갑자기 너무 더워졌어요"
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
 

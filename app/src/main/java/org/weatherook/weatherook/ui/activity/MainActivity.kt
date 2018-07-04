@@ -1,17 +1,16 @@
 package org.weatherook.weatherook.ui.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import org.weatherook.weatherook.R
-import android.support.annotation.NonNull
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentManager
+import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
-import org.weatherook.weatherook.api.camera.Camera2BasicFragment
-import org.weatherook.weatherook.ui.adapter.WeatherAdapter
-import org.weatherook.weatherook.ui.fragment.*
-import org.weatherook.weatherook.ui.item.WeatherItem
+import org.weatherook.weatherook.R
+import org.weatherook.weatherook.ui.fragment.HomeFragment
+import org.weatherook.weatherook.ui.fragment.LikedFragment
+import org.weatherook.weatherook.ui.fragment.MyFragment
+import org.weatherook.weatherook.ui.fragment.SearchFragment
 import org.weatherook.weatherook.utils.BottomNavigationViewHelper
 
 
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val homeFragment = HomeFragment()
         val searchFragment = SearchFragment()
-        val cameraFragment = CamHomeFragment()
+        //val cameraFragment = CamHomeFragment()
         val likedFragment = LikedFragment()
         val myFragment = MyFragment()
 
@@ -38,19 +37,15 @@ class MainActivity : AppCompatActivity() {
 
                 when (item.getItemId()) {
                     R.id.action_home -> {
-
-
                         fragmentTransaction.replace(R.id.main_container, homeFragment).commit()
                     }
                         //741dff
-
-
                         // do something here
                     R.id.action_search ->
                         fragmentTransaction.replace(R.id.main_container, searchFragment).commit()
                         // do something here
                     R.id.action_camera ->
-                        fragmentTransaction.replace(R.id.main_container, cameraFragment).commit()
+                        fragmentTransaction.replace(R.id.main_container, searchFragment).commit()
                         // do something here
                     R.id.action_liked ->
                         fragmentTransaction.replace(R.id.main_container, likedFragment).commit()
