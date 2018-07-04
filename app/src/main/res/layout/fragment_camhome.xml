@@ -79,6 +79,15 @@
 
         </LinearLayout>
 
+        <FrameLayout
+            android:id="@+id/camhome_bottom_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/camhome_gallery_rv"
             android:layout_width="match_parent"

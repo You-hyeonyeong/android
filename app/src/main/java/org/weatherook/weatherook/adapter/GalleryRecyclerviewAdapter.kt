@@ -11,6 +11,8 @@ import android.provider.MediaStore
 import android.provider.MediaStore.MediaColumns
 import android.app.Activity
 import android.content.Context
+import org.greenrobot.eventbus.EventBus
+import java.util.*
 
 
 class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var context : Context) : RecyclerView.Adapter<GalleryRecyclerViewHolder>() {
@@ -40,5 +42,6 @@ class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var
 
         GlideApp.with(context).load(currentUrl).override(imageWidthPixels, imageHeightPixels)
                 .into(imgview)
+        imgview.setOnClickListener { EventBus.getDefault().post(GalleryEventbus(currentUrl)) }
     }
 }

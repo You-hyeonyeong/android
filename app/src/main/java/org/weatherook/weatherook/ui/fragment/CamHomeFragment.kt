@@ -26,6 +26,9 @@ import org.weatherook.weatherook.api.glide.GlideApp
 import java.util.*
 import android.widget.Toast
 import com.gun0912.tedpermission.TedPermission
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.weatherook.weatherook.adapter.GalleryEventbus
 import org.weatherook.weatherook.api.camera.CameraActivity
 
 
@@ -64,6 +67,7 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
                 myUrls = getAllShownImagesPath()
                 galleryRecyclerviewAdapter.setOnItemClickListener(this@CamHomeFragment)
                 camhome_gallery_rv.adapter = galleryRecyclerviewAdapter
+                GlideApp.with(activity!!).load(myUrls.get(0)).into(camhome_container)
             }
 
             override fun onPermissionDenied(deniedPermissions: ArrayList<String>) {
@@ -79,7 +83,13 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
 
         //camhome_gallery_rv.adapter
 
+
         return view
+    }
+
+    @Subscribe
+    fun loadImage(G: GalleryEventbus) {
+        GlideApp.with(activity!!).load(G.getImageUri()).into(camhome_container)
     }
 
     var mScrollListener: RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
@@ -145,5 +155,15 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
     override fun onDetach() {
         super.onDetach()
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+        EventBus.getDefault().unregister(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        EventBus.getDefault().register(this)
     }
 }
