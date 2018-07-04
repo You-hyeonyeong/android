@@ -1,5 +1,6 @@
 package org.weatherook.weatherook.ui.fragment
 
+import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.bumptech.glide.ListPreloader
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader
@@ -24,6 +26,7 @@ import org.weatherook.weatherook.api.glide.GlideApp
 import java.util.*
 import android.widget.Toast
 import com.gun0912.tedpermission.TedPermission
+import org.weatherook.weatherook.api.camera.CameraActivity
 
 
 class CamHomeFragment : Fragment() , View.OnClickListener{
@@ -45,6 +48,11 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
         val preloader: RecyclerViewPreloader<Any> = RecyclerViewPreloader<Any>(GlideApp.with(this), modelProvider, sizeProvider, 10)
 
         val camhome_gallery_rv: RecyclerView = view.findViewById(R.id.camhome_gallery_rv)
+        val camhome_cam_txt : TextView = view.findViewById(R.id.camhome_cam_txt)
+        camhome_cam_txt.setOnClickListener {
+            val intent = Intent(activity, CameraActivity::class.java)
+            startActivity(intent)
+        }
 
         val permissionlistener = object : PermissionListener {
             override fun onPermissionGranted() {
