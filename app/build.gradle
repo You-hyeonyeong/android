@@ -7,7 +7,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "org.weatherook.weatherook"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -25,9 +25,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:design:27.1.1'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
-    implementation 'de.hdodenhof:circleimageview:1.2.2'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.0.0'
     implementation("com.github.bumptech.glide:recyclerview-integration:4.7.1") {
         // Excludes the support library because it's already included by Glide.
         transitive = false

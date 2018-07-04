@@ -1,5 +1,6 @@
 package org.weatherook.weatherook.ui.fragment
 
+import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
@@ -12,7 +13,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.bumptech.glide.ListPreloader
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader
@@ -23,6 +23,12 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.GalleryRecyclerviewAdapter
 import org.weatherook.weatherook.api.glide.GlideApp
 import java.util.*
+import android.widget.Toast
+import com.gun0912.tedpermission.TedPermission
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.weatherook.weatherook.adapter.GalleryEventbus
+import org.weatherook.weatherook.api.camera.CameraActivity
 
 
 class CamHomeFragment : Fragment() , View.OnClickListener{
@@ -44,6 +50,11 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
         val preloader: RecyclerViewPreloader<Any> = RecyclerViewPreloader<Any>(GlideApp.with(this), modelProvider, sizeProvider, 10)
 
         val camhome_gallery_rv: RecyclerView = view.findViewById(R.id.camhome_gallery_rv)
+        val camhome_cam_txt : TextView = view.findViewById(R.id.camhome_cam_txt)
+        camhome_cam_txt.setOnClickListener {
+            val intent = Intent(activity, CameraActivity::class.java)
+            startActivity(intent)
+        }
 
         val permissionlistener = object : PermissionListener {
             override fun onPermissionGranted() {
@@ -55,6 +66,7 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
                 myUrls = getAllShownImagesPath()
                 galleryRecyclerviewAdapter.setOnItemClickListener(this@CamHomeFragment)
                 camhome_gallery_rv.adapter = galleryRecyclerviewAdapter
+                GlideApp.with(activity!!).load(myUrls.get(0)).into(camhome_container)
             }
 
             override fun onPermissionDenied(deniedPermissions: ArrayList<String>) {
@@ -70,7 +82,13 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
 
         //camhome_gallery_rv.adapter
 
+
         return view
+    }
+
+    @Subscribe
+    fun loadImage(G: GalleryEventbus) {
+        GlideApp.with(activity!!).load(G.getImageUri()).into(camhome_container)
     }
 
     var mScrollListener: RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener() {
@@ -118,11 +136,12 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
 
         val projection = arrayOf(MediaStore.MediaColumns.DATA, MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
         cursor = context!!.contentResolver.query(uri, projection, null, null, null)
+        cursor.moveToLast()
 
-        column_index_data = cursor!!.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
-        column_index_folder_name = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
-        while (cursor!!.moveToNext()&&myUrls.size<maxUri) {
-            absolutePathOfImage = cursor!!.getString(column_index_data)
+        column_index_data = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
+        column_index_folder_name = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.BUCKET_DISPLAY_NAME)
+        while (cursor.moveToPrevious()&&myUrls.size<maxUri) {
+            absolutePathOfImage = cursor.getString(column_index_data)
 
             if(!myUrls.contains(absolutePathOfImage)){
                 myUrls.add(absolutePathOfImage)
@@ -135,5 +154,15 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
     override fun onDetach() {
         super.onDetach()
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+        EventBus.getDefault().unregister(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        EventBus.getDefault().register(this)
     }
 }

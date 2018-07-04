@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         //val cameraFragment = CamHomeFragment()
         val likedFragment = LikedFragment()
         val myFragment = MyFragment()
+        fragmentManager.beginTransaction().replace(R.id.main_container, homeFragment).commit()
 
         val bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)
