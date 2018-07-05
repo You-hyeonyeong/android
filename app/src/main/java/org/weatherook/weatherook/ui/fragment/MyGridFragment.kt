@@ -7,9 +7,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import org.weatherook.weatherook.MyGridRecyclerviewdata
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.MyGridRecyclerviewAdapter
+import org.weatherook.weatherook.adapter.MyGridRecyclerviewdata
 
 
 /**
@@ -19,8 +19,6 @@ class MyGridFragment : Fragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
 
     }
-
-
     var myitems: ArrayList<MyGridRecyclerviewdata> = ArrayList()
 
     lateinit var myGridRecyclerviewAdapter: MyGridRecyclerviewAdapter
@@ -36,7 +34,6 @@ class MyGridFragment : Fragment(), View.OnClickListener {
 
         val mypage_recycle: RecyclerView = view!!.findViewById(R.id.setting_grid_recycle)
 
-
         myitems = ArrayList()
         myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
         myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
@@ -44,7 +41,6 @@ class MyGridFragment : Fragment(), View.OnClickListener {
         myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
         myitems.add(MyGridRecyclerviewdata(R.drawable.heartcolor))
         myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
-
 
         myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
         myGridRecyclerviewAdapter.setOnItemClickListener(this)

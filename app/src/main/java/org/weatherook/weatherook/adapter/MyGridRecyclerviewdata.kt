@@ -1,4 +1,4 @@
-package org.weatherook.weatherook
+package org.weatherook.weatherook.adapter
 
 /**
  * Created by HYEON on 2018-07-03.

@@ -1,7 +1,8 @@
-package org.weatherook.weatherook
+package org.weatherook.weatherook.ui.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import org.weatherook.weatherook.R
 
 class MyStoryActivity : AppCompatActivity() {
 

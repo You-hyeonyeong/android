@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="org.weatherook.weatherook.MySettingActivity">
+    tools:context="org.weatherook.weatherook.ui.activity.MySettingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -95,8 +95,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -129,9 +128,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp" />
-
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -172,8 +169,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp" />
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
@@ -205,8 +201,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp" />
+                android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -228,8 +223,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp" />
+                android:layout_height="wrap_content" />
             </LinearLayout>
 
         </LinearLayout>
@@ -273,16 +267,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/graybtn_state"
                 android:gravity="center"
-                android:text="스트릿"
-                android:textSize="13dp" />
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/graybtn_state"
-                android:gravity="center"
-                android:text="베이식"
+                android:text="클래식"
                 android:textSize="13dp" />
 
         </LinearLayout>
@@ -316,26 +301,9 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/graybtn_state"
                 android:gravity="center"
-                android:text="모던"
-                android:textSize="13dp" />
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/graybtn_state"
-                android:gravity="center"
-                android:text="캐쥬얼"
-                android:textSize="13dp" />
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/graybtn_state"
-                android:gravity="center"
                 android:text="유스"
                 android:textSize="13dp" />
+
 
         </LinearLayout>
 
