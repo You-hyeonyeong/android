@@ -6,7 +6,7 @@ package org.weatherook.weatherook.adapter
 
 data class MyListRecyclerviewData(
         var mystoryprofile: Int,
-        var mystroryname: String,
+        var mystoryname: String,
         var mystoryimg: Int,
         var mystorydate: String,
         var mystoryweather: String,

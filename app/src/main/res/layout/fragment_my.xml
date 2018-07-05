@@ -208,9 +208,8 @@
 
         <FrameLayout
             android:id="@+id/mypage_recycle"
-        android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-        android:layout_below="@+id/setting_listtab">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         </FrameLayout>
     </LinearLayout>
