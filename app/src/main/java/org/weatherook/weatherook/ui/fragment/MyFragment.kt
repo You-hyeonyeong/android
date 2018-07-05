@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_my.*
-import org.weatherook.weatherook.MyGridRecyclerviewdata
-import org.weatherook.weatherook.MyListRecyclerviewData
-import org.weatherook.weatherook.MySettingActivity
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.MyGridRecyclerviewAdapter
+import org.weatherook.weatherook.adapter.MyGridRecyclerviewdata
 import org.weatherook.weatherook.adapter.MyListRecyclerviewAdapter
+import org.weatherook.weatherook.adapter.MyListRecyclerviewData
+import org.weatherook.weatherook.ui.activity.MySettingActivity
 import org.weatherook.weatherook.ui.activity.SettingsActivity
 
 class MyFragment : Fragment(), View.OnClickListener {
