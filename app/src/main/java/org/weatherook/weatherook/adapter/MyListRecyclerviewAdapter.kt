@@ -32,10 +32,24 @@ class MyListRecyclerviewAdapter(private var mylistrecyclerviewItems: ArrayList<M
     override fun getItemCount(): Int = mylistrecyclerviewItems.size
 
     override fun onBindViewHolder(holder: MyListRecyclerviewViewHolder, position: Int) {
+        /*holder!!.apply {
+            mylistrecyclerviewItems[position].let {
+                MyStoryData.text = it.mystorydate
 
+
+                GlideApp.with(context).load(it.mystoryprofile).into(MyStoryProfile)
+            }
+
+            val a : String? = null
+            a.let {
+                // null 이아닐때
+            } ?: let {
+                // null 일때
+            }
+        }*/
         // holder!!.MyImage.setImageResource(myrecyclerviewItems[position].myimage)  Glide가 더 성능이 좋음
         GlideApp.with(context).load(mylistrecyclerviewItems[position].mystoryprofile).into(holder!!.MyStoryProfile)
-        holder!!.MyStoryName.text = mylistrecyclerviewItems[position].mystroryname
+        holder!!.MyStoryName.text = mylistrecyclerviewItems[position].mystoryname
         GlideApp.with(context).load(mylistrecyclerviewItems[position].mystoryimg).into(holder!!.MyStoryImg)
         holder!!.MyStoryData.text = mylistrecyclerviewItems[position].mystorydate
         holder!!.MyStoryWeather.text = mylistrecyclerviewItems[position].mystoryweather

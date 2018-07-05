@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
-import android.provider.MediaStore
-import android.provider.MediaStore.MediaColumns
-import android.app.Activity
-import org.weatherook.weatherook.singleton.Driver.gallayDriver
+import org.weatherook.weatherook.singleton.Driver.galleryDriver
 import java.util.*
 
 
@@ -41,6 +38,6 @@ class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var
 
         GlideApp.with(context).load(currentUrl).override(imageWidthPixels, imageHeightPixels)
                 .into(imgview)
-        imgview.setOnClickListener { gallayDriver.onNext(currentUrl) }
+        imgview.setOnClickListener { galleryDriver.onNext(currentUrl) }
     }
 }

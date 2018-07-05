@@ -46,5 +46,8 @@ class MyListFragment : Fragment(), View.OnClickListener {
         mypage_recycle.layoutManager = LinearLayoutManager(activity)
         //myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
         mypage_recycle.adapter = myListRecyclerviewAdapter
+        /*myListRecyclerviewAdapter.apply {
+            mypage_recycle.adapter = this
+        }*/
     }
 }

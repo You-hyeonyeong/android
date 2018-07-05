@@ -19,11 +19,10 @@ import com.bumptech.glide.integration.recyclerview.RecyclerViewPreloader
 import com.bumptech.glide.util.FixedPreloadSizeProvider
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
-import kotlinx.android.synthetic.main.fragment_camhome.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.GalleryRecyclerviewAdapter
 import org.weatherook.weatherook.api.glide.GlideApp
-import org.weatherook.weatherook.singleton.Driver.gallayDriver
+import org.weatherook.weatherook.singleton.Driver.galleryDriver
 import java.util.*
 
 class GalleryFragment : Fragment(), View.OnClickListener {
@@ -56,7 +55,7 @@ class GalleryFragment : Fragment(), View.OnClickListener {
                 myUrls = getAllShownImagesPath()
                 galleryRecyclerviewAdapter.setOnItemClickListener(this@GalleryFragment)
                 galleryRv.adapter = galleryRecyclerviewAdapter
-                gallayDriver.onNext(myUrls.get(0))
+                galleryDriver.onNext(myUrls.get(0))
             }
 
             override fun onPermissionDenied(deniedPermissions: ArrayList<String>) {
