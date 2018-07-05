@@ -13,7 +13,7 @@ import org.weatherook.weatherook.ui.item.RecommendItem
 import org.weatherook.weatherook.ui.viewholder.RecommendViewHolder
 
 
-class RecommendAdapter(var recommendItems: ArrayList<RecommendItem>, val context: Context) : RecyclerView.Adapter<RecommendViewHolder>() {
+class RecommendAdapter(var recommendItems : ArrayList<RecommendItem>, val context: Context) : RecyclerView.Adapter<RecommendViewHolder>() {
 
     private lateinit var onItemClick: View.OnClickListener
 
@@ -22,8 +22,8 @@ class RecommendAdapter(var recommendItems: ArrayList<RecommendItem>, val context
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
-        val mainView: View = LayoutInflater.from(parent.context).inflate(R.layout.item_recommend, parent, false)
-        mainView.setOnClickListener(onItemClick)
+        val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.item_recommend,parent,false)
+//        mainView.setOnClickListener(onItemClick)
         return RecommendViewHolder(mainView)
     }
 
@@ -31,10 +31,10 @@ class RecommendAdapter(var recommendItems: ArrayList<RecommendItem>, val context
 
     override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
         holder.recommendCody.setImageResource(recommendItems[position].cody)
-        val intent: Intent = Intent(context, SigninActivity::class.java)
+        val intent :Intent = Intent(context, SigninActivity::class.java)
         //intent.putExtra("url", recommendItems[position].cody)
-        //   holder.recommendCody.setOnClickListener {
-        //   context.startActivity(intent)
-        // }
+    //   holder.recommendCody.setOnClickListener {
+         //   context.startActivity(intent)
+       // }
     }
 }

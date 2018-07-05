@@ -61,16 +61,18 @@
                 android:id="@+id/signup_women"
                 android:layout_width="45dp"
                 android:layout_height="68dp"
-                android:src="@drawable/join_woman_ok"
+                android:clickable="true"
+                android:src="@drawable/signup_woman"
                 />
 
             <ImageView
                 android:id="@+id/signup_man"
                 android:layout_width="45dp"
                 android:layout_height="68dp"
-                android:src="@drawable/join_man_no"
+                android:src="@drawable/signup_man"
                 android:layout_toRightOf="@id/signup_women"
                 android:layout_marginLeft="12dp"
+                android:clickable="true"
                 />
 
 

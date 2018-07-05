@@ -8,7 +8,7 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.ui.item.FollowingItem
 import org.weatherook.weatherook.ui.viewholder.FollowingViewHolder
 
-class FollowingAdapter(var followingItems: ArrayList<FollowingItem>) : RecyclerView.Adapter<FollowingViewHolder>() {
+class FollowingAdapter(var followingItems : ArrayList<FollowingItem>) : RecyclerView.Adapter<FollowingViewHolder>() {
 
     private lateinit var onItemClick: View.OnClickListener
 
@@ -17,8 +17,8 @@ class FollowingAdapter(var followingItems: ArrayList<FollowingItem>) : RecyclerV
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowingViewHolder {
-        val mainView: View = LayoutInflater.from(parent.context).inflate(R.layout.item_following, parent, false)
-        mainView.setOnClickListener(onItemClick)
+        val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.item_following,parent,false)
+//        mainView.setOnClickListener(onItemClick)
         return FollowingViewHolder(mainView)
     }
 
