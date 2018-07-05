@@ -17,7 +17,7 @@
         android:id="@+id/weather_item_weather"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@color/colorAccent"
+        android:src="@drawable/heart"
         android:layout_centerInParent="true"
         />
 
