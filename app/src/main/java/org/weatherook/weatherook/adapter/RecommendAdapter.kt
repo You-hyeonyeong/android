@@ -23,7 +23,7 @@ class RecommendAdapter(var recommendItems : ArrayList<RecommendItem>, val contex
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
         val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.item_recommend,parent,false)
-        mainView.setOnClickListener(onItemClick)
+//        mainView.setOnClickListener(onItemClick)
         return RecommendViewHolder(mainView)
     }
 

@@ -3,13 +3,25 @@ package org.weatherook.weatherook
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.ViewPager
+import android.view.View
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+import kotlinx.android.synthetic.main.activity_signup.*
 
-class SignupActivity : AppCompatActivity() {
+class SignupActivity : AppCompatActivity(), View.OnClickListener {
+    override fun onClick(v: View?) {
+        when(v){
+            signup_close -> {
+                finish()
+            }
+
+        }
+ }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+
+        signup_close.setOnClickListener(this)
 
         val dotsIndicator = findViewById<WormDotsIndicator>(R.id.worm_dots_indicator)
         val viewPager = findViewById<ViewPager>(R.id.signup_viewPager)
