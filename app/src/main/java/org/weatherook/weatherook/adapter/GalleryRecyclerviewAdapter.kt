@@ -10,7 +10,7 @@ import org.weatherook.weatherook.api.glide.GlideApp
 import android.provider.MediaStore
 import android.provider.MediaStore.MediaColumns
 import android.app.Activity
-import org.greenrobot.eventbus.EventBus
+import org.weatherook.weatherook.singleton.Driver.gallayDriver
 import java.util.*
 
 
@@ -41,6 +41,6 @@ class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var
 
         GlideApp.with(context).load(currentUrl).override(imageWidthPixels, imageHeightPixels)
                 .into(imgview)
-        imgview.setOnClickListener { EventBus.getDefault().post(GalleryEventbus(currentUrl)) }
+        imgview.setOnClickListener { gallayDriver.onNext(currentUrl) }
     }
 }
