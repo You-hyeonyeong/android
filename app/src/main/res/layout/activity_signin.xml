@@ -53,6 +53,7 @@
             android:layout_height="35dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/signin_pw_tv"
+            android:layout_marginTop="5dp"
             >
 
             <TextView
@@ -81,7 +82,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
 
         <ImageView
             android:id="@+id/signin_btn"

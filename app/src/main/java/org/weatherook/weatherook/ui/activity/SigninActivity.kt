@@ -17,8 +17,13 @@ class SigninActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent1)
             }
             signup_btn -> {
-                val intent = Intent(applicationContext, SignupActivity::class.java)
-                startActivity(intent)
+                val intent2 = Intent(applicationContext, SignupActivity::class.java)
+                startActivity(intent2)
+            }
+
+            skip_btn -> {
+                val intent3 = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent3)
             }
         }
     }
@@ -29,5 +34,6 @@ class SigninActivity : AppCompatActivity(), View.OnClickListener {
 
         signup_btn.setOnClickListener(this)
         signin_btn.setOnClickListener(this)
+        skip_btn.setOnClickListener(this)
     }
 }

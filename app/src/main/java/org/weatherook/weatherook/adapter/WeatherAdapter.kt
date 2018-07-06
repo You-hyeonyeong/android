@@ -8,16 +8,15 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.item.WeatherItem
 import org.weatherook.weatherook.viewholder.WeatherViewHolder
 
-class WeatherAdapter(var weatherItems: ArrayList<WeatherItem>) : RecyclerView.Adapter<WeatherViewHolder>() {
+class WeatherAdapter(var weatherItems : ArrayList<WeatherItem>) : RecyclerView.Adapter<WeatherViewHolder>()  {
 
     private lateinit var onItemClick: View.OnClickListener
 
     fun setOnItemClickListener(l: View.OnClickListener) {
         onItemClick = l
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
-        val mainView: View = LayoutInflater.from(parent.context).inflate(R.layout.item_weather, parent, false)
+        val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.item_weather,parent,false)
         mainView.setOnClickListener(onItemClick)
         return WeatherViewHolder(mainView)
     }

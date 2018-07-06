@@ -5,20 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.item.FollowingItem
-import org.weatherook.weatherook.viewholder.FollowingViewHolder
+import org.weatherook.weatherook.ui.item.FollowingItem
+import org.weatherook.weatherook.ui.viewholder.FollowingViewHolder
 
-class FollowingAdapter(var followingItems: ArrayList<FollowingItem>) : RecyclerView.Adapter<FollowingViewHolder>() {
+class FollowingAdapter(var followingItems : ArrayList<FollowingItem>) : RecyclerView.Adapter<FollowingViewHolder>() {
 
-    //private lateinit var onItemClick: View.OnClickListener
+    private lateinit var onItemClick: View.OnClickListener
 
     fun setOnItemClickListener(l: View.OnClickListener) {
-        //onItemClick = l
+        onItemClick = l
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowingViewHolder {
-        val mainView: View = LayoutInflater.from(parent.context).inflate(R.layout.item_following, parent, false)
-        //mainView.setOnClickListener(onItemClick)
+        val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.item_following,parent,false)
+//        mainView.setOnClickListener(onItemClick)
         return FollowingViewHolder(mainView)
     }
 
