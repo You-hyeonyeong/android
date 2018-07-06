@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager
 import android.view.View
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 import kotlinx.android.synthetic.main.activity_signup.*
+import org.weatherook.weatherook.adapter.SignupPagerAdapter
 
 class SignupActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
