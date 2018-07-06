@@ -7,10 +7,10 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.ui.fragment.BellFragment
+import org.weatherook.weatherook.ui.fragment.FilterFragment
 import org.weatherook.weatherook.ui.fragment.HomeFragment
-import org.weatherook.weatherook.ui.fragment.LikedFragment
 import org.weatherook.weatherook.ui.fragment.MyFragment
-import org.weatherook.weatherook.ui.fragment.SearchFragment
 import org.weatherook.weatherook.utils.BottomNavigationViewHelper
 
 
@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
         val fragmentManager : FragmentManager = supportFragmentManager
 
         val homeFragment = HomeFragment()
-        val searchFragment = SearchFragment()
+        val searchFragment = FilterFragment()
         //val cameraFragment = CamHomeFragment()
-        val likedFragment = LikedFragment()
+        val likedFragment = BellFragment()
         val myFragment = MyFragment()
         fragmentManager.beginTransaction().replace(R.id.main_container, homeFragment).commit()
 

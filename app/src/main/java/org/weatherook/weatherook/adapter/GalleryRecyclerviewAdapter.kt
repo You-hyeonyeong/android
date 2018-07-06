@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import org.weatherook.weatherook.singleton.Driver.galleryDriver
+import org.weatherook.weatherook.viewholder.GalleryRecyclerViewHolder
 import java.util.*
 
 

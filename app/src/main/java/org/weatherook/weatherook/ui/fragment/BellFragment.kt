@@ -8,10 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.adapter.LikeRecyclerViewData
+import org.weatherook.weatherook.item.LikeRecyclerViewData
 import org.weatherook.weatherook.adapter.LikeRecyclerviewAdapter
 
-class LikedFragment :  Fragment(), View.OnClickListener{
+class BellFragment :  Fragment(), View.OnClickListener{
     override fun onClick(p0: View?) {
 
     }
@@ -20,7 +20,7 @@ class LikedFragment :  Fragment(), View.OnClickListener{
     lateinit var likeRecyclerviewAdapter : LikeRecyclerviewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view : View = View.inflate(activity, R.layout.fragment_liked, null)
+        val view : View = View.inflate(activity, R.layout.fragment_bell, null)
         val like_recycle : RecyclerView = view!!.findViewById(R.id.like_recycle)
 
         likeitems.add(LikeRecyclerViewData(R.drawable.main_night_2, "유클라", "님이 댓글을 남겼습니다.", R.drawable.brown))

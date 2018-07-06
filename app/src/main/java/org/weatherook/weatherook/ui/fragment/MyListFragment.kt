@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.MyListRecyclerviewAdapter
-import org.weatherook.weatherook.adapter.MyListRecyclerviewData
+import org.weatherook.weatherook.item.MyListRecyclerviewData
 
 /**
  * Created by HYEON on 2018-07-04.
