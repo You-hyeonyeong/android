@@ -1,3 +1,3 @@
-package org.weatherook.weatherook.adapter
+package org.weatherook.weatherook.item
 
 data class GalleryItem (var uri : String)

@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.SigninActivity
 
 class SplashActivity : AppCompatActivity() {
 

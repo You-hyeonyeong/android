@@ -30,8 +30,8 @@
         <activity android:name=".api.camera.CameraActivity" />
         <activity android:name=".ui.activity.MySettingActivity" />
         <activity android:name=".ui.activity.MyStoryActivity" />
-        <activity android:name=".SigninActivity"/>
-        <activity android:name=".SignupActivity"/>
+        <activity android:name=".ui.activity.SigninActivity"/>
+        <activity android:name=".ui.activity.SignupActivity"/>
         <activity android:name=".ui.activity.SettingsActivity" />
 
     </application>

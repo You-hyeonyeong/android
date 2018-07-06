@@ -1,9 +1,8 @@
-package org.weatherook.weatherook.ui.viewholder
+package org.weatherook.weatherook.viewholder
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.item_recommend.view.*
 import org.weatherook.weatherook.R
 
 class RecommendViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {

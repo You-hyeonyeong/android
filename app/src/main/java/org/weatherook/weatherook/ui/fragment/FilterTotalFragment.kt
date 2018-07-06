@@ -7,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
 
-class SearchFragment :  Fragment(), View.OnClickListener{
-    override fun onClick(p0: View?) {
-
-    }
-
+/**
+ * Created by HYEON on 2018-07-06.
+ */
+class FilterTotalFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view : View = View.inflate(activity, R.layout.fragment_search, null)
-        return view
+        val v = inflater.inflate(R.layout.filter_total, container, false)
+        return v
     }
-
 }

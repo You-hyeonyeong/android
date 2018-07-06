@@ -43,9 +43,9 @@
 
         <ImageView
             android:id="@+id/like_board_img"
+            android:scaleType="centerCrop"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@color/weatherookTheme"
             android:gravity="right" />
     </LinearLayout>
 </LinearLayout>

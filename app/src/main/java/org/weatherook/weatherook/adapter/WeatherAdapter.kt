@@ -1,13 +1,12 @@
 package org.weatherook.weatherook.adapter
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.ui.item.WeatherItem
-import org.weatherook.weatherook.ui.viewholder.WeatherViewHolder
+import org.weatherook.weatherook.item.WeatherItem
+import org.weatherook.weatherook.viewholder.WeatherViewHolder
 
 class WeatherAdapter(var weatherItems: ArrayList<WeatherItem>) : RecyclerView.Adapter<WeatherViewHolder>() {
 

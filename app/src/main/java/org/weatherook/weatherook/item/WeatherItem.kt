@@ -1,4 +1,4 @@
-package org.weatherook.weatherook.ui.item
+package org.weatherook.weatherook.item
 
 data class WeatherItem (
 

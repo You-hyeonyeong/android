@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +12,9 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.FollowingAdapter
 import org.weatherook.weatherook.adapter.RecommendAdapter
 import org.weatherook.weatherook.adapter.WeatherAdapter
-import org.weatherook.weatherook.ui.item.FollowingItem
-import org.weatherook.weatherook.ui.item.RecommendItem
-import org.weatherook.weatherook.ui.item.WeatherItem
+import org.weatherook.weatherook.item.FollowingItem
+import org.weatherook.weatherook.item.RecommendItem
+import org.weatherook.weatherook.item.WeatherItem
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
