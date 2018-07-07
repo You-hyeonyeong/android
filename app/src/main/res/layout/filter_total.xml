@@ -24,7 +24,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:textSize="15dp"
             android:text="여자"
             android:textColorHighlight="@color/weatherookTheme" />
 
@@ -32,7 +31,6 @@
             android:id="@+id/total_men"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
             android:text="남자" />
 
     </LinearLayout>
@@ -81,23 +79,18 @@
             android:text="신체사이즈"
             android:textSize="13dp"
             android:textStyle="bold" />
+
         <SeekBar
             android:id="@+id/total_size_seekbar"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:max="3"
-            android:progress="1"
-            />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/total_size_txt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="@color/weatherookTheme"
-            android:gravity="center"
-            android:text="보통" />
-
+            android:layout_gravity="right"
+            android:text="마름" />
 
     </LinearLayout>
 
@@ -141,7 +134,7 @@
                     android:textSize="13dp" />
 
                 <TextView
-                    android:id="@+id/total_style_btn2"
+                    android:id="@+id/totla_style_btn2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -236,9 +229,6 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#aaaaaa" />
-
-
-    <!-- 나중에 visible 할부분-->
 
     <LinearLayout
         android:id="@+id/filter_temperature"

@@ -36,8 +36,9 @@
         <activity android:name=".ui.activity.MySettingActivity" />
         <activity android:name=".ui.activity.MyStoryActivity" />
         <activity android:name=".ui.activity.SigninActivity"/>
+        <activity android:name=".ui.activity.SignupActivity"/>
         <activity android:name=".ui.activity.SettingsActivity" />
-        <activity android:name=".SignupActivity"/>
+
     </application>
 
 </manifest>

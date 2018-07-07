@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_signup_b.*
 import kotlinx.android.synthetic.main.fragment_signup_c.*
 import org.weatherook.weatherook.ui.activity.SigninActivity
 
