@@ -12,6 +12,7 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.WeatherAdapter
 import org.weatherook.weatherook.item.WeatherItem
 import org.weatherook.weatherook.singleton.Driver.galleryDriver
+import org.weatherook.weatherook.item.WeatherItem
 
 class TodayFragment : Fragment(), View.OnClickListener {
 

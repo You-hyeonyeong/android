@@ -11,8 +11,8 @@ import org.weatherook.weatherook.R
  */
 class MyListRecyclerviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    var MyStoryProfile: ImageView = itemView.findViewById(R.id.story_profile_img) as ImageView
-    var MyStoryName: TextView = itemView.findViewById(R.id.story_id) as TextView
+    var MyStoryProfile: ImageView = itemView.findViewById(R.id.following_profile) as ImageView
+    var MyStoryName: TextView = itemView.findViewById(R.id.following_id) as TextView
     var MyStoryImg: ImageView = itemView.findViewById(R.id.story_pic) as ImageView
     var MyStoryData: TextView = itemView.findViewById(R.id.story_date) as TextView
     var MyStoryWeather: TextView = itemView.findViewById(R.id.story_weather) as TextView

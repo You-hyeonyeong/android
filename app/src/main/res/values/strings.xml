@@ -22,4 +22,19 @@
             you can display camera preview and take pictures.
         ]]>
     </string>
+    <string name="string_underline"><u></u>.</string>
+    <string-array name="today_tall_spinner" >
+        <item>167</item>
+        <item>168</item>
+        <item>169</item>
+    </string-array>
+    <string-array name="total_tall_spinner" >
+        <item>167</item>
+        <item>168</item>
+        <item>169</item>
+        <item>170</item>
+        <item>171</item>
+        <item>172</item>
+    </string-array>
+
 </resources>
