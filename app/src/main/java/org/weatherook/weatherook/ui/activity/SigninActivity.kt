@@ -1,12 +1,12 @@
 package org.weatherook.weatherook.ui.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_signin.*
 import org.weatherook.weatherook.R
-import kotlin.jvm.java
+import org.weatherook.weatherook.SignupActivity
 
 class SigninActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
