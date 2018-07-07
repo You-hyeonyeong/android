@@ -36,6 +36,7 @@ class SignupCFragment : Fragment(), View.OnClickListener {
         super.onStart()
 
         signup_join.setOnClickListener(this)
+
         style.add(signup_a)
         style.add(signup_b)
         style.add(signup_c)

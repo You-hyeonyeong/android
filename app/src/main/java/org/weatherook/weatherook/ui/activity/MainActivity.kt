@@ -1,7 +1,9 @@
 package org.weatherook.weatherook.ui.activity
 
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
@@ -22,7 +24,12 @@ class MainActivity : AppCompatActivity() {
 
         val homeFragment = HomeFragment()
         val searchFragment = FilterFragment()
-        val cameraFragment = CamHomeFragment()
+        lateinit var cameraFragment : Fragment
+        if(Build.VERSION.SDK_INT>=21){
+            cameraFragment = CamHomeFragment()
+        }else{
+            cameraFragment = FilterFragment()
+        }
         val likedFragment = BellFragment()
         val myFragment = MyFragment()
         fragmentManager.beginTransaction().replace(R.id.main_container, homeFragment).commit()
