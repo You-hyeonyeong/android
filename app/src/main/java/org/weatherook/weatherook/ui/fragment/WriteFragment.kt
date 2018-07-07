@@ -31,7 +31,7 @@ class WriteFragment : Fragment() {
             view.write_style1.isSelected = false
             view.write_style1.setTextColor(resources.getColor(R.color.colorAccent))
         } }*/
-
+//
         for (st in style) {
             st.setOnClickListener {
                 if (!st.isSelected) {
