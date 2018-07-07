@@ -23,8 +23,7 @@ class SignupCFragment : Fragment(), View.OnClickListener {
             signup_join -> {
                 startActivity(Intent(context, SigninActivity::class.java))
             }
-
-                    }
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
