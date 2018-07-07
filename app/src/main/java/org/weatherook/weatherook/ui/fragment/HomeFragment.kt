@@ -1,19 +1,13 @@
 package org.weatherook.weatherook.ui.fragment
 
 import android.content.Context
-import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-
-import android.support.design.widget.TabLayout
 import android.os.Looper
-
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,13 +16,10 @@ import com.google.android.gms.location.*
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_my.*
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.adapter.FollowingAdapter
 import org.weatherook.weatherook.adapter.FollowingPagerAdapter
 import org.weatherook.weatherook.adapter.HomePagerAdapter
 import org.weatherook.weatherook.adapter.RecommendAdapter
-import org.weatherook.weatherook.item.FollowingItem
 import org.weatherook.weatherook.item.RecommendItem
 import org.weatherook.weatherook.singleton.Driver
 import java.util.*
@@ -41,8 +32,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     lateinit var recommendItems: ArrayList<RecommendItem>
     lateinit var recommendAdapter: RecommendAdapter
-    lateinit var followingItems: ArrayList<FollowingItem>
-    lateinit var followingAdapter: FollowingAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = View.inflate(activity, R.layout.fragment_home, null)
         val permissionlistener = object : PermissionListener {
@@ -56,27 +45,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
         }
 
-
-    lateinit var recommendItems : ArrayList<RecommendItem>
-    lateinit var recommendAdapter : RecommendAdapter
-
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view : View = View.inflate(activity, R.layout.fragment_home, null)
-
         TedPermission.with(activity)
                 .setPermissionListener(permissionlistener)
                 .setDeniedMessage("권한을 주지 않으면 사용할 수 없습니다.")
                 .setPermissions(android.Manifest.permission.ACCESS_FINE_LOCATION)
                 .check()
-
         return view
     }
 
     override fun onStart() {
+
         super.onStart()
-
-
-
         recommendItems = ArrayList()
 
         recommendItems.add(RecommendItem(R.drawable.heartcolor))
@@ -84,24 +63,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         recommendItems.add(RecommendItem(R.drawable.heartcolor))
         recommendItems.add(RecommendItem(R.drawable.heartcolor))
 
-        recommendAdapter = RecommendAdapter(recommendItems, context!!)
+        recommendAdapter = RecommendAdapter(recommendItems,context!!)
         //     recommendAdapter.setOnItemClickListener(this)
-        home_recommend_recycler.layoutManager = GridLayoutManager(context, 2)
+        home_recommend_recycler.layoutManager = GridLayoutManager(context,2)
         home_recommend_recycler.adapter = recommendAdapter
-
-
-
-        followingItems = ArrayList()
-
-        followingItems.add(FollowingItem(R.drawable.heartcolor, "kim", R.drawable.main_sun))
-        followingItems.add(FollowingItem(R.drawable.heartcolor, "kim", R.drawable.main_cloud_sun_2))
-        followingItems.add(FollowingItem(R.drawable.heartcolor, "kim", R.drawable.main_sun))
-        followingItems.add(FollowingItem(R.drawable.heartcolor, "kim", R.drawable.main_rain))
-
-        followingAdapter = FollowingAdapter(followingItems)
-        //      followingAdapter.setOnItemClickListener(this)
-        home_following_recycler.layoutManager = LinearLayoutManager(context)
-        home_following_recycler.adapter = followingAdapter
 
 
 
@@ -116,7 +81,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         fviewPager.adapter = fadapter
         home_tab.setupWithViewPager(fviewPager)
-
     }
 
     lateinit var locationRequest: LocationRequest
