@@ -1,16 +1,15 @@
 package org.weatherook.weatherook.ui.activity
 
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.ui.fragment.BellFragment
-import org.weatherook.weatherook.ui.fragment.FilterFragment
-import org.weatherook.weatherook.ui.fragment.HomeFragment
-import org.weatherook.weatherook.ui.fragment.MyFragment
+import org.weatherook.weatherook.ui.fragment.*
 import org.weatherook.weatherook.utils.BottomNavigationViewHelper
 
 
@@ -25,7 +24,12 @@ class MainActivity : AppCompatActivity() {
 
         val homeFragment = HomeFragment()
         val searchFragment = FilterFragment()
-        //val cameraFragment = CamHomeFragment()
+        lateinit var cameraFragment : Fragment
+        if(Build.VERSION.SDK_INT>=21){
+            cameraFragment = CamHomeFragment()
+        }else{
+            cameraFragment = FilterFragment()
+        }
         val likedFragment = BellFragment()
         val myFragment = MyFragment()
         fragmentManager.beginTransaction().replace(R.id.main_container, homeFragment).commit()
@@ -46,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                         fragmentTransaction.replace(R.id.main_container, searchFragment).commit()
                         // do something here
                     R.id.action_camera ->
-                        fragmentTransaction.replace(R.id.main_container, searchFragment).commit()
+                        fragmentTransaction.replace(R.id.main_container, cameraFragment).commit()
                         // do something here
                     R.id.action_liked ->
                         fragmentTransaction.replace(R.id.main_container, likedFragment).commit()

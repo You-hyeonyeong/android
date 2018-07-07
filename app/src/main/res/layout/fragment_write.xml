@@ -82,19 +82,120 @@
         android:layout_height="1dp"
         android:background="#d0d0d0" />
 
-    <EditText
-        android:id="@+id/editText"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="215dp"
-        android:hint="글쓰기"
-        android:gravity="start|top"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-    <Button
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="글쓰기"
+            android:minHeight="100dp"
+            android:maxEms="10"
+            android:scrollHorizontally="false" />
+
+    </ScrollView>
+
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_state"
-        android:text="눌러봐" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:rowCount="4">
+
+
+        <TextView
+            android:id="@+id/write_style1"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_state"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="빈티지"
+            android:textColor="@color/colorAccent"
+            android:textIsSelectable="false"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/write_style2"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_state"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="빈티지"
+            android:textColor="@color/colorAccent"
+            android:textIsSelectable="false"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/write_style3"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rounded_state"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="빈티지"
+            android:textColor="@color/colorAccent"
+            android:textIsSelectable="false"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/write_style4"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_state"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="빈티지"
+            android:textColor="@color/colorAccent"
+            android:textIsSelectable="false"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/write_style5"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rounded_state"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="빈티지"
+            android:textColor="@color/colorAccent"
+            android:textIsSelectable="false"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/write_style6"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:background="@drawable/rounded_state"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="빈티지"
+            android:textColor="@color/colorAccent"
+            android:textIsSelectable="false"
+            android:textSize="13sp" />
+
+    </GridLayout>
 
 </LinearLayout>

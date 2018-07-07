@@ -21,8 +21,7 @@ class SignupCFragment : Fragment(), View.OnClickListener {
             signup_join -> {
                 startActivity(Intent(context, SigninActivity::class.java))
             }
-
-                    }
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,6 +34,7 @@ class SignupCFragment : Fragment(), View.OnClickListener {
         super.onStart()
 
         signup_join.setOnClickListener(this)
+
         style.add(signup_a)
         style.add(signup_b)
         style.add(signup_c)
