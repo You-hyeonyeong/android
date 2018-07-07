@@ -52,10 +52,6 @@ class MyFragment : Fragment(), View.OnClickListener {
                 var intent = Intent(activity, MySettingActivity::class.java)
                 startActivity(intent)
             }
-            my_follow -> {
-                val fragmentTransaction = fragmentManager!!.beginTransaction()
-               // fragmentTransaction.replace(R.id.friend_frame, FriendFragment()).commit()
-            }
 
         }
 
@@ -86,7 +82,6 @@ class MyFragment : Fragment(), View.OnClickListener {
         my_list_img.setOnClickListener(this)
         my_setting_btn.setOnClickListener(this)
         my_profile_edit_btn.setOnClickListener(this)
-        my_follow.setOnClickListener(this)
 
     }
 }

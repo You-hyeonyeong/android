@@ -1,9 +1,7 @@
 package org.weatherook.weatherook.ui.fragment
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,19 +13,10 @@ class FilterFragment :  Fragment(), View.OnClickListener{
 
         when(p0) {
             filter_today -> {
-                filter_today.setTextColor(resources.getColor(R.color.weatherookTheme))
-                filter_total.setTextColor(Color.GRAY)
-                filter_today.setText(Html.fromHtml("<u>"+ "오늘" + "<u>"))
-                filter_total.setText(Html.fromHtml("전체"))
-
                 val fragmentTransaction = fragmentManager!!.beginTransaction()
                 fragmentTransaction.replace(R.id.filter_frame, FilterTodayFragment()).commit()
             }
             filter_total -> {
-                filter_total.setTextColor(resources.getColor(R.color.weatherookTheme))
-                filter_today.setText(Html.fromHtml("오늘"))
-                filter_today.setTextColor(Color.GRAY)
-                filter_total.setText(Html.fromHtml("<u>"+ "전체" + "<u>"))
                 val fragmentTransaction = fragmentManager!!.beginTransaction()
                 fragmentTransaction.replace(R.id.filter_frame, FilterTotalFragment()).commit()
 
@@ -53,10 +42,7 @@ class FilterFragment :  Fragment(), View.OnClickListener{
         super.onStart()
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.replace(R.id.filter_frame, FilterTodayFragment()).commit()
-        filter_today.setText(Html.fromHtml("<u>"+ "오늘" + "<u>"))
         //my_grid_img.isSelected = true
-//        filter_today.isSelected = false
-//        filter_total.isSelected = false
         filter_today.setOnClickListener(this)
         filter_total.setOnClickListener(this)
 

@@ -16,12 +16,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="나에게 맞는 코디를 더 자세히 찾아보세요!"
             android:textSize="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:text="나에게 맞는 코디를 더 자세히 찾아보세요!"/>
 
     </RelativeLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
@@ -31,9 +30,9 @@
 
     <RelativeLayout
         android:id="@+id/filter_tab"
+        android:layout_below="@+id/filter_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/filter_top"
         android:layout_margin="10dp">
 
         <TextView
@@ -42,9 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="오늘"
-            android:textIsSelectable="true"
             android:textColor="@color/weatherookTheme"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <TextView
@@ -53,9 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/filter_today"
             android:text="전체"
-            android:textIsSelectable="false"
-
-            android:textSize="20dp"
+            android:textColor="@color/weatherookTheme"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
 
@@ -63,21 +60,22 @@
 
     <FrameLayout
         android:id="@+id/filter_frame"
+        android:layout_below="@+id/filter_tab"
         android:layout_width="match_parent"
-        android:layout_height="376dp"
-        android:layout_below="@+id/filter_tab">
+        android:layout_height="376dp">
 
     </FrameLayout>
 
-    <Button
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/rounded_state"
-        android:text="필터 적용"
-        android:textSize="15dp" />
+<Button
+    android:layout_width="90dp"
+    android:layout_height="wrap_content"
+    android:text="필터 적용"
+    android:textSize="15dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerInParent="true"
+    android:layout_marginBottom="50dp"
+    android:background="@drawable/rounded_state"/>
+
 
 
 </RelativeLayout>
