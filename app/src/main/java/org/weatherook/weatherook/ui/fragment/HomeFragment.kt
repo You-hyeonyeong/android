@@ -13,8 +13,8 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.FollowingAdapter
 import org.weatherook.weatherook.adapter.HomePagerAdapter
 import org.weatherook.weatherook.adapter.RecommendAdapter
-import org.weatherook.weatherook.ui.item.FollowingItem
-import org.weatherook.weatherook.ui.item.RecommendItem
+import org.weatherook.weatherook.item.FollowingItem
+import org.weatherook.weatherook.item.RecommendItem
 
 class HomeFragment : Fragment(), View.OnClickListener {
 

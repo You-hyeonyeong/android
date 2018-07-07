@@ -8,9 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.SigninActivity
-import org.weatherook.weatherook.ui.item.RecommendItem
-import org.weatherook.weatherook.ui.viewholder.RecommendViewHolder
+import org.weatherook.weatherook.item.RecommendItem
+import org.weatherook.weatherook.ui.activity.SigninActivity
+import org.weatherook.weatherook.viewholder.RecommendViewHolder
 
 
 class RecommendAdapter(var recommendItems : ArrayList<RecommendItem>, val context: Context) : RecyclerView.Adapter<RecommendViewHolder>() {

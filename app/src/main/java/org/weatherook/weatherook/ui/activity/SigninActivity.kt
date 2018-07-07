@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_signin.*
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.SignupActivity
 import kotlin.jvm.java
 
 class SigninActivity : AppCompatActivity(), View.OnClickListener {

@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_signup_b.*
 import kotlinx.android.synthetic.main.fragment_signup_c.*
+import org.weatherook.weatherook.ui.activity.SigninActivity
 
 class SignupCFragment : Fragment(), View.OnClickListener {
 

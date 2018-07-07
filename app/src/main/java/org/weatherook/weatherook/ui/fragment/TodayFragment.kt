@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_weather_today.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.WeatherAdapter
-import org.weatherook.weatherook.ui.item.WeatherItem
+import org.weatherook.weatherook.item.WeatherItem
 
 class TodayFragment : Fragment(), View.OnClickListener {
 

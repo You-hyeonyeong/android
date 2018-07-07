@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.ui.item.FollowingItem
-import org.weatherook.weatherook.ui.viewholder.FollowingViewHolder
+import org.weatherook.weatherook.item.FollowingItem
+import org.weatherook.weatherook.viewholder.FollowingViewHolder
 
 class FollowingAdapter(var followingItems : ArrayList<FollowingItem>) : RecyclerView.Adapter<FollowingViewHolder>() {
 

@@ -3,9 +3,9 @@ package org.weatherook.weatherook.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import org.weatherook.weatherook.SignupBFragment
+import org.weatherook.weatherook.SignupCFragment
 import org.weatherook.weatherook.ui.fragment.SignupAFragment
-import org.weatherook.weatherook.ui.fragment.SignupBFragment
-import org.weatherook.weatherook.ui.fragment.SignupCFragment
 
 class SignupPagerAdapter (fm : FragmentManager) : FragmentPagerAdapter(fm)  {
 
