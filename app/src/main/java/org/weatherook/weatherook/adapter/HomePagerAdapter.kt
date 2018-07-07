@@ -21,4 +21,6 @@ class HomePagerAdapter  (fm : FragmentManager) : FragmentPagerAdapter(fm)  {
     override fun getCount(): Int {
         return imageCount
     }
+
+
 }

@@ -5,7 +5,10 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+
+import android.support.design.widget.TabLayout
 import android.os.Looper
+
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.GridLayoutManager
@@ -19,8 +22,10 @@ import com.google.android.gms.location.*
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_my.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.FollowingAdapter
+import org.weatherook.weatherook.adapter.FollowingPagerAdapter
 import org.weatherook.weatherook.adapter.HomePagerAdapter
 import org.weatherook.weatherook.adapter.RecommendAdapter
 import org.weatherook.weatherook.item.FollowingItem
@@ -51,11 +56,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
         }
 
+
+    lateinit var recommendItems : ArrayList<RecommendItem>
+    lateinit var recommendAdapter : RecommendAdapter
+
+        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view : View = View.inflate(activity, R.layout.fragment_home, null)
+
         TedPermission.with(activity)
                 .setPermissionListener(permissionlistener)
                 .setDeniedMessage("권한을 주지 않으면 사용할 수 없습니다.")
                 .setPermissions(android.Manifest.permission.ACCESS_FINE_LOCATION)
                 .check()
+
         return view
     }
 
@@ -77,6 +90,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         home_recommend_recycler.adapter = recommendAdapter
 
 
+
         followingItems = ArrayList()
 
         followingItems.add(FollowingItem(R.drawable.heartcolor, "kim", R.drawable.main_sun))
@@ -90,11 +104,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
         home_following_recycler.adapter = followingAdapter
 
 
+
         val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
         val adapter = HomePagerAdapter(childFragmentManager)
 
         viewPager.adapter = adapter
         viewPager.currentItem = 1
+
+        val fviewPager = view!!.findViewById<ViewPager>(R.id.home_following_viewPager)
+        val fadapter = FollowingPagerAdapter(childFragmentManager)
+
+        fviewPager.adapter = fadapter
+        home_tab.setupWithViewPager(fviewPager)
+
     }
 
     lateinit var locationRequest: LocationRequest
