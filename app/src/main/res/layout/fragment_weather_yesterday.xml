@@ -12,10 +12,21 @@
         android:textColor="#000000"
         android:lineSpacingExtra="0sp"
         android:gravity="center_horizontal"
-        android:text="어제\n
-7월 2일 수요일"
+        android:text="어제"
+        android:textStyle="bold"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:lineSpacingExtra="0sp"
+        android:gravity="center_horizontal"
+        android:text="7월 2일 수요일"
+        android:layout_gravity="center"
         />
 
     <LinearLayout
