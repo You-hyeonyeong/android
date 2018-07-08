@@ -22,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
+            android:textSize="15dp"
             android:text="여자"
             android:textColorHighlight="@color/weatherookTheme" />
 
@@ -29,6 +30,7 @@
             android:id="@+id/today_men"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="15dp"
             android:text="남자" />
 
     </LinearLayout>
@@ -54,6 +56,8 @@
         <Spinner
             android:id="@+id/today_spinner_tall"
             android:layout_width="100dp"
+            android:spinnerMode="dropdown"
+            android:forceHasOverlappingRendering="false"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"/>
 
@@ -81,14 +85,19 @@
         <SeekBar
             android:id="@+id/today_size_seekbar"
             android:layout_width="200dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:max="3"
+            android:progress="1"
+            />
 
         <TextView
             android:id="@+id/today_size_txt"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:text="마름" />
+            android:textColor="@color/weatherookTheme"
+            android:gravity="center"
+            android:text="보통" />
 
     </LinearLayout>
 
