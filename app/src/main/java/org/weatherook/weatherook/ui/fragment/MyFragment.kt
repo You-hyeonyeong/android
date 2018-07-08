@@ -41,7 +41,7 @@ class MyFragment : Fragment(), View.OnClickListener {
                 myListRecyclerviewAdapter.setOnItemClickListener(this@MyFragment)
                 mylist_recycle.adapter = myListRecyclerviewAdapter*/
                 val fragmentTransaction = fragmentManager!!.beginTransaction()
-                fragmentTransaction.replace(R.id.mypage_recycle, MyListFragment()).commit()
+                fragmentTransaction.replace(R.id.mypage_recycle, FollowingAFragment()).commit()
             }
             my_setting_btn -> {
                 var intent = Intent(activity, SettingsActivity::class.java)
@@ -52,6 +52,11 @@ class MyFragment : Fragment(), View.OnClickListener {
                 var intent = Intent(activity, MySettingActivity::class.java)
                 startActivity(intent)
             }
+            my_follow -> {
+                val fragmentTransaction = fragmentManager!!.beginTransaction()
+                fragmentTransaction.add(R.id.my_frame, FriendFragment()).commit()
+            }
+
 
         }
 
@@ -75,6 +80,8 @@ class MyFragment : Fragment(), View.OnClickListener {
 
     override fun onStart() {
         super.onStart()
+
+
         val fragmentTransaction = fragmentManager!!.beginTransaction()
         fragmentTransaction.replace(R.id.mypage_recycle, MyGridFragment()).commit()
         my_grid_img.isSelected = true
@@ -82,6 +89,8 @@ class MyFragment : Fragment(), View.OnClickListener {
         my_list_img.setOnClickListener(this)
         my_setting_btn.setOnClickListener(this)
         my_profile_edit_btn.setOnClickListener(this)
+        my_follow.setOnClickListener(this)
+
 
     }
 }
