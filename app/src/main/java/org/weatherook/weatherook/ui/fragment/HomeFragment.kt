@@ -27,14 +27,16 @@ import java.util.*
 class HomeFragment : Fragment(), View.OnClickListener {
 
 
+
     override fun onClick(v: View) {
+
     }
 
 
     lateinit var recommendItems: ArrayList<RecommendItem>
     lateinit var recommendAdapter: RecommendAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = View.inflate(activity, R.layout.fragment_home, null)
+        val view : View = View.inflate(activity, R.layout.fragment_home, null)
         val permissionlistener = object : PermissionListener {
             override fun onPermissionGranted() {
                 //Toast.makeText(activity, "Permission Granted", Toast.LENGTH_SHORT).show()
@@ -55,34 +57,35 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onStart() {
+            super.onStart()
+          //  val following_recycle: RecyclerView = view!!.findViewById(R.id.home_following_recycler)
 
-        super.onStart()
-        recommendItems = ArrayList()
+            recommendItems = ArrayList()
 
-        recommendItems.add(RecommendItem(R.drawable.heartcolor))
-        recommendItems.add(RecommendItem(R.drawable.heartcolor))
-        recommendItems.add(RecommendItem(R.drawable.heartcolor))
-        recommendItems.add(RecommendItem(R.drawable.heartcolor))
+            recommendItems.add(RecommendItem(R.drawable.heartcolor))
+            recommendItems.add(RecommendItem(R.drawable.heartcolor))
+            recommendItems.add(RecommendItem(R.drawable.heartcolor))
+            recommendItems.add(RecommendItem(R.drawable.heartcolor))
 
-        recommendAdapter = RecommendAdapter(recommendItems,context!!)
-        //     recommendAdapter.setOnItemClickListener(this)
-        home_recommend_recycler.layoutManager = GridLayoutManager(context,2)
-        home_recommend_recycler.adapter = recommendAdapter
-
+            recommendAdapter = RecommendAdapter(recommendItems,context!!)
+       //     recommendAdapter.setOnItemClickListener(this)
+            home_recommend_recycler.layoutManager = GridLayoutManager(context,2)
+            home_recommend_recycler.adapter = recommendAdapter
 
 
-        val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
-        val adapter = HomePagerAdapter(childFragmentManager)
 
-        viewPager.adapter = adapter
-        viewPager.currentItem = 1
+            val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
+            val adapter = HomePagerAdapter(childFragmentManager)
 
-        val fviewPager = view!!.findViewById<ViewPager>(R.id.home_following_viewPager)
-        val fadapter = FollowingPagerAdapter(childFragmentManager)
+            viewPager.adapter = adapter
+            viewPager.currentItem = 1
 
-        fviewPager.adapter = fadapter
-        home_tab.setupWithViewPager(fviewPager)
-    }
+            val fviewPager = view!!.findViewById<ViewPager>(R.id.home_following_viewPager)
+            val fadapter = FollowingPagerAdapter(childFragmentManager)
+
+            fviewPager.adapter = fadapter
+            home_tab.setupWithViewPager(fviewPager)
+        }
 
     lateinit var locationRequest: LocationRequest
     private val UPDATE_INTERVAL = (10 * 1000).toLong()  //10초
