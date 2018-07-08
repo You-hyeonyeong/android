@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#CC000000"
+    android:id="@+id/popup_all"
+    tools:context=".ui.activity.PopupActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="188dp"
+        android:layout_marginTop="80dp"
+        >
+
+        <ImageView
+            android:layout_width="122dp"
+            android:layout_height="188dp"
+            android:src="@drawable/main_logo_white"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:lineSpacingExtra="30sp"
+        android:text="1   나만의 일기장 생성\n
+2  내게 꼭 맞는 필터링 기능\n
+3  사용자 스타일 기반 코디 추천"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:visibility="visible"
+        />
+
+    <ImageView
+        android:id="@+id/popup_signup_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center_horizontal"
+        android:focusable="true"
+        android:src="@drawable/rounded_popupstate"
+        />
+
+</LinearLayout>
