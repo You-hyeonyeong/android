@@ -8,9 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlActivated">#000000</item>
 
-
-
-        출처: http://1c1p.tistory.com/19 [원코어원프로세스]
         <!-- No Title Bar-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -21,6 +18,8 @@
 
     </style>
 
-
+    <style name="MyCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">13sp</item>
+    </style>
 
 </resources>

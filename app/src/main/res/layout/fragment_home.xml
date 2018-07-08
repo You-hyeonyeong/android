@@ -20,7 +20,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="38dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#3c3c3c"
 
+                />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,12 +61,14 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/home_tab"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:nestedScrollingEnabled="true"
             android:scrollbarSize="72dp"
             app:tabGravity="center"
             app:tabIndicatorColor="@color/colorAccent"
+            app:tabTextAppearance="@style/MyCustomTabText"
             app:tabMode="fixed"
+            app:tabMinWidth="75dp"
             app:tabSelectedTextColor="@color/colorAccent">
 
         </android.support.design.widget.TabLayout>
@@ -69,7 +76,7 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/home_following_viewPager"
             android:layout_width="match_parent"
-            android:layout_height="540dp"
+            android:layout_height="560dp"
 
             ></android.support.v4.view.ViewPager>
 
