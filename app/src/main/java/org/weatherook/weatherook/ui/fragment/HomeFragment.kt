@@ -8,8 +8,6 @@ import android.os.Looper
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,34 +17,29 @@ import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.adapter.FollowingAdapter
 import org.weatherook.weatherook.adapter.FollowingPagerAdapter
 import org.weatherook.weatherook.adapter.HomePagerAdapter
 import org.weatherook.weatherook.adapter.RecommendAdapter
 import org.weatherook.weatherook.item.RecommendItem
-import org.weatherook.weatherook.singleton.Driver
+import org.weatherook.weatherook.singleton.StringDriver
 import java.util.*
-import org.weatherook.weatherook.item.FollowingItem
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
 
 
-    override fun onClick(v: View?) {
-        }
+    override fun onClick(v: View) {
+
+    }
 
 
     lateinit var recommendItems: ArrayList<RecommendItem>
     lateinit var recommendAdapter: RecommendAdapter
-
- //   lateinit var followingItems: ArrayList<FollowingItem>
- //   lateinit var followingAdapter: FollowingAdapter
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = View.inflate(activity, R.layout.fragment_home, null)
         val permissionlistener = object : PermissionListener {
             override fun onPermissionGranted() {
-                Toast.makeText(activity, "Permission Granted", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(activity, "Permission Granted", Toast.LENGTH_SHORT).show()
                 startLocationUpdates()
             }
 
@@ -78,19 +71,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
        //     recommendAdapter.setOnItemClickListener(this)
             home_recommend_recycler.layoutManager = GridLayoutManager(context,2)
             home_recommend_recycler.adapter = recommendAdapter
-
- //           followingItems = ArrayList()
-
- //       followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart,"112",R.drawable.main_night_2,"7월 25일","맑음","25/31","정빈이는 체고다 정비니 짱짱"))
-  //      followingItems.add(FollowingItem(R.drawable.brown, "프린스 빈", R.drawable.heart,"112",R.drawable.main_rain_2,"7월 26일","흐림","24/31","정빈이는 체고다 정비니 짱짱"))
-  //      followingItems.add(FollowingItem(R.drawable.brown, "정시후", R.drawable.heart,"112",R.drawable.main_snow_2,"7월 27일","맑음","25/31","정빈이는 체고다 정비니 짱짱"))
-  //      followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart,"112",R.drawable.main_cloud_sun_2,"7월 2일","맑음","27/31","정빈이는 체고다 정비니 짱짱"))
-
-
-    //        followingAdapter = FollowingAdapter(followingItems,context!!)
-            // followingAdapter.setOnItemClickListener(this)
-    //        following_recycle.layoutManager = LinearLayoutManager(activity)
-    //        following_recycle.adapter = followingAdapter
 
 
 
@@ -128,19 +108,28 @@ class HomeFragment : Fragment(), View.OnClickListener {
         @Suppress
         FusedLocationProviderClient(activity!!).requestLocationUpdates(locationRequest, object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
-             //   onLocationChanged(locationResult!!.lastLocation)
+                onLocationChanged(locationResult!!.lastLocation)
             }
 
             override fun onLocationAvailability(locationAvailability: LocationAvailability?) {
-                if (!locationAvailability!!.isLocationAvailable) {
-//                    Toast.makeText(activity!!, "위치 불러오기에 실패함", Toast.LENGTH_SHORT).show()
+                try {
+                    if (!locationAvailability!!.isLocationAvailable) {
+                        Toast.makeText(activity!!, "위치 불러오기에 실패함", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
         }, Looper.myLooper())
 
     }
 
-
+    fun onLocationChanged(location: Location) {
+        try {
+            getAddress(activity!!, location.latitude, location.longitude)
+        } catch (e: Exception) {
+        }
+    }
 
     fun getAddress(context: Context, lat: Double, lng: Double): String {
         var nowAddress = "현재 위치를 확인할 수 없습니다."
@@ -149,8 +138,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         try {
             if (address != null && address.size > 0) {
                 val currentLocationAddress = address.get(0).subLocality
-                Driver.galleryDriver.onNext(currentLocationAddress)
-                Toast.makeText(activity!!, currentLocationAddress, Toast.LENGTH_SHORT).show()
+                StringDriver.stringDriver.onNext(currentLocationAddress)
+                //Toast.makeText(activity!!, currentLocationAddress, Toast.LENGTH_SHORT).show()
                 nowAddress = currentLocationAddress
             }
         } catch (e: Exception) {
@@ -159,8 +148,5 @@ class HomeFragment : Fragment(), View.OnClickListener {
         return nowAddress
     }
 
-        fun onLocationChanged(location: Location) {
-            val msg = "현재 위치: " + location.latitude + "," + location.longitude
-           // Toast.makeText(activity!!, getAddress(activity!!, location.latitude, location.longitude), Toast.LENGTH_SHORT).show()
-        }
+
 }

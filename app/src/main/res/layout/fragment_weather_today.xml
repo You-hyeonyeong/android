@@ -110,9 +110,11 @@
             >
 
             <ImageView
+                android:id="@+id/frag_today_weatherimg"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:layout_centerInParent="true"
+                android:clickable="true"
                 android:src="@drawable/main_sun"
                 />
         </RelativeLayout>
@@ -222,11 +224,6 @@
                 />
         </LinearLayout>
     </RelativeLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#3c3c3c"
 
-        />
 
 </LinearLayout>
