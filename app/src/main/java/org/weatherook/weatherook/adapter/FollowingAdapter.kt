@@ -20,7 +20,7 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, val contex
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowingViewHolder {
         val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.item_following,parent,false)
-//        mainView.setOnClickListener(onItemClick)
+//        mainView.setOnClickListener(onItemClick)z
         return FollowingViewHolder(mainView)
     }
 
