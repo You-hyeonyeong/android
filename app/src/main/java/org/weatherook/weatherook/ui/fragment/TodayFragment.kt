@@ -6,17 +6,19 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.*
+import android.widget.ImageView
 import kotlinx.android.synthetic.main.fragment_weather_today.*
 import kotlinx.android.synthetic.main.fragment_weather_today.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.WeatherAdapter
 import org.weatherook.weatherook.item.WeatherItem
-import org.weatherook.weatherook.singleton.Driver.galleryDriver
+import org.weatherook.weatherook.singleton.StringDriver.stringDriver
 
 class TodayFragment : Fragment(), View.OnClickListener {
 
     private var isWeatherButtons : Boolean = false
-    override fun onClick(v: View?) {
+    override fun onClick(v: View) {
         if (!isWeatherButtons) {
             isWeatherButtons = true
             home_weather_alarm.visibility = View.INVISIBLE
@@ -32,12 +34,23 @@ class TodayFragment : Fragment(), View.OnClickListener {
     lateinit var weatherItems : ArrayList<WeatherItem>
     lateinit var weatherAdapter : WeatherAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view : View = View.inflate(activity, R.layout.fragment_weather_today, null)
+        val view : View = View.inflate(activity!!, R.layout.fragment_weather_today, null)
         view.home_weather_location
-        galleryDriver.subscribe {
+        stringDriver.subscribe {
             if(it!=null){
                 view.home_weather_location.text = it
             }
+        }
+        val image : ImageView = view.findViewById(R.id.frag_today_weatherimg)
+        image.setOnClickListener {
+            var anim = TranslateAnimation(TranslateAnimation.ABSOLUTE, 0f, TranslateAnimation.ABSOLUTE, 0f,
+                    TranslateAnimation.RELATIVE_TO_PARENT, -0.05f, TranslateAnimation.RELATIVE_TO_PARENT, 0.05f)
+            anim.duration = 1000
+            anim.repeatCount = -1
+            anim.repeatMode = Animation.REVERSE
+            anim.interpolator = BounceInterpolator()
+            anim.fillAfter =true
+            image.startAnimation(anim)
         }
         return view
     }
