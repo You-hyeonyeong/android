@@ -27,9 +27,25 @@ import java.util.*
 class HomeFragment : Fragment(), View.OnClickListener {
 
 
-
+    var item1 = true
     override fun onClick(v: View) {
 
+        when(v){
+            home_refresh_btn -> {
+                clear()
+
+                if(!item1){
+                    additem1()
+                    item1 = true
+                }
+
+                else {
+                    additem2()
+                    item1= false
+                }
+                onResume()
+            }
+        }
     }
 
 
@@ -60,12 +76,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
             super.onStart()
           //  val following_recycle: RecyclerView = view!!.findViewById(R.id.home_following_recycler)
 
+            home_refresh_btn.setOnClickListener(this)
+
             recommendItems = ArrayList()
 
-            recommendItems.add(RecommendItem(R.drawable.heartcolor))
-            recommendItems.add(RecommendItem(R.drawable.heartcolor))
-            recommendItems.add(RecommendItem(R.drawable.heartcolor))
-            recommendItems.add(RecommendItem(R.drawable.heartcolor))
+            additem1()
 
             recommendAdapter = RecommendAdapter(recommendItems,context!!)
        //     recommendAdapter.setOnItemClickListener(this)
@@ -87,6 +102,30 @@ class HomeFragment : Fragment(), View.OnClickListener {
             home_tab.setupWithViewPager(fviewPager)
         }
 
+    override fun onResume() {
+        super.onResume()
+        recommendAdapter.notifyDataSetChanged()
+    }
+
+    fun clear(){
+        recommendItems.clear()
+    }
+
+    fun additem1(){
+        recommendItems.add(RecommendItem(R.drawable.heartcolor))
+        recommendItems.add(RecommendItem(R.drawable.heartcolor))
+        recommendItems.add(RecommendItem(R.drawable.heartcolor))
+        recommendItems.add(RecommendItem(R.drawable.heartcolor))
+
+    }
+
+    fun additem2(){
+        recommendItems.add(RecommendItem(R.drawable.main_sun))
+        recommendItems.add(RecommendItem(R.drawable.main_cloud_2))
+        recommendItems.add(RecommendItem(R.drawable.main_rain_2))
+        recommendItems.add(RecommendItem(R.drawable.main_sun))
+
+    }
     lateinit var locationRequest: LocationRequest
     private val UPDATE_INTERVAL = (10 * 1000).toLong()  //10초
     private val FASTEST_INTERVAL: Long = 2000

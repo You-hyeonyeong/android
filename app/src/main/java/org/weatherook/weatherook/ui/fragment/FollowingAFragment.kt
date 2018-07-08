@@ -11,7 +11,38 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.FollowingAdapter
 import org.weatherook.weatherook.item.FollowingItem
 
-class FollowingAFragment : Fragment() {
+class FollowingAFragment : Fragment(), View.OnClickListener{
+    override fun onClick(v: View?) {
+
+        when(v) {
+
+            following_recent_btn -> {
+
+                followingItems.clear()
+
+                followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart, "112", R.drawable.main_night_2, "7월 25일", "맑음", "25/31", "정빈이는 체고다 정비니 짱짱"))
+                followingItems.add(FollowingItem(R.drawable.brown, "프린스 빈", R.drawable.heart, "112", R.drawable.main_rain_2, "7월 26일", "흐림", "24/31", "정빈이는 체고다 정비니 짱짱"))
+                followingItems.add(FollowingItem(R.drawable.brown, "정시후", R.drawable.heart, "112", R.drawable.main_snow_2, "7월 27일", "맑음", "25/31", "정빈이는 체고다 정비니 짱짱"))
+                followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart, "112", R.drawable.main_cloud_sun_2, "7월 2일", "맑음", "27/31", "정빈이는 체고다 정비니 짱짱"))
+
+                onResume()
+
+            }
+
+            following_popularity_btn -> {
+
+                followingItems.clear()
+                followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart, "112", R.drawable.main_sun, "7월 25일", "맑음", "25/31", "정빈이는 체고다 정비니 짱짱"))
+                followingItems.add(FollowingItem(R.drawable.brown, "프린스 빈", R.drawable.heart, "112", R.drawable.main_sun, "7월 26일", "흐림", "24/31", "정빈이는 체고다 정비니 짱짱"))
+                followingItems.add(FollowingItem(R.drawable.brown, "정시후", R.drawable.heart, "112", R.drawable.main_sun, "7월 27일", "맑음", "25/31", "정빈이는 체고다 정비니 짱짱"))
+                followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart, "112", R.drawable.main_cloud_sun_2, "7월 2일", "맑음", "27/31", "정빈이는 체고다 정비니 짱짱"))
+
+                onResume()
+
+            }
+        }
+
+    }
 
 
     lateinit var followingItems : ArrayList<FollowingItem>
@@ -24,15 +55,17 @@ class FollowingAFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        following_recent_btn.setOnClickListener(this)
+        following_popularity_btn.setOnClickListener(this)
+
         followingItems = ArrayList()
 
+        followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart, "112", R.drawable.main_night_2, "7월 25일", "맑음", "25/31", "정빈이는 체고다 정비니 짱짱"))
+        followingItems.add(FollowingItem(R.drawable.brown, "프린스 빈", R.drawable.heart, "112", R.drawable.main_rain_2, "7월 26일", "흐림", "24/31", "정빈이는 체고다 정비니 짱짱"))
+        followingItems.add(FollowingItem(R.drawable.brown, "정시후", R.drawable.heart, "112", R.drawable.main_snow_2, "7월 27일", "맑음", "25/31", "정빈이는 체고다 정비니 짱짱"))
+        followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart, "112", R.drawable.main_cloud_sun_2, "7월 2일", "맑음", "27/31", "정빈이는 체고다 정비니 짱짱"))
 
-        followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart,"112",R.drawable.main_night_2,"7월 25일","맑음","25/31","정빈이는 체고다 정비니 짱짱"))
-        followingItems.add(FollowingItem(R.drawable.brown, "프린스 빈", R.drawable.heart,"112",R.drawable.main_rain_2,"7월 26일","흐림","24/31","정빈이는 체고다 정비니 짱짱"))
-        followingItems.add(FollowingItem(R.drawable.brown, "정시후", R.drawable.heart,"112",R.drawable.main_snow_2,"7월 27일","맑음","25/31","정빈이는 체고다 정비니 짱짱"))
-        followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart,"112",R.drawable.main_cloud_sun_2,"7월 2일","맑음","27/31","정빈이는 체고다 정비니 짱짱"))
-
-        followingAdapter = FollowingAdapter(followingItems,context!!)
+        followingAdapter = FollowingAdapter(followingItems, context!!)
         //      followingAdapter.setOnItemClickListener(this)
         home_following_recycler.layoutManager = LinearLayoutManager(context)
         home_following_recycler.adapter = followingAdapter
@@ -41,4 +74,8 @@ class FollowingAFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        followingAdapter.notifyDataSetChanged()
+    }
 }

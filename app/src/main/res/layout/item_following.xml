@@ -134,7 +134,6 @@
                 android:textColor="#707070"
                 android:layout_below="@id/following_tag"
                 />
-
         </RelativeLayout>
 
 </LinearLayout>
