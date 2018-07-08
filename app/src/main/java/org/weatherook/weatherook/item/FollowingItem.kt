@@ -9,5 +9,6 @@ data class FollowingItem (
         var date : String,
         var weather : String,
         var temperature : String,
-        var content : String
+        var content : String,
+        var comment : ArrayList<CommentItem>
 )
