@@ -16,4 +16,5 @@ class FollowingViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView){
     var followingWeather: TextView = itemView!!.findViewById(R.id.following_weather) as TextView
     var followingTemp: TextView = itemView!!.findViewById(R.id.following_temp) as TextView
     var followingContent: TextView = itemView!!.findViewById(R.id.following_content) as TextView
+    var followingComment : RecyclerView = itemView!!.findViewById(R.id.following_comment_recycler) as RecyclerView
 }

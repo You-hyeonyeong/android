@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+<LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     >
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -126,14 +130,74 @@
                 android:textStyle="bold"
                 />
 
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="24dp"
-                android:text="댓글 모두 보기"
-                android:textSize="8sp"
-                android:textColor="#707070"
+            <TextView
+                android:id="@+id/following_commentshow_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#7e707070"
+                android:lineSpacingExtra="11sp"
+                android:text="댓글 2개 모두 보기"
                 android:layout_below="@id/following_tag"
+                android:layout_marginTop="5dp"
+                />
+          <android.support.v7.widget.RecyclerView
+              android:id="@+id/following_comment_recycler"
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:layout_marginTop="5dp"
+              android:layout_below="@id/following_commentshow_btn"
+              >
+
+          </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:id="@+id/following_comment_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/following_comment_recycler"
+                android:layout_marginTop="10dp"
+                >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/following_comment_profile"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_gravity="center_vertical"
+
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#7e707070"
+
+                    android:text="댓글"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/following_comment_write"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:hint="댓글"
+                android:textSize="15sp"
+                android:layout_below="@id/following_comment_info"
+                android:layout_marginTop="5dp"
+                />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:text="작성하기"
+                android:layout_toRightOf="@id/following_comment_write"
+                android:layout_below="@id/following_comment_info"
+                android:gravity="center"
                 />
         </RelativeLayout>
-
 </LinearLayout>
+</ScrollView>

@@ -1,26 +1,32 @@
 package org.weatherook.weatherook.adapter
 
 import android.content.Context
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import org.w3c.dom.Comment
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
+import org.weatherook.weatherook.item.CommentItem
 import org.weatherook.weatherook.item.FollowingItem
 import org.weatherook.weatherook.viewholder.FollowingViewHolder
 
-class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, val context : Context) : RecyclerView.Adapter<FollowingViewHolder>() {
+class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commentLayoutManager: LinearLayoutManager, val context : Context) : RecyclerView.Adapter<FollowingViewHolder>() {
 
     private lateinit var onItemClick: View.OnClickListener
 
+    lateinit var commentItems: ArrayList<CommentItem>
+    lateinit var commentAdapter: CommentAdapter
     fun setOnItemClickListener(l: View.OnClickListener) {
         onItemClick = l
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowingViewHolder {
         val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.item_following,parent,false)
-//        mainView.setOnClickListener(onItemClick)z
+//        mainView.setOnClickListener(onItemClick)
+
         return FollowingViewHolder(mainView)
     }
 
@@ -36,6 +42,9 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, val contex
         holder!!.followingWeather.text = followingItems[position].weather
         holder!!.followingTemp.text = followingItems[position].temperature
         holder!!.followingContent.text = followingItems[position].content
+        holder!!.followingComment.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        holder!!.followingComment.adapter = CommentAdapter(followingItems[position].comment)
+
 
     }
 }
