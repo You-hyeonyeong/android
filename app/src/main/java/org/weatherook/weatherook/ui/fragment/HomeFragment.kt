@@ -21,15 +21,13 @@ import org.weatherook.weatherook.adapter.FollowingPagerAdapter
 import org.weatherook.weatherook.adapter.HomePagerAdapter
 import org.weatherook.weatherook.adapter.RecommendAdapter
 import org.weatherook.weatherook.item.RecommendItem
-import org.weatherook.weatherook.singleton.Driver
+import org.weatherook.weatherook.singleton.StringDriver
 import java.util.*
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
 
-    override fun onClick(v: View?) {
-
-
+    override fun onClick(v: View) {
     }
 
 
@@ -39,7 +37,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val view: View = View.inflate(activity, R.layout.fragment_home, null)
         val permissionlistener = object : PermissionListener {
             override fun onPermissionGranted() {
-                Toast.makeText(activity, "Permission Granted", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(activity, "Permission Granted", Toast.LENGTH_SHORT).show()
                 startLocationUpdates()
             }
 
@@ -111,8 +109,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onLocationAvailability(locationAvailability: LocationAvailability?) {
-                if (!locationAvailability!!.isLocationAvailable) {
-                    Toast.makeText(activity!!, "위치 불러오기에 실패함", Toast.LENGTH_SHORT).show()
+                try {
+                    if (!locationAvailability!!.isLocationAvailable) {
+                        Toast.makeText(activity!!, "위치 불러오기에 실패함", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
         }, Looper.myLooper())
@@ -120,8 +122,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     fun onLocationChanged(location: Location) {
-        val msg = "현재 위치: " + location.latitude + "," + location.longitude
-        Toast.makeText(activity!!, getAddress(activity!!, location.latitude, location.longitude), Toast.LENGTH_SHORT).show()
+        try {
+            getAddress(activity!!, location.latitude, location.longitude)
+        } catch (e: Exception) {
+        }
     }
 
     fun getAddress(context: Context, lat: Double, lng: Double): String {
@@ -131,8 +135,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         try {
             if (address != null && address.size > 0) {
                 val currentLocationAddress = address.get(0).subLocality
-                Driver.galleryDriver.onNext(currentLocationAddress)
-                Toast.makeText(activity!!, currentLocationAddress, Toast.LENGTH_SHORT).show()
+                StringDriver.stringDriver.onNext(currentLocationAddress)
+                //Toast.makeText(activity!!, currentLocationAddress, Toast.LENGTH_SHORT).show()
                 nowAddress = currentLocationAddress
             }
         } catch (e: Exception) {
