@@ -43,6 +43,13 @@ class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var
                 .into(imgview)
         imgview.setOnClickListener {
             stringDriver.onNext(currentUrl)
+            oldSelectedPosition = position
+            notifyDataSetChanged()
+        }
+        if(position==oldSelectedPosition){
+            imgview.alpha = 0.6f
+        }else{
+            imgview.alpha = 1f
         }
     }
 }
