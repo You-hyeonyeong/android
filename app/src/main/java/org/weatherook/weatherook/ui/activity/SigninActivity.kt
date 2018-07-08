@@ -13,7 +13,7 @@ class SigninActivity : AppCompatActivity(), View.OnClickListener {
         when(v){
 
             signin_btn -> {
-                val intent1 = Intent(applicationContext, MainActivity::class.java)
+                val intent1 = Intent(applicationContext, PopupActivity::class.java)
                 startActivity(intent1)
             }
             signup_btn -> {

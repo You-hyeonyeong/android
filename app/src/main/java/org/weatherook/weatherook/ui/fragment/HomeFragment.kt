@@ -27,7 +27,10 @@ import java.util.*
 class HomeFragment : Fragment(), View.OnClickListener {
 
 
-    override fun onClick(v: View?) {}
+    override fun onClick(v: View?) {
+
+
+    }
 
 
     lateinit var recommendItems: ArrayList<RecommendItem>
