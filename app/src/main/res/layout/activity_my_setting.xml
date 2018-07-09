@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:gravity="right">
             <Button
+                android:id="@+id/my_setting_com_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
@@ -42,7 +43,7 @@
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
-                android:src="@drawable/main_sun" />
+                android:src="@drawable/cat" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -50,6 +51,7 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/my_setting_change_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
