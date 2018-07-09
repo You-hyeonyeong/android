@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
-import org.weatherook.weatherook.singleton.IntDriver.intDriver
-import org.weatherook.weatherook.singleton.StringDriver.stringDriver
+import org.weatherook.weatherook.singleton.urlDriver.urlDriver
 import org.weatherook.weatherook.viewholder.GalleryRecyclerViewHolder
 import java.util.*
 
@@ -42,7 +41,7 @@ class GalleryRecyclerviewAdapter(private var galleryItem: ArrayList<String>, var
         GlideApp.with(context).load(currentUrl).override(imageWidthPixels, imageHeightPixels)
                 .into(imgview)
         imgview.setOnClickListener {
-            stringDriver.onNext(currentUrl)
+            urlDriver.onNext(currentUrl)
             oldSelectedPosition = position
             notifyDataSetChanged()
         }
