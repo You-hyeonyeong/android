@@ -22,12 +22,12 @@
             you can display camera preview and take pictures.
         ]]>
     </string>
-    <string-array name="today_tall_spinner" >
+    <string-array name="today_tall_spinner">
         <item>167</item>
         <item>168</item>
         <item>169</item>
     </string-array>
-    <string-array name="total_tall_spinner" >
+    <string-array name="total_tall_spinner">
         <item>167</item>
         <item>168</item>
         <item>169</item>

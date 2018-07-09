@@ -21,7 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MaterialTheme">
-        <activity android:name=".ui.activity.MainActivity" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/MaterialTheme">
@@ -37,7 +39,11 @@
         <activity android:name=".ui.activity.SigninActivity" />
         <activity android:name=".ui.activity.SignupActivity" />
         <activity android:name=".ui.activity.SettingsActivity" />
-        <activity android:name=".ui.activity.PopupActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"></activity>
+        <activity
+            android:name=".ui.activity.PopupActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity android:name=".ui.activity.CommentActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

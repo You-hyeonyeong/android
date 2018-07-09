@@ -8,31 +8,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.item.LikeRecyclerViewData
-import org.weatherook.weatherook.adapter.LikeRecyclerviewAdapter
+import org.weatherook.weatherook.adapter.BellRecyclerviewAdapter
+import org.weatherook.weatherook.item.BellRecyclerViewData
 
 class BellFragment :  Fragment(), View.OnClickListener{
     override fun onClick(p0: View?) {
 
     }
 
-    var likeitems : ArrayList<LikeRecyclerViewData> = ArrayList()
-    lateinit var likeRecyclerviewAdapter : LikeRecyclerviewAdapter
+    var likeitems : ArrayList<BellRecyclerViewData> = ArrayList()
+    lateinit var bellRecyclerviewAdapter : BellRecyclerviewAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = View.inflate(activity, R.layout.fragment_bell, null)
         val like_recycle : RecyclerView = view!!.findViewById(R.id.like_recycle)
 
-        likeitems.add(LikeRecyclerViewData(R.drawable.main_night_2, "유클라", "님이 댓글을 남겼습니다.", R.drawable.brown))
-        likeitems.add(LikeRecyclerViewData(R.drawable.main_cloud_sun_2, "원클라", "님이 댓글을 남겼습니다.", R.drawable.brown))
-        likeitems.add(LikeRecyclerViewData(R.drawable.main_rain_2, "김클라", "님이 댓글을 남겼습니다.", R.drawable.brown))
-        likeitems.add(LikeRecyclerViewData(R.drawable.main_snow_2, "김웹클라", "님이 댓글을 남겼습니다.", R.drawable.brown))
+        likeitems.add(BellRecyclerViewData(R.drawable.main_night_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오","14", R.drawable.brown))
+        likeitems.add(BellRecyclerViewData(R.drawable.main_snow_2, "프린스정", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오","15", R.drawable.brown))
+        likeitems.add(BellRecyclerViewData(R.drawable.main_cloud_sun_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오","220", R.drawable.brown))
 
-
-
-        likeRecyclerviewAdapter = LikeRecyclerviewAdapter(likeitems, context!!)
-        likeRecyclerviewAdapter.setOnItemClickListener(this)
-        like_recycle.adapter = likeRecyclerviewAdapter
+        bellRecyclerviewAdapter = BellRecyclerviewAdapter(likeitems, context!!)
+        bellRecyclerviewAdapter.setOnItemClickListener(this)
+        like_recycle.adapter = bellRecyclerviewAdapter
         like_recycle.layoutManager = LinearLayoutManager(activity)
         return view
     }

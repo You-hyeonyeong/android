@@ -96,8 +96,10 @@
                 android:layout_margin="10dp"/>
 
             <EditText
+                android:id="@+id/my_setting_id"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@null"/>
 
         </LinearLayout>
 
@@ -129,8 +131,10 @@
                 android:layout_margin="10dp"/>
 
             <EditText
+                android:id="@+id/my_setting_gul"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@null"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -160,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="연령"
+                android:text="나이"
                 android:textSize="15dp" />
 
             <View
@@ -170,6 +174,8 @@
                 android:layout_margin="10dp"/>
 
             <EditText
+                android:id="@+id/my_setting_age"
+                android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -184,7 +190,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:layout_weight="1">
@@ -202,13 +208,16 @@
                 android:layout_margin="10dp"/>
 
             <EditText
+                android:id="@+id/my_setting_tall"
+                android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:layout_weight="1">
             <TextView
@@ -224,6 +233,8 @@
                 android:layout_margin="10dp"/>
 
             <EditText
+                android:id="@+id/my_setting_weight"
+                android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             </LinearLayout>
@@ -247,29 +258,35 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/my_setting_btn1"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:textSize="13dp"
                 android:text="빈티지"
+                android:textColor="@color/gray"
                 android:background="@drawable/graybtn_state"/>
             <TextView
+                android:id="@+id/my_setting_btn2"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:textSize="13dp"
                 android:text="스트릿"
+                android:textColor="@color/gray"
                 android:background="@drawable/graybtn_state"/>
 
             <TextView
+                android:id="@+id/my_setting_btn3"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/graybtn_state"
                 android:gravity="center"
                 android:text="클래식"
+                android:textColor="@color/gray"
                 android:textSize="13dp" />
 
         </LinearLayout>
@@ -281,29 +298,35 @@
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="7dp">
             <TextView
+                android:id="@+id/my_setting_btn4"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:textSize="13dp"
                 android:text="모던"
+                android:textColor="@color/gray"
                 android:background="@drawable/graybtn_state"/>
             <TextView
+                android:id="@+id/my_setting_btn5"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:textSize="13dp"
                 android:text="캐쥬얼"
+                android:textColor="@color/gray"
                 android:background="@drawable/graybtn_state"/>
 
             <TextView
+                android:id="@+id/my_setting_btn6"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/graybtn_state"
                 android:gravity="center"
                 android:text="유스"
+                android:textColor="@color/gray"
                 android:textSize="13dp" />
 
 
@@ -316,30 +339,54 @@
             android:layout_marginLeft="20dp"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/my_setting_btn7"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
                 android:textSize="13dp"
                 android:text="엘레강스"
+                android:textColor="@color/gray"
                 android:background="@drawable/graybtn_state"/>
             <TextView
+                android:id="@+id/my_setting_btn8"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/graybtn_state"
                 android:gravity="center"
                 android:text="댄디"
+                android:textColor="@color/gray"
                 android:textSize="13dp" />
 
             <TextView
+                android:id="@+id/my_setting_btn9"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/graybtn_state"
                 android:gravity="center"
                 android:text="로맨틱"
+                android:textColor="@color/gray"
                 android:textSize="13dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/my_setting_btn10"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textSize="13dp"
+                android:text="그 외"
+                android:textColor="@color/gray"
+                android:background="@drawable/graybtn_state"/>
 
         </LinearLayout>
 

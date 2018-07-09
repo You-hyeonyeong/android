@@ -168,6 +168,7 @@
 
                 />
                 <TextView
+                    android:id="@+id/following_commentwrite_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
@@ -180,24 +181,34 @@
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:id="@+id/following_comment_visible"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/following_comment_info"
+                android:visibility="invisible"
+                >
             <EditText
                 android:id="@+id/following_comment_write"
                 android:layout_width="300dp"
                 android:layout_height="35dp"
                 android:hint="댓글"
                 android:textSize="15sp"
-                android:layout_below="@id/following_comment_info"
+                android:focusable="true"
                 android:layout_marginTop="5dp"
                 />
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="35dp"
-                android:text="작성하기"
+                android:text="게시"
                 android:layout_toRightOf="@id/following_comment_write"
                 android:layout_below="@id/following_comment_info"
                 android:gravity="center"
                 />
+            </LinearLayout>
         </RelativeLayout>
 </LinearLayout>
 </ScrollView>
