@@ -9,27 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
-            android:id="@+id/worm_dots_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+        <com.merhold.extensiblepageindicator.ExtensiblePageIndicator
+            android:id="@+id/flexibleIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="13dp"
+            android:layout_gravity="bottom"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            app:dotsColor="#741dff"
-            app:dotsCornerRadius="8dp"
-            app:dotsSize="12dp"
-            app:dotsSpacing="12dp"
-            app:dotsStrokeWidth="2dp"
-            app:layout_constraintBottom_toTopOf="@+id/weather_viewPager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:indicatorActiveColor="@color/colorAccent"
+            app:indicatorInactiveColor="#ededed"
+            app:indicatorPadding="18dp"
+            app:indicatorRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/weather_viewPager" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/weather_viewPager"
             android:layout_width="match_parent"
-            android:layout_height="338dp"
+            android:layout_height="350dp"
             android:layout_marginTop="28dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -63,14 +58,14 @@
                     android:layout_height="wrap_content"
                     android:text="오늘의"
                     android:textColor="#9d9d9d"
-                    android:textSize="13sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" 추천 코디"
                     android:textColor="#741dff"
-                    android:textSize="13sp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -110,8 +105,8 @@
 
             <ImageView
                 android:id="@+id/home_refresh_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:src="@drawable/find"
                 android:layout_marginTop="1dp"
                 android:layout_marginRight="12dp"
