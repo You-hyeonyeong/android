@@ -15,13 +15,13 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="내 소식"
-            android:textSize="15dp"
-            android:textColor="@color/weatherookTheme"/>
+            android:textStyle="bold"
+            android:textSize="15dp" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/weatherookTheme"
+        android:background="#707070"
         />
 
  <android.support.v7.widget.RecyclerView

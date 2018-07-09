@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.SeekBar
 import android.widget.TextView
 import kotlinx.android.synthetic.main.filter_total.*
 import org.weatherook.weatherook.R
@@ -15,11 +16,29 @@ import org.weatherook.weatherook.R
 /**
  * Created by HYEON on 2018-07-06.
  */
-class FilterTotalFragment : Fragment(), View.OnClickListener {
+class FilterTotalFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChangeListener {
+    override fun onProgressChanged(seekBar: SeekBar, position: Int, p2: Boolean) {
+        when(position){
+            0-> total_size_txt.text = "마름"
+            1-> total_size_txt.text = "보통"
+            2-> total_size_txt.text = "통통"
+            3-> total_size_txt.text = "뚱뚱"
+        }
+    }
+
+    override fun onStartTrackingTouch(p0: SeekBar?) {
+//
+}
+
+    override fun onStopTrackingTouch(p0: SeekBar?) {
+        //
+    }
 
     var total_style: ArrayList<TextView> = ArrayList()
     lateinit var totalSpinner: ArrayAdapter<CharSequence>
     var total_weather: ArrayList<TextView> = ArrayList()
+    lateinit var seekBar : SeekBar
+    lateinit var total_size_txt : TextView
 
     override fun onClick(p0: View?) {
         when (p0) {
@@ -43,6 +62,9 @@ class FilterTotalFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.filter_total, container, false)
+        total_size_txt = v!!.findViewById(R.id.total_size_txt)
+        val seekbar : SeekBar = v!!.findViewById(R.id.total_size_seekbar)
+        seekbar.setOnSeekBarChangeListener(this)
         return v
     }
 

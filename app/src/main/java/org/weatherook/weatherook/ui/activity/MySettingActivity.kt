@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_my_setting.*
 import org.weatherook.weatherook.R
 
@@ -14,7 +15,7 @@ class MySettingActivity : AppCompatActivity(), View.OnClickListener {
     private val REQ_CODE_SELECT_IMAGE = 100
    // private  var image : MultipartBody.Part? = null
     lateinit var data : Uri
-
+    var mysetting_btn : ArrayList<TextView> = ArrayList()
     override fun onClick(p0: View?) {
         when(p0){
             my_setting_com_btn -> {
@@ -89,6 +90,29 @@ class MySettingActivity : AppCompatActivity(), View.OnClickListener {
     override fun onStart() {
         super.onStart()
         my_setting_change_profile.setOnClickListener(this)
+
+        mysetting_btn.add(my_setting_btn1)
+        mysetting_btn.add(my_setting_btn2)
+        mysetting_btn.add(my_setting_btn3)
+        mysetting_btn.add(my_setting_btn4)
+        mysetting_btn.add(my_setting_btn5)
+        mysetting_btn.add(my_setting_btn6)
+        mysetting_btn.add(my_setting_btn7)
+        mysetting_btn.add(my_setting_btn8)
+        mysetting_btn.add(my_setting_btn9)
+        mysetting_btn.add(my_setting_btn10)
+
+        for(st in mysetting_btn){
+            st.setOnClickListener {
+                if(!st.isSelected){
+                    st.isSelected = true
+                    st.setTextColor(resources.getColor(android.R.color.white))
+                }else{
+                    st.isSelected = false
+                    st.setTextColor(resources.getColor(R.color.gray))
+                }
+            }
+        }
     }
 
 }
