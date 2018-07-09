@@ -16,12 +16,29 @@ import org.weatherook.weatherook.R
 /**
  * Created by HYEON on 2018-07-06.
  */
-class FilterTodayFragment : Fragment(),View.OnClickListener {
+class FilterTodayFragment : Fragment(),View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
     var today_style: ArrayList<TextView> = ArrayList()
     lateinit var todaySpinner: ArrayAdapter<CharSequence>
     lateinit var seekBar : SeekBar
     lateinit var today_size_txt : TextView
+
+    override fun onProgressChanged(seekbar: SeekBar?, position: Int, p2: Boolean) {
+        when(position){
+            0-> today_size_txt.text = "마름"
+            1-> today_size_txt.text = "보통"
+            2-> today_size_txt.text = "통통"
+            3-> today_size_txt.text = "뚱뚱"
+        }
+    }
+
+    override fun onStartTrackingTouch(seekbar: SeekBar?) {
+        //
+    }
+
+    override fun onStopTrackingTouch(seekbar: SeekBar?) {
+        //
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +65,9 @@ class FilterTodayFragment : Fragment(),View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.filter_today, container, false)
-
-/*        seekBar.setOnSeekBarChangeListener() {
-
-        }*/
+        today_size_txt = v!!.findViewById(R.id.today_size_txt)
+        val seekbar : SeekBar = v!!.findViewById(R.id.today_size_seekbar)
+        seekbar.setOnSeekBarChangeListener(this)
         return v
     }
 
