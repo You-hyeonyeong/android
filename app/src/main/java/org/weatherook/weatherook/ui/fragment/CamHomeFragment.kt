@@ -12,7 +12,7 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import kotlinx.android.synthetic.main.fragment_camhome.*
 import org.weatherook.weatherook.api.camera.CameraActivity
-import org.weatherook.weatherook.singleton.StringDriver.stringDriver
+import org.weatherook.weatherook.singleton.urlDriver.urlDriver
 
 
 class CamHomeFragment : Fragment() , View.OnClickListener{
@@ -49,9 +49,11 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
             val fragmentTransaction = fragmentManager!!.beginTransaction()
             fragmentTransaction.replace(R.id.camhome_bottom_container, GalleryFragment()).commit()
         }
-        stringDriver.subscribe {
+        urlDriver.subscribe {
             try {
-                GlideApp.with(activity!!).load(it).into(camhome_container)
+                if(it!=null){
+                    GlideApp.with(activity!!).load(it).into(camhome_container)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

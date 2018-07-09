@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_weather_today.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.WeatherAdapter
 import org.weatherook.weatherook.item.WeatherItem
-import org.weatherook.weatherook.singleton.StringDriver.stringDriver
+import org.weatherook.weatherook.singleton.weatherDriver
 
 class TodayFragment : Fragment(), View.OnClickListener {
 
@@ -36,7 +36,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = View.inflate(activity!!, R.layout.fragment_weather_today, null)
         view.home_weather_location
-        stringDriver.subscribe {
+        weatherDriver.weatherDriver.subscribe {
             if(it!=null){
                 view.home_weather_location.text = it
             }

@@ -21,7 +21,7 @@ import org.weatherook.weatherook.adapter.FollowingPagerAdapter
 import org.weatherook.weatherook.adapter.HomePagerAdapter
 import org.weatherook.weatherook.adapter.RecommendAdapter
 import org.weatherook.weatherook.item.RecommendItem
-import org.weatherook.weatherook.singleton.StringDriver
+import org.weatherook.weatherook.singleton.weatherDriver
 import java.util.*
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -177,7 +177,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         try {
             if (address != null && address.size > 0) {
                 val currentLocationAddress = address.get(0).subLocality
-                StringDriver.stringDriver.onNext(currentLocationAddress)
+                weatherDriver.weatherDriver.onNext(currentLocationAddress)
                 //Toast.makeText(activity!!, currentLocationAddress, Toast.LENGTH_SHORT).show()
                 nowAddress = currentLocationAddress
             }
