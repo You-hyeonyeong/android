@@ -30,7 +30,10 @@ class FilterFragment :  Fragment(), View.OnClickListener{
                 filter_total.setText(Html.fromHtml("<u>"+ "전체" + "<u>"))
                 val fragmentTransaction = fragmentManager!!.beginTransaction()
                 fragmentTransaction.replace(R.id.filter_frame, FilterTotalFragment()).commit()
-
+            }
+            filter_ok -> {
+                val fragmentTransaction = fragmentManager!!.beginTransaction()
+                fragmentTransaction.replace(R.id.filter_com_frame, FilterCompleteFragment()).commit()
             }
         }
 
@@ -59,6 +62,7 @@ class FilterFragment :  Fragment(), View.OnClickListener{
 //        filter_total.isSelected = false
         filter_today.setOnClickListener(this)
         filter_total.setOnClickListener(this)
+        filter_ok.setOnClickListener(this)
 
     }
 
