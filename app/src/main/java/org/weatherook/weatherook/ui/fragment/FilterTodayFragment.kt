@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.SeekBar
 import android.widget.TextView
 import kotlinx.android.synthetic.main.filter_today.*
 import org.weatherook.weatherook.R
@@ -19,7 +20,12 @@ class FilterTodayFragment : Fragment(),View.OnClickListener {
 
     var today_style: ArrayList<TextView> = ArrayList()
     lateinit var todaySpinner: ArrayAdapter<CharSequence>
+    lateinit var seekBar : SeekBar
+    lateinit var today_size_txt : TextView
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
     override fun onClick(p0: View?) {
         when (p0) {
             today_women -> {
@@ -42,8 +48,13 @@ class FilterTodayFragment : Fragment(),View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.filter_today, container, false)
+
+/*        seekBar.setOnSeekBarChangeListener() {
+
+        }*/
         return v
     }
+
     override fun onStart() {
         super.onStart()
         todaySpinner = ArrayAdapter.createFromResource(context, R.array.today_tall_spinner, android.R.layout.simple_spinner_dropdown_item)
@@ -75,6 +86,7 @@ class FilterTodayFragment : Fragment(),View.OnClickListener {
                 }
             }
         }
+
     }
 
 }
