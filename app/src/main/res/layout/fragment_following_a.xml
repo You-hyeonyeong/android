@@ -10,12 +10,15 @@
         android:layout_height="30dp"
         android:orientation="horizontal"
         android:gravity="right"
+        android:layout_marginTop="7dp"
         >
         <TextView
             android:id="@+id/following_recent_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="최신순"
+            android:textSize="12sp"
+            android:textColor="@color/colorAccent"
             />
 
         <TextView
@@ -23,7 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="인기순"
+            android:textSize="12sp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="17dp"
+            android:textColor="#aaaaaa"
             />
     </LinearLayout>
 

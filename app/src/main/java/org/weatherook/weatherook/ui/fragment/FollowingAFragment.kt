@@ -1,5 +1,6 @@
 package org.weatherook.weatherook.ui.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -20,6 +21,8 @@ class FollowingAFragment : Fragment(), View.OnClickListener{
 
             following_recent_btn -> {
 
+                following_recent_btn.setTextColor(resources.getColor(R.color.colorAccent))
+                following_popularity_btn.setTextColor(Color.parseColor("#aaaaaa"))
                 followingItems.clear()
 
                 followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart, "112", R.drawable.main_night_2, "7월 25일", "맑음", "25/31", "정빈이는 체고다 정비니 짱짱", commentItems1))
@@ -31,7 +34,8 @@ class FollowingAFragment : Fragment(), View.OnClickListener{
             }
 
             following_popularity_btn -> {
-
+                following_recent_btn.setTextColor(Color.parseColor("#aaaaaa"))
+                following_popularity_btn.setTextColor(resources.getColor(R.color.colorAccent))
                 followingItems.clear()
                 followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart, "112", R.drawable.main_sun, "7월 25일", "맑음", "25/31", "정빈이는 체고다 정비니 짱짱", commentItems1))
                 followingItems.add(FollowingItem(R.drawable.brown, "프린스 빈", R.drawable.heart, "112", R.drawable.main_rain_2, "7월 26일", "흐림", "24/31", "정빈이는 체고다 정비니 짱짱", commentItems2))

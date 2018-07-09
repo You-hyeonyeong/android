@@ -24,6 +24,9 @@ import org.weatherook.weatherook.adapter.RecommendAdapter
 import org.weatherook.weatherook.item.RecommendItem
 import org.weatherook.weatherook.singleton.weatherDriver
 import java.util.*
+import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
+
+
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
@@ -89,13 +92,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
             home_recommend_recycler.adapter = recommendAdapter
 
 
-            val dotsIndicator = view!!.findViewById<WormDotsIndicator>(R.id.worm_dots_indicator)
+            val extensiblePageIndicator = view!!.findViewById(R.id.flexibleIndicator) as ExtensiblePageIndicator
             val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
             val adapter = HomePagerAdapter(childFragmentManager)
 
+
             viewPager.adapter = adapter
             viewPager.currentItem = 1
-            dotsIndicator.setViewPager(viewPager)
+            extensiblePageIndicator.initViewPager(viewPager)
 
             val fviewPager = view!!.findViewById<ViewPager>(R.id.home_following_viewPager)
             val fadapter = FollowingPagerAdapter(childFragmentManager)
