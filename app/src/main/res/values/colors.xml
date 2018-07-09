@@ -6,4 +6,6 @@
     <color name="control_background">#cc4285f4</color>
     <color name="weatherookTheme">#741dff</color>
     <color name="gray">#aaaaaa</color>
+
+    <color name="weatherookTab">#29ffffff</color>
 </resources>
