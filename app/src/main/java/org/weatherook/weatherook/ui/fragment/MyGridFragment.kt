@@ -36,11 +36,11 @@ class MyGridFragment : Fragment(), View.OnClickListener {
 
         myitems = ArrayList()
         myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heartcolor))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heartcolor))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
+        myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
+        myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
+        myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
+        myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
+        myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
 
         myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
         myGridRecyclerviewAdapter.setOnItemClickListener(this)

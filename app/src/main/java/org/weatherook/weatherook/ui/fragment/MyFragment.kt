@@ -41,7 +41,7 @@ class MyFragment : Fragment(), View.OnClickListener {
                 myListRecyclerviewAdapter.setOnItemClickListener(this@MyFragment)
                 mylist_recycle.adapter = myListRecyclerviewAdapter*/
                 val fragmentTransaction = fragmentManager!!.beginTransaction()
-                fragmentTransaction.replace(R.id.mypage_recycle, FollowingAFragment()).commit()
+                fragmentTransaction.replace(R.id.mypage_recycle, FollowingBFragment()).commit()
             }
             my_setting_btn -> {
                 var intent = Intent(activity, SettingsActivity::class.java)
