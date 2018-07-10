@@ -15,6 +15,7 @@ import android.widget.Toast
 import com.google.android.gms.location.*
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.FollowingPagerAdapter
@@ -23,6 +24,9 @@ import org.weatherook.weatherook.adapter.RecommendAdapter
 import org.weatherook.weatherook.item.RecommendItem
 import org.weatherook.weatherook.singleton.weatherDriver
 import java.util.*
+import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
+
+
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
@@ -88,12 +92,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
             home_recommend_recycler.adapter = recommendAdapter
 
 
-
+            val extensiblePageIndicator = view!!.findViewById(R.id.flexibleIndicator) as ExtensiblePageIndicator
             val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
             val adapter = HomePagerAdapter(childFragmentManager)
 
+
             viewPager.adapter = adapter
             viewPager.currentItem = 1
+            extensiblePageIndicator.initViewPager(viewPager)
 
             val fviewPager = view!!.findViewById<ViewPager>(R.id.home_following_viewPager)
             val fadapter = FollowingPagerAdapter(childFragmentManager)
