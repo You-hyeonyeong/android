@@ -6,14 +6,12 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 import kotlinx.android.synthetic.main.activity_signup.*
-import kotlinx.android.synthetic.main.fragment_signup_a.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.SignupPagerAdapter
-import org.weatherook.weatherook.api.model.SignupModel
 
 class SignupActivity : AppCompatActivity(), View.OnClickListener {
 
-    
+
 
     override fun onClick(v: View?) {
         when (v) {
@@ -35,6 +33,19 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
         val adapter = SignupPagerAdapter(supportFragmentManager)
 
         viewPager.adapter = adapter
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                //
+            }
+
+            override fun onPageSelected(position: Int) {
+                //
+            }
+        })
         dotsIndicator.setViewPager(viewPager)
     }
 }

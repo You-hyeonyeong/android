@@ -16,11 +16,16 @@ import com.google.android.gms.location.*
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.FollowingPagerAdapter
 import org.weatherook.weatherook.adapter.HomePagerAdapter
 import org.weatherook.weatherook.adapter.RecommendAdapter
+import org.weatherook.weatherook.api.glide.GlideApp
+import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.RecommendItem
 import org.weatherook.weatherook.singleton.weatherDriver
 import java.util.*
@@ -188,6 +193,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
         }
         return nowAddress
     }
+
+    val networkService by lazy {
+        NetworkService.create()
+    }
+    var disposable: Disposable? = null
+
+    /*fun signin() {
+
+        val call = networkService.getOneBoard(1)
+        disposable = call.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({ success->
+                },{})
+    }*/
 
 
 }

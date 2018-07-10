@@ -1,6 +1,7 @@
 package org.weatherook.weatherook.ui.fragment
 
 import android.content.Intent
+import android.graphics.Canvas
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.xiaopo.flying.sticker.DrawableSticker
+import com.xiaopo.flying.sticker.Sticker
+import com.xiaopo.flying.sticker.StickerView
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import kotlinx.android.synthetic.main.fragment_camhome.*
 import org.weatherook.weatherook.api.camera.CameraActivity
 import org.weatherook.weatherook.singleton.urlDriver.urlDriver
+import android.graphics.drawable.Drawable
+import com.xiaopo.flying.sticker.TextSticker
 
 
 class CamHomeFragment : Fragment() , View.OnClickListener{
@@ -58,6 +64,11 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
                 e.printStackTrace()
             }
         }
+        val stickerView : StickerView = view.findViewById(R.id.camhome_stickerview)
+        var sticker = TextSticker(activity!!)
+        val myIcon : Drawable = resources.getDrawable(R.drawable.selly)
+        sticker.setDrawable(myIcon)
+        stickerView.addSticker(sticker)
         return view
     }
 }

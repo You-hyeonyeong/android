@@ -9,7 +9,6 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_signin.*
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.api.model.SigninModel
 import org.weatherook.weatherook.api.network.NetworkService
 import kotlin.jvm.java
 
@@ -52,14 +51,14 @@ class SigninActivity : AppCompatActivity(), View.OnClickListener {
     fun signin() {
         val id = signin_id_tv.text.toString()
         val pw = signin_pw_tv.text.toString()
-        val signinModel = SigninModel(id,pw)
 
-        val call = networkService.postSignin(signinModel)
+        val call = networkService.postSignin(id,pw)
         disposable = call.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe({result->
-                    val intent3 = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(intent3)
-                },{error-> val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({success->
+                    var intent = Intent(applicationContext, MainActivity::class.java)
+                    intent.putExtra("token", success.token)
+                    startActivity(intent)
+                },{fail-> val intent1 = Intent(applicationContext, PopupActivity::class.java)
                     startActivity(intent1)})
     }
 }

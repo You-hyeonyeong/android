@@ -2,6 +2,7 @@ package org.weatherook.weatherook.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ class MyGridRecyclerviewAdapter(private var myrecyclerviewItems: ArrayList<MyGri
 
     override fun onBindViewHolder(holder: MyRecyclerviewViewHolder, position: Int) {
        // holder!!.MyImage.setImageResource(myrecyclerviewItems[position].myimage)  Glide가 더 성능이 좋음
-        GlideApp.with(context).load(myrecyclerviewItems[position].myimage).into(holder!!.MyImage)
+        GlideApp.with(context).load(myrecyclerviewItems[position].url).into(holder!!.MyImage)
+        Log.i("urls", myrecyclerviewItems[position].url)
     }
 }
