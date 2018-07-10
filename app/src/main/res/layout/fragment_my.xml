@@ -15,13 +15,13 @@
     <RelativeLayout
         android:id="@+id/setting_top"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:background="#ffffff"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:src="@drawable/mainlogo_mini" />
         <Button
@@ -33,7 +33,7 @@
             android:background="#ffffff"
             android:text="설정"
             android:textColor="#aaaaaa"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
 
@@ -63,7 +63,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:layout_margin="8dp"
-                android:src="@drawable/heartcolor" />
+                android:src="@drawable/moon" />
 
         </RelativeLayout>
 
@@ -76,8 +76,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="hiriyo"
-                android:textSize="15dp"
+                android:text="hiriyo_0"
+                android:textSize="16sp"
                 android:textStyle="bold" />
             <ImageView
                 android:id="@+id/my_profile_edit_btn"
@@ -94,7 +94,7 @@
                 android:layout_below="@+id/setting_id_tv"
                 android:layout_centerHorizontal="true"
                 android:text="뉸누냔나 뉸뉴누냔나나~ 신나는 대학생"
-                android:textSize="12dp" />
+                android:textSize="14sp" />
         </RelativeLayout>
 
         <LinearLayout
@@ -109,14 +109,14 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="40dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="35"
+                    android:text="5"
                     android:textColor="@color/weatherookTheme"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -130,14 +130,14 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="40dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="35"
+                    android:text="72"
                     android:textColor="@color/weatherookTheme"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -158,7 +158,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="35"
+                    android:text="53"
                     android:textColor="@color/weatherookTheme"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -180,7 +180,7 @@
         android:layout_below="@+id/setting_center"
         android:background="#707070" />
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/setting_listtab"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -190,23 +190,20 @@
 
             <Button
                 android:id="@+id/my_grid_img"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/mypagelist1_state"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center"
+                android:background="@drawable/mypagelist1_state"/>
 
             <Button
                 android:id="@+id/my_list_img"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/mypagelist2_state"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/my_grid_img"
-                app:layout_constraintTop_toTopOf="parent" />
-     </android.support.constraint.ConstraintLayout>
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/mypagelist2_state"/>
+     </LinearLayout>
 
 
         <FrameLayout
