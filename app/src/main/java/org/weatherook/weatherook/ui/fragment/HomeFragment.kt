@@ -8,6 +8,7 @@ import android.os.Looper
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,36 +26,16 @@ import org.weatherook.weatherook.item.RecommendItem
 import org.weatherook.weatherook.singleton.weatherDriver
 import java.util.*
 import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
-
+import org.weatherook.weatherook.adapter.RecommendPagerAdapter
+import org.weatherook.weatherook.utils.CustomViewPager
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
+    override fun onClick(v: View?) {
 
-
-    var item1 = true
-    override fun onClick(v: View) {
-
-        when(v){
-            home_refresh_btn -> {
-                clear()
-
-                if(!item1){
-                    additem1()
-                    item1 = true
-                }
-
-                else {
-                    additem2()
-                    item1= false
-                }
-                onResume()
-            }
-        }
     }
 
 
-    lateinit var recommendItems: ArrayList<RecommendItem>
-    lateinit var recommendAdapter: RecommendAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = View.inflate(activity, R.layout.fragment_home, null)
         val permissionlistener = object : PermissionListener {
@@ -80,17 +61,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
             super.onStart()
           //  val following_recycle: RecyclerView = view!!.findViewById(R.id.home_following_recycler)
 
-            home_refresh_btn.setOnClickListener(this)
-
-            recommendItems = ArrayList()
-
-            additem1()
-
-            recommendAdapter = RecommendAdapter(recommendItems,context!!)
-       //     recommendAdapter.setOnItemClickListener(this)
-            home_recommend_recycler.layoutManager = GridLayoutManager(context,2)
-            home_recommend_recycler.adapter = recommendAdapter
-
+/*
+            home_scroll.setOnTouchListener { v, event ->  Log.d("tag",home_tab.top.toString())
+                true }
+*/
+  //      home_scroll.pageScroll(View.FOCUS_UP)
+    //    home_scroll.isSmoothScrollingEnabled = true
+     //   home_scroll.
 
             val extensiblePageIndicator = view!!.findViewById(R.id.flexibleIndicator) as ExtensiblePageIndicator
             val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
@@ -101,37 +78,46 @@ class HomeFragment : Fragment(), View.OnClickListener {
             viewPager.currentItem = 1
             extensiblePageIndicator.initViewPager(viewPager)
 
-            val fviewPager = view!!.findViewById<ViewPager>(R.id.home_following_viewPager)
+        val rviewPager = view!!.findViewById<CustomViewPager>(R.id.recommend_viewPager)
+        val radapter = RecommendPagerAdapter(childFragmentManager)
+
+        rviewPager.adapter = radapter
+        rviewPager.setPagingEnabled(false)
+
+
+
+        val fviewPager = view!!.findViewById<ViewPager>(R.id.home_following_viewPager)
             val fadapter = FollowingPagerAdapter(childFragmentManager)
 
             fviewPager.adapter = fadapter
             home_tab.setupWithViewPager(fviewPager)
+
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {
+
+
+
+
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                //
+            }
+
+            override fun onPageSelected(position: Int) {
+                //
+                if(position==2){
+                    rviewPager.currentItem = 1
+                }
+                else if(position==1){
+                    rviewPager.currentItem = 0
+                }
+            }
+        })
         }
 
-    override fun onResume() {
-        super.onResume()
-        recommendAdapter.notifyDataSetChanged()
-    }
 
-    fun clear(){
-        recommendItems.clear()
-    }
 
-    fun additem1(){
-        recommendItems.add(RecommendItem(R.drawable.heartcolor))
-        recommendItems.add(RecommendItem(R.drawable.heartcolor))
-        recommendItems.add(RecommendItem(R.drawable.heartcolor))
-        recommendItems.add(RecommendItem(R.drawable.heartcolor))
-
-    }
-
-    fun additem2(){
-        recommendItems.add(RecommendItem(R.drawable.main_sun))
-        recommendItems.add(RecommendItem(R.drawable.main_cloud_2))
-        recommendItems.add(RecommendItem(R.drawable.main_rain_2))
-        recommendItems.add(RecommendItem(R.drawable.main_sun))
-
-    }
     lateinit var locationRequest: LocationRequest
     private val UPDATE_INTERVAL = (10 * 1000).toLong()  //10초
     private val FASTEST_INTERVAL: Long = 2000

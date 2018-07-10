@@ -47,6 +47,7 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
             mainView.following_comment_visible.visibility = View.VISIBLE
             mainView.following_comment_write.requestFocus()
             KeyboardVisibility.showKeyboard(context)
+
         }
 
         mainView.following_commentshow_btn.setOnClickListener {

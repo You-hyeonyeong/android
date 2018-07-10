@@ -1,6 +1,7 @@
 package org.weatherook.weatherook
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -53,7 +54,7 @@ class SignupCFragment : Fragment(), View.OnClickListener {
                     st.setTextColor(resources.getColor(android.R.color.white))
                 }else{
                     st.isSelected = false
-                    st.setTextColor(resources.getColor(R.color.colorAccent))
+                    st.setTextColor(Color.parseColor("#aaaaaa"))
                 }
             }
         }
