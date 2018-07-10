@@ -9,49 +9,52 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textSize="16sp"
-        android:textColor="#741dff"
+        android:textSize="22sp"
+        android:textColor="#555555"
         android:letterSpacing="-0.01"
-        android:lineSpacingExtra="11sp"
-        android:layout_marginTop="50dp"
-        android:text="나이"
-        />
+        android:lineSpacingExtra="5sp"
+        android:layout_marginTop="55dp"
+        android:text="나이"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
+
         >
         <EditText
             android:id="@+id/signup_age"
-            android:layout_width="85dp"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="#741dff"
-            android:backgroundTint="#741dff"
+            android:textSize="20sp"
+            android:textColor="#555555"
+            android:backgroundTint="#555555"
             android:textAlignment="center"
+            style="@style/EditTextTheme"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="#741dff"
+            android:textSize="20sp"
+            android:textColor="#555555"
+            android:letterSpacing="-0.01"
+            android:lineSpacingExtra="7sp"
             android:text="세"
             />
     </LinearLayout>
 
-    <TextView
+      <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="#741dff"
-        android:layout_marginTop="50dp"
+        android:textSize="22sp"
+        android:textColor="#555555"
         android:letterSpacing="-0.01"
-        android:lineSpacingExtra="11sp"
-        android:text="스타일"
+        android:lineSpacingExtra="5sp"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center"
-        />
+        android:text="스타일"/>
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -59,7 +62,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:columnCount="3"
-        android:rowCount="4"
+        android:rowCount="3"
         android:orientation="horizontal"
 
         >
@@ -67,14 +70,14 @@
 
         <TextView
             android:id="@+id/signup_a"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="13dp"
             android:layout_marginRight="10dp"
             android:gravity="center"
             android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textColor="#aaaaaa"
             android:textIsSelectable="false"
             android:background="@drawable/rounded_state"
             android:clickable="true"
@@ -82,14 +85,14 @@
 
         <TextView
             android:id="@+id/signup_b"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="13dp"
             android:gravity="center"
-            android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
+            android:text="스트릿"
+            android:textSize="20sp"
+            android:textColor="#aaaaaa"
             android:textIsSelectable="false"
             android:background="@drawable/rounded_state"
             android:clickable="true"
@@ -97,12 +100,12 @@
 
         <TextView
             android:id="@+id/signup_c"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
             android:gravity="center"
-            android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
+            android:text="클래식"
+            android:textSize="20sp"
+            android:textColor="#aaaaaa"
             android:textIsSelectable="false"
             android:background="@drawable/rounded_state"
             android:clickable="true"
@@ -110,14 +113,14 @@
 
         <TextView
             android:id="@+id/signup_d"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="13dp"
             android:gravity="center"
-            android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
+            android:text="모던"
+            android:textSize="20sp"
+            android:textColor="#aaaaaa"
             android:textIsSelectable="false"
             android:background="@drawable/rounded_state"
             android:clickable="true"
@@ -125,12 +128,14 @@
 
         <TextView
             android:id="@+id/signup_e"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="13dp"
             android:gravity="center"
-            android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
+            android:text="캐쥬얼"
+            android:textSize="20sp"
+            android:textColor="#aaaaaa"
             android:textIsSelectable="false"
             android:background="@drawable/rounded_state"
             android:clickable="true"
@@ -138,12 +143,12 @@
 
         <TextView
             android:id="@+id/signup_f"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
             android:gravity="center"
-            android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
+            android:text="유스"
+            android:textSize="20sp"
+            android:textColor="#aaaaaa"
             android:textIsSelectable="false"
             android:background="@drawable/rounded_state"
             android:clickable="true"
@@ -151,14 +156,14 @@
 
         <TextView
             android:id="@+id/signup_g"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="13dp"
             android:gravity="center"
-            android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
+            android:text="심플"
+            android:textSize="20sp"
+            android:textColor="#aaaaaa"
             android:textIsSelectable="false"
             android:background="@drawable/rounded_state"
             android:clickable="true"
@@ -166,12 +171,14 @@
 
         <TextView
             android:id="@+id/signup_h"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="13dp"
             android:gravity="center"
-            android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
+            android:text="댄디"
+            android:textSize="20sp"
+            android:textColor="#aaaaaa"
             android:textIsSelectable="false"
             android:background="@drawable/rounded_state"
             android:clickable="true"
@@ -179,41 +186,42 @@
 
         <TextView
             android:id="@+id/signup_i"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="88dp"
+            android:layout_height="35dp"
             android:gravity="center"
-            android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
+            android:text="로맨틱"
+            android:textSize="20sp"
+            android:textColor="#aaaaaa"
             android:textIsSelectable="false"
             android:background="@drawable/rounded_state"
             android:clickable="true"
             />
 
 
-        <TextView
-            android:id="@+id/signup_j"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:text="빈티지"
-            android:textSize="13sp"
-            android:textColor="@color/colorAccent"
-            android:textIsSelectable="false"
-            android:background="@drawable/rounded_state"
-            android:clickable="true"
-            />
 
     </GridLayout>
+    <TextView
+        android:id="@+id/signup_j"
+        android:layout_width="88dp"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="그 외"
+        android:textSize="20sp"
+        android:textColor="#aaaaaa"
+        android:textIsSelectable="false"
+        android:background="@drawable/rounded_state"
+        android:clickable="true"
+        android:layout_gravity="center_horizontal"
+        />
 
     <TextView
         android:id="@+id/signup_join"
-        android:layout_width="85dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="가입완료"
+        android:text="임시가입"
         android:textSize="13sp"
         android:textColor="@color/colorAccent"
         android:background="@drawable/rounded_whitebtn"
