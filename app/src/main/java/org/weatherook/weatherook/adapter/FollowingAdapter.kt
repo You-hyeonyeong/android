@@ -1,12 +1,13 @@
 package org.weatherook.weatherook.adapter
 
 import android.content.Context
+import android.support.design.widget.BottomSheetDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import org.w3c.dom.Comment
+import kotlinx.android.synthetic.main.item_following.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import org.weatherook.weatherook.item.CommentItem
@@ -27,6 +28,12 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
         val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.item_following,parent,false)
 //        mainView.setOnClickListener(onItemClick)
 
+        mainView.following_popup.setOnClickListener {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.bottom_sheet, null)
+            val dialog = BottomSheetDialog(context!!)
+            dialog.setContentView(view)
+            dialog.show()
+        }
         return FollowingViewHolder(mainView)
     }
 
@@ -47,4 +54,9 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
 
 
     }
+    fun showBottomSheetDialog() {
+
+
+    }
+
 }

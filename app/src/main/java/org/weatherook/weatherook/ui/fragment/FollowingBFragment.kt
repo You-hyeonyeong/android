@@ -6,14 +6,19 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_following_a.*
+import kotlinx.android.synthetic.main.fragment_following_b.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.CommentAdapter
 import org.weatherook.weatherook.adapter.FollowingAdapter
 import org.weatherook.weatherook.item.CommentItem
 import org.weatherook.weatherook.item.FollowingItem
 
-class FollowingBFragment : Fragment() {
+
+
+class FollowingBFragment : Fragment(),View.OnClickListener {
+    override fun onClick(v: View?) {
+
+    }
 
     lateinit var commentItems1 : ArrayList<CommentItem>
     lateinit var commentItems2 : ArrayList<CommentItem>
@@ -25,6 +30,8 @@ class FollowingBFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_following_b, container, false)
         return v
     }
+
+
 
     override fun onStart() {
         super.onStart()

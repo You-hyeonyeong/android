@@ -17,7 +17,7 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="성별"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:text="여자"
             android:textColorHighlight="@color/weatherookTheme" />
 
@@ -33,7 +33,7 @@
             android:id="@+id/total_men"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:text="남자" />
 
     </LinearLayout>
@@ -53,7 +53,7 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="키"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Spinner
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="신체\n사이즈"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
         <SeekBar
             android:id="@+id/total_size_seekbar"
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="스타일"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -145,7 +145,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:text="빈티지"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/total_style_btn2"
@@ -153,7 +153,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:text="스트릿"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/total_style_btn3"
@@ -161,7 +161,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:text="클래식"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -177,7 +177,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:text="캐쥬얼"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/total_style_btn5"
@@ -185,7 +185,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:text="유스"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/total_style_btn6"
@@ -193,7 +193,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:text="심플"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/total_style_btn7"
@@ -201,7 +201,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:text="댄디"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -216,7 +216,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:text="모던"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/total_style_btn9"
@@ -224,7 +224,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:text="로맨틱"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
 
                     <TextView
@@ -233,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
                         android:text="그 외"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -267,17 +267,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="기온"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <com.shawnlin.numberpicker.NumberPicker
             android:id="@+id/total_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:np_height="100dp"
+            app:np_selectedTextColor="@color/weatherookTheme"
+            app:np_selectedTextSize="15dp"
+            android:orientation="horizontal"
             app:np_textColor="@color/weatherookTheme">
-
-
         </com.shawnlin.numberpicker.NumberPicker>
 
     </LinearLayout>
@@ -298,7 +298,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="날씨"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 
@@ -314,7 +314,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:text="맑음"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/total_weather_btn2"
@@ -322,7 +322,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:text="흐림"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/total_weather_btn3"
@@ -330,7 +330,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:text="비"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/total_weather_btn4"
@@ -338,7 +338,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:text="눈"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 

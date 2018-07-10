@@ -37,7 +37,10 @@
         <activity android:name=".ui.activity.SigninActivity" />
         <activity android:name=".ui.activity.SignupActivity" />
         <activity android:name=".ui.activity.SettingsActivity" />
-        <activity android:name=".ui.activity.PopupActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"></activity>
+        <activity
+            android:name=".ui.activity.PopupActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity android:name=".ui.activity.PopmenuActivity"></activity>
     </application>
 
 </manifest>

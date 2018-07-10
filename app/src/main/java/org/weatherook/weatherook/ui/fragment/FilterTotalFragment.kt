@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.NumberPicker
 import android.widget.SeekBar
 import android.widget.TextView
 import kotlinx.android.synthetic.main.filter_total.*
@@ -16,7 +17,11 @@ import org.weatherook.weatherook.R
 /**
  * Created by HYEON on 2018-07-06.
  */
-class FilterTotalFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChangeListener {
+class FilterTotalFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarChangeListener, NumberPicker.OnValueChangeListener {
+    override fun onValueChange(picker: NumberPicker?, oldVal: Int, newVal: Int) {
+
+    }
+
     override fun onProgressChanged(seekBar: SeekBar, position: Int, p2: Boolean) {
         when(position){
             0-> total_size_txt.text = "마름"
@@ -27,8 +32,8 @@ class FilterTotalFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarC
     }
 
     override fun onStartTrackingTouch(p0: SeekBar?) {
-//
-}
+    //
+    }
 
     override fun onStopTrackingTouch(p0: SeekBar?) {
         //
@@ -39,6 +44,11 @@ class FilterTotalFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarC
     var total_weather: ArrayList<TextView> = ArrayList()
     lateinit var seekBar : SeekBar
     lateinit var total_size_txt : TextView
+  //  var numberPicker : NumberPicker = 4
+
+
+
+
 
     override fun onClick(p0: View?) {
         when (p0) {
@@ -63,13 +73,35 @@ class FilterTotalFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarC
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.filter_total, container, false)
         total_size_txt = v!!.findViewById(R.id.total_size_txt)
-        val seekbar : SeekBar = v!!.findViewById(R.id.total_size_seekbar)
+       // val numberpicker : NumberPicker = v.findViewById(R.id.total_picker)
+        val seekbar : SeekBar = v.findViewById(R.id.total_size_seekbar)
         seekbar.setOnSeekBarChangeListener(this)
+
+//       val nums = arrayOfNulls<String>(30)
+//
+//        for (i in nums.size(nums))
+//            nums[i] = Integer.toString(i )
+
+
+        //total_picker.selectedTextColor(ContextCompat.getColor(this,R.color.weatherookTheme))
+
+
         return v
     }
 
     override fun onStart() {
         super.onStart()
+
+        var data =  arrayOf("1","2","3","4","5")
+//        val array = ArrayList<String>()
+        total_picker.minValue = 1
+        total_picker.maxValue = 5
+        total_picker.displayedValues = data
+        total_picker.value = 3
+//        total_picker.wrapSelectorWheel=false
+        total_picker.setSelectedTextColorResource(R.color.gray)
+      //  total_picker.setOnValueChangedListener(this)
+
         totalSpinner = ArrayAdapter.createFromResource(context, R.array.today_tall_spinner, android.R.layout.simple_spinner_dropdown_item)
         total_spinner_tall.adapter = totalSpinner
         total_women.setOnClickListener(this)
