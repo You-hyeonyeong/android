@@ -68,8 +68,8 @@ class SignupAFragment : Fragment() {
                 canSubmit[1] = it
                 if (!canSubmit[1]){
                     if((signup_pw_tv.text.length != 0 && signup_check_tv.text.length != 0) &&
-                            (signup_pw_tv.text.length  >= 6 || signup_check_tv.text.length >=6 ))
-                        signup_check_msg.text = "비밀번호가 일치하지 않습니다."
+                           (signup_pw_tv.text.length  >= 6 || signup_check_tv.text.length >=6 ))
+                       signup_check_msg.text = "비밀번호가 일치하지 않습니다."
                     else
                         signup_check_msg.text = ""
                 }
