@@ -28,7 +28,7 @@ class MyGridFragment : Fragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
 
     }
-    var myitems: ArrayList<MyGridRecyclerviewdata> = ArrayList()
+    lateinit var myitems: ArrayList<MyGridRecyclerviewdata>
 
     lateinit var myGridRecyclerviewAdapter: MyGridRecyclerviewAdapter
 
@@ -39,7 +39,7 @@ class MyGridFragment : Fragment(), View.OnClickListener {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = View.inflate(activity, R.layout.fragment_my_grid, null)
+        val view: View = View.inflate(context!!, R.layout.fragment_my_grid, null)
         tokenDriver.tokenDriver.subscribe{
             token = it
             Log.i("grid", token)
@@ -54,16 +54,24 @@ class MyGridFragment : Fragment(), View.OnClickListener {
 
         myitems = ArrayList()
 
+        myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
+        myGridRecyclerviewAdapter.setOnItemClickListener(this)
+        mypage_recycle.adapter = myGridRecyclerviewAdapter
+        mypage_recycle.layoutManager = GridLayoutManager(activity, 2)
+
         val call = networkService.getMyBoard(token!!)
         disposable = call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(
                         { success->
-                            Log.i("urls", success.data.showBoardNumResult.toString())
-                            for(i in success.data.showBoardNumResult){
-                                myitems.add(MyGridRecyclerviewdata(success.data.showBoardAllResult.get(i.boardNum).boardImg))
-                                Log.i("urls", success.data.showBoardAllResult.get(i.boardNum).boardImg)
+                            Log.i("urls_success1", success.data.showBoardNumResult.toString())
+                            for(i in 0..success.data.showBoardNumResult[0].boardNum-1){
+                                myitems.add(MyGridRecyclerviewdata(success.data.showBoardAllResult[i].boardImg))
+                                Log.i("urls_success2", success.data.showBoardAllResult[i].boardImg)
+                                Log.i("urls_success3", myitems[i].url)
+                                Log.i("urls_success4", ""+myitems.size)
+                                myGridRecyclerviewAdapter.notifyDataSetChanged()
 
-                            }},{fail-> Log.i("urls", "failed")})
+                            }},{fail-> Log.i("urls_failed", fail.message)})
 
         /*myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
         myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
@@ -72,11 +80,9 @@ class MyGridFragment : Fragment(), View.OnClickListener {
         myitems.add(MyGridRecyclerviewdata(R.drawable.heartcolor))
         myitems.add(MyGridRecyclerviewdata(R.drawable.heart))*/
 
-        myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
-        myGridRecyclerviewAdapter.setOnItemClickListener(this)
-        mypage_recycle.layoutManager = GridLayoutManager(activity, 2)
+
         //myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
-        mypage_recycle.adapter = myGridRecyclerviewAdapter
+        myGridRecyclerviewAdapter.notifyDataSetChanged()
 
     }
 }

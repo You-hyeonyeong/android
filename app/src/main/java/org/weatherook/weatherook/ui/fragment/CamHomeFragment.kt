@@ -9,16 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.xiaopo.flying.sticker.DrawableSticker
-import com.xiaopo.flying.sticker.Sticker
-import com.xiaopo.flying.sticker.StickerView
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import kotlinx.android.synthetic.main.fragment_camhome.*
 import org.weatherook.weatherook.api.camera.CameraActivity
-import org.weatherook.weatherook.singleton.urlDriver.urlDriver
-import android.graphics.drawable.Drawable
-import com.xiaopo.flying.sticker.TextSticker
+import org.weatherook.weatherook.singleton.urlDriver
 
 
 class CamHomeFragment : Fragment() , View.OnClickListener{
@@ -55,7 +50,7 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
             val fragmentTransaction = fragmentManager!!.beginTransaction()
             fragmentTransaction.replace(R.id.camhome_bottom_container, GalleryFragment()).commit()
         }
-        urlDriver.subscribe {
+        urlDriver.urlDriver.subscribe {
             try {
                 if(it!=null){
                     GlideApp.with(activity!!).load(it).into(camhome_container)
@@ -64,11 +59,6 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
                 e.printStackTrace()
             }
         }
-        val stickerView : StickerView = view.findViewById(R.id.camhome_stickerview)
-        var sticker = TextSticker(activity!!)
-        val myIcon : Drawable = resources.getDrawable(R.drawable.selly)
-        sticker.setDrawable(myIcon)
-        stickerView.addSticker(sticker)
         return view
     }
 }
