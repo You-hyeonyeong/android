@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import org.weatherook.weatherook.R
@@ -14,6 +15,8 @@ import org.weatherook.weatherook.ui.fragment.camera.CamHomeFragment
 import org.weatherook.weatherook.ui.fragment.filter.FilterFragment
 import org.weatherook.weatherook.ui.fragment.home.HomeFragment
 import org.weatherook.weatherook.ui.fragment.my.MyFragment
+import org.weatherook.weatherook.singleton.tokenDriver
+import org.weatherook.weatherook.ui.fragment.*
 import org.weatherook.weatherook.utils.BottomNavigationViewHelper
 
 
@@ -37,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         val likedFragment = BellFragment()
         val myFragment = MyFragment()
         fragmentManager.beginTransaction().replace(R.id.main_container, homeFragment).commit()
+
+        tokenDriver.tokenDriver.onNext(intent.getStringExtra("token"))
 
         val bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)

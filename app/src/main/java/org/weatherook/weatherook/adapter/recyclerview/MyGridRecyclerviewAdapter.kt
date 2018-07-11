@@ -2,6 +2,7 @@ package org.weatherook.weatherook.adapter.recyclerview
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,13 +26,18 @@ class MyGridRecyclerviewAdapter(private var myrecyclerviewItems: ArrayList<MyGri
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRecyclerviewViewHolder {
         val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.my_item, parent, false)
         mainView.setOnClickListener(onItemClick)
+        Log.i("grid_onbind", "created")
         return MyRecyclerviewViewHolder(mainView)
     }
 
-    override fun getItemCount(): Int = myrecyclerviewItems.size
+    override fun getItemCount(): Int {
+        Log.i("grid_onbind", "count")
+        return myrecyclerviewItems.size
+    }
 
     override fun onBindViewHolder(holder: MyRecyclerviewViewHolder, position: Int) {
        // holder!!.MyImage.setImageResource(myrecyclerviewItems[position].myimage)  Glide가 더 성능이 좋음
-        GlideApp.with(context).load(myrecyclerviewItems[position].myimage).into(holder!!.MyImage)
+        GlideApp.with(context).load(myrecyclerviewItems[position].url).into(holder!!.MyImage)
+        Log.i("grid_onbind", myrecyclerviewItems[position].url)
     }
 }

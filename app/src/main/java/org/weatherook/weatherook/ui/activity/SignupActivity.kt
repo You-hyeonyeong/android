@@ -10,13 +10,13 @@ import org.weatherook.weatherook.adapter.viewpager.SignupPagerAdapter
 
 class SignupActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
-        when(v){
+        when (v) {
             signup_close -> {
                 finish()
             }
 
         }
- }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +24,24 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
 
         signup_close.setOnClickListener(this)
 
+        val dotsIndicator = findViewById<WormDotsIndicator>(R.id.worm_dots_indicator)
         val viewPager = findViewById<ViewPager>(R.id.signup_viewPager)
         val adapter = SignupPagerAdapter(supportFragmentManager)
 
         viewPager.adapter = adapter
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                //
+            }
+
+            override fun onPageSelected(position: Int) {
+                //
+            }
+        })
+        dotsIndicator.setViewPager(viewPager)
     }
 }

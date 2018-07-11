@@ -22,7 +22,7 @@ import com.gun0912.tedpermission.TedPermission
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.GalleryRecyclerviewAdapter
 import org.weatherook.weatherook.api.glide.GlideApp
-import org.weatherook.weatherook.singleton.urlDriver.urlDriver
+import org.weatherook.weatherook.singleton.urlDriver
 import java.util.*
 
 class GalleryFragment : Fragment(), View.OnClickListener {
@@ -55,7 +55,7 @@ class GalleryFragment : Fragment(), View.OnClickListener {
                 myUrls = getAllShownImagesPath()
                 galleryRecyclerviewAdapter.setOnItemClickListener(this@GalleryFragment)
                 galleryRv.adapter = galleryRecyclerviewAdapter
-                urlDriver.onNext(myUrls.get(0))
+                urlDriver.urlDriver.onNext(myUrls.get(0))
             }
 
             override fun onPermissionDenied(deniedPermissions: ArrayList<String>) {

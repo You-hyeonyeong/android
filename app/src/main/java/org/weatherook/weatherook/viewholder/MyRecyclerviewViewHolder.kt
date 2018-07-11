@@ -10,5 +10,4 @@ import org.weatherook.weatherook.R
  */
 class MyRecyclerviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var MyImage : ImageView =  itemView.findViewById(R.id.my_image) as ImageView
-
 }
