@@ -25,7 +25,7 @@ class MyListRecyclerviewAdapter(private var mylistrecyclerviewItems: ArrayList<M
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyListRecyclerviewViewHolder {
 
-        val mainView: View = LayoutInflater.from(parent.context).inflate(R.layout.layout_my_story, parent, false)
+        val mainView: View = LayoutInflater.from(parent.context).inflate(R.layout.item_following, parent, false)
         mainView.setOnClickListener(onItemClick)
         return MyListRecyclerviewViewHolder(mainView)
     }
@@ -49,14 +49,15 @@ class MyListRecyclerviewAdapter(private var mylistrecyclerviewItems: ArrayList<M
             }
         }*/
         // holder!!.MyImage.setImageResource(myrecyclerviewItems[position].myimage)  Glide가 더 성능이 좋음
-        GlideApp.with(context).load(mylistrecyclerviewItems[position].mystoryprofile).into(holder!!.MyStoryProfile)
-        holder!!.MyStoryName.text = mylistrecyclerviewItems[position].mystoryname
-        GlideApp.with(context).load(mylistrecyclerviewItems[position].mystoryimg).into(holder!!.MyStoryImg)
-        holder!!.MyStoryData.text = mylistrecyclerviewItems[position].mystorydate
-        holder!!.MyStoryWeather.text = mylistrecyclerviewItems[position].mystoryweather
-        holder!!.MyStoryTemp.text = mylistrecyclerviewItems[position].mystorytemp
-        holder!!.MyStoryTxt.text = mylistrecyclerviewItems[position].mystorytxt
-        holder!!.MyStoryHash.text = mylistrecyclerviewItems[position].mystoryhash
+        holder.apply {
+            mylistrecyclerviewItems[position].let {
+                MyStoryName.text=it.user_id
+                MyStoryTemp.text=it.board_temp_min.toString()+"/"+it.board_temp_max.toString()
+                MyStoryContent.text = it.board_desc
+            }
+        }
+        GlideApp.with(context).load(mylistrecyclerviewItems[position].user_img).into(holder!!.MyStoryProfile)
+        GlideApp.with(context).load(mylistrecyclerviewItems[position].board_img).into(holder!!.MyStoryImg)
 
     }
 }

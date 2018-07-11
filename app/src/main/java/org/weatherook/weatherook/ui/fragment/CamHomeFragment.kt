@@ -1,17 +1,17 @@
 package org.weatherook.weatherook.ui.fragment
 
 import android.content.Intent
-import android.graphics.Canvas
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import kotlinx.android.synthetic.main.fragment_camhome.*
+import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.camera.CameraActivity
 import org.weatherook.weatherook.singleton.urlDriver
 
@@ -53,6 +53,7 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
         urlDriver.urlDriver.subscribe {
             try {
                 if(it!=null){
+                    Log.i("driver",it)
                     GlideApp.with(activity!!).load(it).into(camhome_container)
                 }
             } catch (e: Exception) {

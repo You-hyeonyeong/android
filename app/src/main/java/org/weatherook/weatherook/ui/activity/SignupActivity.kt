@@ -25,7 +25,6 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
 
         signup_close.setOnClickListener(this)
 
-        val dotsIndicator = findViewById<WormDotsIndicator>(R.id.worm_dots_indicator)
         val viewPager = findViewById<ViewPager>(R.id.signup_viewPager)
         val adapter = SignupPagerAdapter(supportFragmentManager)
 
@@ -43,6 +42,5 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
                 //
             }
         })
-        dotsIndicator.setViewPager(viewPager)
     }
 }

@@ -59,30 +59,31 @@ class MyGridFragment : Fragment(), View.OnClickListener {
         mypage_recycle.adapter = myGridRecyclerviewAdapter
         mypage_recycle.layoutManager = GridLayoutManager(activity, 2)
 
-        val call = networkService.getMyBoard(token!!)
-        disposable = call.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(
-                        { success->
-                            Log.i("urls_success1", success.data.showBoardNumResult.toString())
-                            for(i in 0..success.data.showBoardNumResult[0].boardNum-1){
-                                myitems.add(MyGridRecyclerviewdata(success.data.showBoardAllResult[i].boardImg))
-                                Log.i("urls_success2", success.data.showBoardAllResult[i].boardImg)
-                                Log.i("urls_success3", myitems[i].url)
-                                Log.i("urls_success4", ""+myitems.size)
-                                myGridRecyclerviewAdapter.notifyDataSetChanged()
+        if(token!=null){
+            val call = networkService.getMyBoard(token!!)
+            disposable = call.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                            { success->
+                                Log.i("urls_success1", success.data.showBoardNumResult.toString())
+                                for(i in 0..success.data.showBoardNumResult[0].boardNum-1){
+                                    myitems.add(MyGridRecyclerviewdata(success.data.showBoardAllResult[i].boardImg))
+                                    Log.i("urls_success2", success.data.showBoardAllResult[i].boardImg)
+                                    Log.i("urls_success3", myitems[i].url)
+                                    Log.i("urls_success4", ""+myitems.size)
+                                    myGridRecyclerviewAdapter.notifyDataSetChanged()
 
-                            }},{fail-> Log.i("urls_failed", fail.message)})
+                                }},{fail-> Log.i("urls_failed", fail.message)})
 
-        /*myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heartcolor))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heartcolor))
-        myitems.add(MyGridRecyclerviewdata(R.drawable.heart))*/
+            /*myitems.add(MyGridRecyclerviewdata(R.drawable.brown))
+            myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
+            myitems.add(MyGridRecyclerviewdata(R.drawable.heartcolor))
+            myitems.add(MyGridRecyclerviewdata(R.drawable.heart))
+            myitems.add(MyGridRecyclerviewdata(R.drawable.heartcolor))
+            myitems.add(MyGridRecyclerviewdata(R.drawable.heart))*/
 
 
-        //myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
-        myGridRecyclerviewAdapter.notifyDataSetChanged()
-
+            //myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
+            myGridRecyclerviewAdapter.notifyDataSetChanged()
+        }
     }
 }

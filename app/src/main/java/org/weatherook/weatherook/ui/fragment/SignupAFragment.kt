@@ -21,9 +21,5 @@ class SignupAFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val signinId : EditText =view!!.findViewById(R.id.signin_id_tv)
-        val signinPw : EditText =view!!.findViewById(R.id.signin_pw_tv)
-        val signinIdCheck : EditText =view!!.findViewById(R.id.signin_check_tv)
-
     }
 }

@@ -100,13 +100,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="얇은 긴팔 티 하나 걸치고 나오기 딱 좋았던 아침." />
-
-        <TextView
-            android:id="@+id/story_hash"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="#오후엔더워쥬금"
-            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout

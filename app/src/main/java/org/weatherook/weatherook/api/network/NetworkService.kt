@@ -2,6 +2,7 @@ package org.weatherook.weatherook.api.network
 
 import io.reactivex.Observable
 import org.weatherook.weatherook.api.model.BoardModel
+import org.weatherook.weatherook.api.model.FollowModel
 import org.weatherook.weatherook.api.model.SigninModel
 import org.weatherook.weatherook.api.model.SignupModel
 import retrofit2.Retrofit
@@ -35,5 +36,8 @@ interface NetworkService {
 
     @GET("/user/show")
     fun getMyBoard(@Header("token") token:String) : Observable<BoardModel>
+
+    @GET("/user/follower")
+    fun getMyFollowerProfile(@Header("token") token:String) : Observable<FollowModel>
 
 }

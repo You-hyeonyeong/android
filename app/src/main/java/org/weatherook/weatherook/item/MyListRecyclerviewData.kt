@@ -5,12 +5,13 @@ package org.weatherook.weatherook.item
  */
 
 data class MyListRecyclerviewData(
-        var mystoryprofile: Int,
-        var mystoryname: String,
-        var mystoryimg: Int,
-        var mystorydate: String,
-        var mystoryweather: String,
-        var mystorytemp: String,
-        var mystorytxt: String,
-        var mystoryhash: String
+        var user_img: String,
+        var user_id: String,
+        var user_desc: String,
+        var board_img: String,
+        var board_desc: String,
+        var board_date: String,
+        var board_weather: Int,
+        var board_temp_min: Int,
+        var board_temp_max: Int
 )

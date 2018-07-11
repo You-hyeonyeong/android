@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         val myFragment = MyFragment()
         fragmentManager.beginTransaction().replace(R.id.main_container, homeFragment).commit()
 
-        tokenDriver.tokenDriver.onNext(intent.getStringExtra("token"))
+        if(intent.getStringExtra("token")!=null){
+            tokenDriver.tokenDriver.onNext(intent.getStringExtra("token"))
+        }
 
         val bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)
