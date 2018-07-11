@@ -11,6 +11,7 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.ui.activity.MySettingActivity
 import org.weatherook.weatherook.ui.activity.SettingsActivity
 import org.weatherook.weatherook.ui.fragment.FollowingBFragment
+import org.weatherook.weatherook.ui.fragment.MyGridFragment
 
 class MyFragment : Fragment(), View.OnClickListener {
 

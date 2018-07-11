@@ -13,7 +13,7 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.ui.fragment.bell.BellFragment
 import org.weatherook.weatherook.ui.fragment.camera.CamHomeFragment
 import org.weatherook.weatherook.ui.fragment.filter.FilterFragment
-import org.weatherook.weatherook.ui.fragment.home.HomeFragment
+
 import org.weatherook.weatherook.ui.fragment.my.MyFragment
 import org.weatherook.weatherook.singleton.tokenDriver
 import org.weatherook.weatherook.ui.fragment.*
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         val myFragment = MyFragment()
         fragmentManager.beginTransaction().replace(R.id.main_container, homeFragment).commit()
 
-        tokenDriver.tokenDriver.onNext(intent.getStringExtra("token"))
+       // tokenDriver.tokenDriver.onNext(intent.getStringExtra("token"))
 
         val bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView)
