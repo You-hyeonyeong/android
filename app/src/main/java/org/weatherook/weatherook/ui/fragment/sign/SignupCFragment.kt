@@ -12,12 +12,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
+import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.BiFunction
+import io.reactivex.functions.Function5
+import io.reactivex.functions.Function9
 import io.reactivex.schedulers.Schedulers
+import io.reactivex.subjects.BehaviorSubject
 import kotlinx.android.synthetic.main.fragment_signup_c.*
 import org.w3c.dom.Text
 import org.weatherook.weatherook.api.model.SignupModel
@@ -26,21 +30,86 @@ import org.weatherook.weatherook.singleton.SignupDriver.signupDriver
 import org.weatherook.weatherook.ui.activity.SigninActivity
 
 class SignupCFragment : Fragment(), View.OnClickListener {
-
+    var boolArr = arrayOf(false,false,false,false,false,false,false,false,false,false)
     val networkService by lazy {
         NetworkService.create()
     }
     var disposable: Disposable? = null
+    var styleDriver : BehaviorSubject<Array<Boolean>> = BehaviorSubject.create()
 
     var style: ArrayList<TextView> = ArrayList()
     override fun onClick(v: View?) {
         when (v) {
             signup_join -> {
                 //startActivity(Intent(context, SigninActivity::class.java))
-                Log.d("temp","시작")
+                Log.d("temp", "시작")
                 signup()
             }
+        /*    signup_a -> {
+                if(!boolArr[0])
+                    boolArr[0] = true
+                else
+                    boolArr[0] = false
+            }
+            signup_b -> {
+                if(!boolArr[1])
+                    boolArr[1] = true
+                else
+                    boolArr[1] = false
+            }
+            signup_c -> {
+                if(!boolArr[2])
+                    boolArr[2] = true
+                else
+                    boolArr[2] = false
+            }
+            signup_d -> {
+                if(!boolArr[3])
+                    boolArr[3] = true
+                else
+                    boolArr[3] = false
+            }
+            signup_e -> {
+                if(!boolArr[4])
+                    boolArr[4] = true
+                else
+                    boolArr[4] = false
+            }
+            signup_f -> {
+                if(!boolArr[5])
+                    boolArr[5] = true
+                else
+                    boolArr[5] = false
+            }
+            signup_g -> {
+                if(!boolArr[6])
+                    boolArr[6] = true
+                else
+                    boolArr[6] = false
+            }
+            signup_h -> {
+                if(!boolArr[7])
+                    boolArr[7] = true
+                else
+                    boolArr[7] = false
+            }
+            signup_i -> {
+                if(!boolArr[8])
+                    boolArr[8] = true
+                else
+                    boolArr[8] = false
+            }
+            signup_j -> {
+                if(!boolArr[9])
+                    boolArr[9] = true
+                else
+                    boolArr[9] = false
+            }
+            */
+
+
         }
+        styleDriver.onNext(boolArr)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -66,34 +135,38 @@ class SignupCFragment : Fragment(), View.OnClickListener {
         style.add(signup_i)
         style.add(signup_j)
 
+        var index = 0
         for (st in style) {
             st.setOnClickListener {
                 if (!st.isSelected) {
                     st.isSelected = true
+                    boolArr[index] = true
                     st.setTextColor(resources.getColor(android.R.color.white))
                 } else {
                     st.isSelected = false
+                    boolArr[index] = false
                     st.setTextColor(Color.parseColor("#aaaaaa"))
                 }
             }
+            index = index + 1
         }
-
         val signupAgeObservable = RxTextView.textChanges(signup_age)
-        val signupAObservable = RxTextView.textChanges(signup_a)
-        val signupBObservable = RxTextView.textChanges(signup_b)
-        val signupCObservable = RxTextView.textChanges(signup_c)
-        val signupDObservable = RxTextView.textChanges(signup_d)
-        val signupEObservable = RxTextView.textChanges(signup_e)
-        val signupFObservable = RxTextView.textChanges(signup_f)
-        val signupGObservable = RxTextView.textChanges(signup_g)
-        val signupHObservable = RxTextView.textChanges(signup_h)
-        val signupIObservable = RxTextView.textChanges(signup_i)
-        val signupJObservable = RxTextView.textChanges(signup_j)
+
+//        val signupAObservable = RxTextView.textChanges(signup_a)
+//        val signupBObservable = RxTextView.textChanges(signup_b)
+//        val signupCObservable = RxTextView.textChanges(signup_c)
+//        val signupDObservable = RxTextView.textChanges(signup_d)
+//        val signupEObservable = RxTextView.textChanges(signup_e)
+//        val signupFObservable = RxTextView.textChanges(signup_f)
+//        val signupGObservable = RxTextView.textChanges(signup_g)
+//        val signupHObservable = RxTextView.textChanges(signup_h)
+//        val signupIObservable = RxTextView.textChanges(signup_i)
+//        val signupJObservable = RxTextView.textChanges(signup_j)
 
         signupAgeObservable.subscribe {
             val temp = it.toString()
             Log.d("rxtest", temp)
-            if (temp.length == 0  || !checkInputOk(temp)) {
+            if (temp.length == 0 || !checkInputOk(temp)) {
                 canSubmit[0] = false
                 signupDriver.onNext(false)
             } else {
@@ -104,6 +177,17 @@ class SignupCFragment : Fragment(), View.OnClickListener {
                 }
             }
         }
+
+        /*
+        styleDriver
+
+        val check : Observable<Boolean> = Observable.combineLatest(
+                styleDriver,
+                signupAgeObservable,
+                BiFunction { t1, t2 ->  }
+        )
+*/
+
         /*
         val style: Observable<Boolean> = Observable.combineLatest(
                 signupAObservable,
@@ -127,6 +211,7 @@ class SignupCFragment : Fragment(), View.OnClickListener {
         )
         */
     }
+
     fun checkInputOk(nameInput: String): Boolean {
         var chrInput: Char
 
@@ -152,19 +237,23 @@ class SignupCFragment : Fragment(), View.OnClickListener {
         styleList.add(signup_a.text.toString())
         styleList.add("댄디")
 
-        val signupModel = SignupModel("cp_park4","we0001", "여",22,162,50, styleList)
+        val signupModel = SignupModel("cp_park4", "we0001", "여", 22, 162, 50, styleList)
         Log.d("temp", Gson().toJson(signupModel))
         val call = networkService.postSignup(signupModel)
         disposable = call.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe({ success->
-                    Log.d("temp",success.toString())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({ success ->
+                    Log.d("temp", success.toString())
                     startActivity(Intent(context, SigninActivity::class.java))
-                },{fail-> Log.d("temp",fail.toString())
-                    Toast.makeText(context,"로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()})
-    }
+                }, { fail ->
+                    Log.d("temp", fail.toString())
+                    Toast.makeText(context, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                })
 
-    interface Func10<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> : io.reactivex.functions.Function<TextView,R> {
-        fun call(t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6, t7: T7, t8: T8, t9: T9, t10: T10): R
     }
-
 }
+
+
+
+
+
+
