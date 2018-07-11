@@ -3,8 +3,9 @@ package org.weatherook.weatherook.adapter.viewpager
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import org.weatherook.weatherook.ui.fragment.FriendFollowingFragment
 import org.weatherook.weatherook.ui.fragment.my.FriendFollowerFragment
-import org.weatherook.weatherook.ui.fragment.my.FriendFollowingFragment
+
 
 
 class FriendPagerAdapter  (fm : FragmentManager) : FragmentPagerAdapter(fm)  {

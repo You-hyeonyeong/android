@@ -1,24 +1,38 @@
-package org.weatherook.weatherook.ui.fragment.my
+package org.weatherook.weatherook.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.MyListRecyclerviewAdapter
+import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.MyListRecyclerviewData
+import org.weatherook.weatherook.singleton.tokenDriver
 
 /**
  * Created by HYEON on 2018-07-04.
  */
 
 class MyListFragment : Fragment(), View.OnClickListener {
+
+    var token : String ?= null
+
     override fun onClick(p0: View?) {
 
     }
+
+    val networkService by lazy {
+        NetworkService.create()
+    }
+    var disposable: Disposable? = null
 
     var mylistitems: ArrayList<MyListRecyclerviewData> = ArrayList()
 
@@ -27,7 +41,10 @@ class MyListFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = View.inflate(activity, R.layout.fragment_my_list, null)
-
+        tokenDriver.tokenDriver.subscribe{
+            token = it
+            Log.i("grid", token)
+        }
         return view
     }
 
@@ -35,19 +52,35 @@ class MyListFragment : Fragment(), View.OnClickListener {
         super.onStart()
         val mypage_recycle: RecyclerView = view!!.findViewById(R.id.setting_list_recycle)
 
-
-        mylistitems.add(MyListRecyclerviewData(R.drawable.brown, "mystoryname", R.drawable.heart, "7월25일", "맑음", "31/25", "오늘 날씨는 최고", "#정빈이최고"))
-        mylistitems.add(MyListRecyclerviewData(R.drawable.brown, "mystoryname", R.drawable.heart, "7월25일", "맑음", "31/25", "오늘 날씨는 최고", "#정빈이최고"))
-        mylistitems.add(MyListRecyclerviewData(R.drawable.brown, "mystoryname", R.drawable.heart, "7월25일", "맑음", "31/25", "오늘 날씨는 최고", "#정빈이최고"))
-
-
         myListRecyclerviewAdapter = MyListRecyclerviewAdapter(mylistitems, context!!)
         myListRecyclerviewAdapter.setOnItemClickListener(this)
         mypage_recycle.layoutManager = LinearLayoutManager(activity)
-        //myGridRecyclerviewAdapter = MyGridRecyclerviewAdapter(myitems, context!!)
         mypage_recycle.adapter = myListRecyclerviewAdapter
-        /*myListRecyclerviewAdapter.apply {
-            mypage_recycle.adapter = this
-        }*/
+
+        if(token!=null){
+            val call = networkService.getMyBoard(token!!)
+            disposable = call.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                            { success->
+                                Log.i("urls_success1", success.data.showBoardNumResult.toString())
+                                for(i in 0..success.data.showBoardNumResult[0].boardNum-1){
+                                    mylistitems.add(MyListRecyclerviewData(success.data.showUserPageResult[0].userImg.toString(),
+                                            success.data.showUserPageResult[0].userId,success.data.showUserPageResult[0].userDesc.toString(),
+                                            success.data.showBoardAllResult[i].boardImg, success.data.showBoardAllResult[i].boardDesc,
+                                            success.data.showBoardAllResult[i].boardDate, success.data.showBoardAllResult[i].boardWeather,
+                                            success.data.showBoardAllResult[i].boardTempMin, success.data.showBoardAllResult[i].boardTempMax))
+                                    Log.i("urls_success2", success.data.showBoardAllResult[i].boardImg)
+                                }
+
+                                    //Log.i("urls_success3", mylistitems[i].)
+                                    Log.i("urls_success4", ""+mylistitems.size)
+                                    myListRecyclerviewAdapter.notifyDataSetChanged()
+
+                                },{fail-> Log.i("urls_failed", fail.message)})
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
     }
 }

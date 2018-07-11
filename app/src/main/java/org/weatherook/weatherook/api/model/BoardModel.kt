@@ -45,7 +45,7 @@ data class BoardModel(
 
 
         data class ShowFollowerNumResult(
-                @SerializedName("follwer") val follwer: Int // 5
+                @SerializedName("follower") val follwer: Any // 5
         )
     }
 }

@@ -3,41 +3,67 @@ package org.weatherook.weatherook.ui.fragment.my
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_friend_follower.*
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.FriendAdapter
+import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.FriendItem
+import org.weatherook.weatherook.singleton.tokenDriver
 
 /**
  * Created by HYEON on 2018-07-08.
  */
-class FriendFollowerFragment :  Fragment() {
+class FriendFollowerFragment : Fragment() {
 
-    lateinit var friendItems : ArrayList<FriendItem>
-    lateinit var friendAdapter : FriendAdapter
+    lateinit var friendItems: ArrayList<FriendItem>
+    lateinit var friendAdapter: FriendAdapter
+
+    var token: String? = null
+
+    val networkService by lazy {
+        NetworkService.create()
+    }
+    var disposable: Disposable? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_friend_follower, container, false)
+        friendItems = ArrayList()
+        friendAdapter = FriendAdapter(friendItems, context!!)
+        tokenDriver.tokenDriver.subscribe{
+            token = it
+            Log.i("follower", token)
+        }
+        val rv : RecyclerView = v.findViewById(R.id.friend_follower_recycle)
+        rv.layoutManager = GridLayoutManager(context, 4)
+        rv.adapter = friendAdapter
+        if (token != null) {
+            val call = networkService.getMyFollowerProfile(token!!)
+            disposable = call.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                            { success ->
+                                Log.i("followerFragmentNum", success.data.showFollowerIDResult.size.toString())
+                                for (i in 0..success.data.showFollowerIDResult.size - 1){
+                                    friendItems.add(FriendItem(success.data.showFollowerIDResult[i].userImg, success.data.showFollowerIDResult[i].userId))
+                                    Log.i("followerFragment", success.data.showFollowerIDResult[i].userImg)
+                                    friendAdapter.notifyDataSetChanged()
+                                    Log.i("followerFragment", success.message.toString())
+                                }
+                            }, { fail -> Log.i("follower_friend", fail.message) })
+        }
+        friendAdapter.notifyDataSetChanged()
         return v
     }
 
     override fun onStart() {
         super.onStart()
 
-        friendItems = ArrayList()
-        friendItems.add(FriendItem(R.drawable.selly,"정빈이"))
-        friendItems.add(FriendItem(R.drawable.selly,"ss_2"))
-        friendItems.add(FriendItem(R.drawable.selly,"hiriyo_"))
-        friendItems.add(FriendItem(R.drawable.selly,"sultag"))
-        friendItems.add(FriendItem(R.drawable.selly,"정빈이"))
-        friendItems.add(FriendItem(R.drawable.selly,"ㅎㅎ"))
-        friendItems.add(FriendItem(R.drawable.selly,"정빈이"))
 
-        friendAdapter = FriendAdapter(friendItems, context!!)
-        friend_follower_recycle.layoutManager = GridLayoutManager(context,4)
-        friend_follower_recycle.adapter = friendAdapter
     }
 }

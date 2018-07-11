@@ -28,9 +28,10 @@ class FriendFragment : Fragment(), View.OnClickListener {
         super.onStart()
 
         val friendViewPager = view!!.findViewById<ViewPager>(R.id.friend_viewpager)
-        val friendAdapter = FriendPagerAdapter(childFragmentManager)
+        val friendAdapter = FriendPagerAdapter(fragmentManager!!)
 
         friendViewPager.adapter = friendAdapter
+        friendAdapter.notifyDataSetChanged()
         friend_tablayout.setupWithViewPager(friendViewPager)
     }
 }
