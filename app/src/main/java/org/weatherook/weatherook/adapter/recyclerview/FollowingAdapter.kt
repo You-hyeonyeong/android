@@ -57,15 +57,15 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
     override fun onBindViewHolder(holder: FollowingViewHolder, position: Int) {
         GlideApp.with(context).load(followingItems[position].profile).into(holder!!.followingProfile)
         holder!!.followingId.text = followingItems[position].id
-        GlideApp.with(context).load(followingItems[position].heart).into(holder!!.followingHeart)
-        holder!!.followingCount.text = followingItems[position].count
+        //GlideApp.with(context).load(followingItems[position].heart).into(holder!!.followingHeart)
+        holder!!.followingCount.text = followingItems[position].count.toString()
         GlideApp.with(context).load(followingItems[position].photo).into(holder!!.followingPhoto)
         holder!!.followingDate.text = followingItems[position].date
-        holder!!.followingWeather.text = followingItems[position].weather
+        holder!!.followingWeather.text = followingItems[position].weather.toString()
         holder!!.followingTemp.text = followingItems[position].temperature
         holder!!.followingContent.text = followingItems[position].content
         holder!!.followingComment.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        holder!!.followingComment.adapter = CommentAdapter(followingItems[position].comment)
+        //holder!!.followingComment.adapter = CommentAdapter(followingItems[position].comment)
 
 
     }

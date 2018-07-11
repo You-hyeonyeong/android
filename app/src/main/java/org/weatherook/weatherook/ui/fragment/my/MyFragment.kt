@@ -19,7 +19,7 @@ import org.weatherook.weatherook.ui.activity.MySettingActivity
 import org.weatherook.weatherook.ui.activity.SettingsActivity
 import org.weatherook.weatherook.ui.fragment.MyGridFragment
 import org.weatherook.weatherook.ui.fragment.MyListFragment
-im
+
 
 class MyFragment : Fragment(), View.OnClickListener {
 
@@ -85,14 +85,14 @@ class MyFragment : Fragment(), View.OnClickListener {
             disposable = call.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { success ->
-                                Log.i("urls_success1", success.data.showBoardNumResult.toString())
-                                GlideApp.with(this).load(success.data.showUserPageResult[0].userImg).into(setting_profile_img)
-                                setting_id_tv.text = success.data.showUserPageResult[0].userId
-                                setting_self_tv.text = success.data.showUserPageResult[0].userDesc.toString()
-                                my_board_num.text = success.data.showBoardNumResult[0].boardNum.toString()
-                                my_follower_num.text = success.data.showFollowerNumResult[0].follwer.toString().toFloat().toInt().toString()/*.toInt().toString()*/
-                                Log.i("FollowerNumResult",success.data.showFollowerNumResult[0].follwer.toString())
-                                my_following_num.text = success.data.showFollogingNumResult[0].following.toString()
+                                Log.i("urls_success1", success.showBoardNumResult.toString())
+                                GlideApp.with(this).load(success.showUserPageResult[0].userImg).into(setting_profile_img)
+                                setting_id_tv.text = success.showUserPageResult[0].userId
+                                setting_self_tv.text = success.showUserPageResult[0].userDesc.toString()
+                                my_board_num.text = success.showBoardNumResult[0].boardNum.toString()
+                                my_follower_num.text = success.showFollowerNumResult[0].follower.toString().toFloat().toInt().toString()/*.toInt().toString()*/
+                                Log.i("FollowerNumResult",success.showFollowerNumResult[0].follower.toString())
+                                my_following_num.text = success.showFollowingNumResult[0].following.toString()
                             }, { fail -> Log.i("urls_failed", fail.message) })
         }
 

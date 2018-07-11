@@ -17,9 +17,6 @@ import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.FriendItem
 import org.weatherook.weatherook.singleton.tokenDriver
 
-/**
- * Created by HYEON on 2018-07-08.
- */
 class FriendFollowerFragment : Fragment() {
 
     lateinit var friendItems: ArrayList<FriendItem>
@@ -58,6 +55,7 @@ class FriendFollowerFragment : Fragment() {
                             }, { fail -> Log.i("follower_friend", fail.message) })
         }
         friendAdapter.notifyDataSetChanged()
+
         return v
     }
 

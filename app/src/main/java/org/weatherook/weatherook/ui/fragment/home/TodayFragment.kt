@@ -81,7 +81,6 @@ class TodayFragment : Fragment(), View.OnClickListener {
         home_weather_change.setOnClickListener(this)
 
         weatherItems = ArrayList()
-
         weatherItems.add(WeatherItem("지금", R.drawable.main_sun2,"25º"))
         weatherItems.add(WeatherItem("1시", R.drawable.main_sun2,"25º"))
         weatherItems.add(WeatherItem("2시", R.drawable.main_rain_2,"25º"))

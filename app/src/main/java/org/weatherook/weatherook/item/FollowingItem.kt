@@ -1,14 +1,17 @@
 package org.weatherook.weatherook.item
 
+import org.weatherook.weatherook.api.model.BoardCommentModel
+import org.weatherook.weatherook.api.model.LatestBoardModel
+
 data class FollowingItem (
-        var profile : Int,
+        var profile : String,
         var id : String,
-        var heart : Int,
-        var count : String,
-        var photo : Int,
+        //var heart : Int,
+        var count : Int,
+        var photo : String,
         var date : String,
-        var weather : String,
+        var weather : Int,
         var temperature : String,
         var content : String,
-        var comment : ArrayList<CommentItem>
+        var comment : List<BoardCommentModel>
 )
