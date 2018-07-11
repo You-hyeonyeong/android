@@ -11,7 +11,7 @@
         android:id="@+id/signupb_tv"
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         >
 
         <TextView
@@ -36,9 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingRight="15dp"
+        android:gravity="center_vertical"
         android:layout_marginTop="10dp"
+        android:paddingLeft="80dp"
         >
         <TextView
             android:layout_width="65dp"
@@ -71,9 +71,9 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingRight="25dp"
+        android:gravity="center_vertical"
         android:layout_marginTop="10dp"
+        android:paddingLeft="80dp"
         >
         <TextView
             android:layout_width="65dp"
@@ -113,6 +113,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_marginTop="10dp"
+        android:paddingLeft="80dp"
         >
         <TextView
             android:layout_width="65dp"
@@ -121,7 +122,6 @@
             android:textSize="22sp"
             android:textColor="#555555"
             android:textAlignment="textEnd"
-            android:layout_marginLeft="85dp"
             />
         <EditText
             android:id="@+id/signin_weight_tv"
