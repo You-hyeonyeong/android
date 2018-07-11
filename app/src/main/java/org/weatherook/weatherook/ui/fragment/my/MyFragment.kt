@@ -19,7 +19,7 @@ import org.weatherook.weatherook.ui.activity.MySettingActivity
 import org.weatherook.weatherook.ui.activity.SettingsActivity
 import org.weatherook.weatherook.ui.fragment.MyGridFragment
 import org.weatherook.weatherook.ui.fragment.MyListFragment
-im
+
 
 class MyFragment : Fragment(), View.OnClickListener {
 

@@ -44,4 +44,7 @@ interface NetworkService {
     @GET("/user/following")
     fun getMyFollowingProfile(@Header("token") token:String) : Observable<FollowingModel>
 
+    @GET("/user/news")
+    fun getBell(@Header("token")token: String) : Observable<BellModel>
+
 }
