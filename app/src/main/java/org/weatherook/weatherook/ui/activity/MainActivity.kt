@@ -13,7 +13,6 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.ui.fragment.bell.BellFragment
 import org.weatherook.weatherook.ui.fragment.camera.CamHomeFragment
 import org.weatherook.weatherook.ui.fragment.filter.FilterFragment
-import org.weatherook.weatherook.ui.fragment.home.HomeFragment
 import org.weatherook.weatherook.ui.fragment.my.MyFragment
 import org.weatherook.weatherook.singleton.tokenDriver
 import org.weatherook.weatherook.ui.fragment.*
