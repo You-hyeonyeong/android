@@ -41,15 +41,6 @@
 
     </RelativeLayout>
 
-    <com.xiaopo.flying.sticker.StickerView
-        android:id="@+id/camhome_stickerview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/subConstraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
-
         <ImageView
             android:id="@+id/camhome_container"
             android:layout_width="match_parent"
@@ -59,14 +50,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
-    </com.xiaopo.flying.sticker.StickerView>
-
 
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/subConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="220dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

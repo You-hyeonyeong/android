@@ -1,6 +1,7 @@
 package org.weatherook.weatherook.ui.fragment.camera
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -8,12 +9,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_write.*
 import kotlinx.android.synthetic.main.fragment_write.view.*
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.ui.activity.WriteActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WriteFragment : Fragment() {
+class WriteFragment : Fragment(), View.OnClickListener {
+    override fun onClick(v: View?) {
+        when(v) {
+            write_editText ->{
+                var intent = Intent(activity, WriteActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
 
     var style: ArrayList<TextView> = ArrayList()
     lateinit var datePickerDialog: DatePickerDialog
@@ -22,12 +33,12 @@ class WriteFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = View.inflate(activity, R.layout.fragment_write, null)
 
-        style.add(view.write_style1)
-        style.add(view.write_style2)
-        style.add(view.write_style3)
-        style.add(view.write_style4)
-        style.add(view.write_style5)
-        style.add(view.write_style6)
+   //     style.add(view.write_style1)
+   //     style.add(view.write_style2)
+    //    style.add(view.write_style3)
+    //    style.add(view.write_style4)
+    //    style.add(view.write_style5)
+    //    style.add(view.write_style6)
 
         val today : Date = Calendar.getInstance().time
         val dateformat = SimpleDateFormat("d-M-yyyy")
@@ -40,7 +51,7 @@ class WriteFragment : Fragment() {
         datePickerDialog.datePicker.minDate = System.currentTimeMillis() - day_millis*2
         datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
 
-        view.write_frag_edit.setOnClickListener { datePickerDialog.show() }
+        view.write_date_cal.setOnClickListener { datePickerDialog.show() }
 
         /*view.write_style1.setOnClickListener { if(!view.write_style1.isSelected){
             view.write_style1.isSelected = true
@@ -50,6 +61,7 @@ class WriteFragment : Fragment() {
             view.write_style1.setTextColor(resources.getColor(R.color.colorAccent))
         } }*/
 //
+
         for (st in style) {
             st.setOnClickListener {
                 if (!st.isSelected) {
@@ -63,5 +75,12 @@ class WriteFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        write_editText.setOnClickListener(this)
+
     }
 }

@@ -10,22 +10,53 @@
         android:padding="8dp">
 
         <LinearLayout
-            android:id="@+id/write_temperature"
+            android:id="@+id/write_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp">
 
             <TextView
+                android:id="@+id/write_date_cal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7월 10일"
+                android:textColor="@color/weatherookTheme" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/write_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@+id/write_date">
+
+            <TextView
+                android:id="@+id/write_date_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="기온"
-                android:textStyle="bold" />
+                android:text="서울시 마포구" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/write_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/write_location">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="28/20" />
+                android:layout_marginEnd="8dp"
+                android:text="기온" />
+
+            <TextView
+                android:id="@+id/write_temp_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="28 / 20" />
 
         </LinearLayout>
 
@@ -33,48 +64,25 @@
             android:id="@+id/write_weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_toEndOf="@+id/write_temperature">
+            android:layout_toEndOf="@+id/write_temp"
+            android:layout_marginStart="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="날씨"
-                android:textStyle="bold" />
-
+                android:text="날씨" />
             <TextView
+                android:id="@+id/write_weather_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="맑음" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/write_weather">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="지역"
-                android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="서울시 마포구" />
 
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/write_frag_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="수정" />
 
     </RelativeLayout>
 
@@ -82,121 +90,29 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#d0d0d0" />
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:layout_weight="1"
         android:fillViewport="true">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/write_editText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:ems="10"
             android:gravity="start|top"
+            android:background="@null"
             android:hint="글쓰기"
             android:minHeight="100dp"
             android:maxEms="10"
             android:scrollHorizontally="false" />
 
     </ScrollView>
+</RelativeLayout>
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:columnCount="3"
-        android:orientation="horizontal"
-        android:rowCount="4">
-
-
-        <TextView
-            android:id="@+id/write_style1"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_state"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="빈티지"
-            android:textColor="@color/colorAccent"
-            android:textIsSelectable="false"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/write_style2"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_state"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="빈티지"
-            android:textColor="@color/colorAccent"
-            android:textIsSelectable="false"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/write_style3"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:background="@drawable/rounded_state"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="빈티지"
-            android:textColor="@color/colorAccent"
-            android:textIsSelectable="false"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/write_style4"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_state"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="빈티지"
-            android:textColor="@color/colorAccent"
-            android:textIsSelectable="false"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/write_style5"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:background="@drawable/rounded_state"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="빈티지"
-            android:textColor="@color/colorAccent"
-            android:textIsSelectable="false"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/write_style6"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:background="@drawable/rounded_state"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="빈티지"
-            android:textColor="@color/colorAccent"
-            android:textIsSelectable="false"
-            android:textSize="13sp" />
-
-    </GridLayout>
 
 </LinearLayout>
