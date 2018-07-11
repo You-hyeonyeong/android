@@ -48,7 +48,10 @@ interface NetworkService {
     @GET("/board/today/popular")
     fun getPopularBoard() : Observable<PopularBoardModel>
 
-    @GET("/user/show")
+    @POST("/board/follow")
+    fun postFollowBoard(@Header("token") token: String) : Observable<FollowBoardModel>
+
+    @POST("/user/show")
     fun getMyBoard(@Header("token") token:String) : Observable<MyBoardModel>
 
     @GET("/user/follower")

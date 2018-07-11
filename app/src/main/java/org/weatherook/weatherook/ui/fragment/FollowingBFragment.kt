@@ -3,19 +3,32 @@ package org.weatherook.weatherook.ui.fragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_following_b.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.CommentAdapter
 import org.weatherook.weatherook.adapter.recyclerview.FollowingAdapter
+import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.CommentItem
 import org.weatherook.weatherook.item.FollowingItem
-
+import org.weatherook.weatherook.singleton.tokenDriver
 
 
 class FollowingBFragment : Fragment(),View.OnClickListener {
+
+    var token : String ?= null
+
+    val networkService by lazy {
+        NetworkService.create()
+    }
+    var disposable: Disposable? = null
+
     override fun onClick(v: View?) {
 
     }
@@ -28,6 +41,32 @@ class FollowingBFragment : Fragment(),View.OnClickListener {
     lateinit var followingAdapter : FollowingAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_following_b, container, false)
+
+        tokenDriver.tokenDriver.subscribe{
+            token = it
+            Log.i("grid", token)
+        }
+
+        if(token!=null){
+            val call = networkService.postFollowBoard(token!!)
+            disposable = call.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                            { FollowBoardModel ->
+                                Log.i("latestboard", FollowBoardModel.data.size.toString())
+                                for (i in 0..FollowBoardModel.data.size-1){
+                                    FollowBoardModel.data[i].let{
+                                        followingItems.add(FollowingItem(it.userImg,it.userId,
+                                                it.likeCnt, it.boardImg, it.boardDate, it.boardWeather, it.boardTempMin.toString()+"º/"+it.boardTempMax.toString()+"º",
+                                                it.boardDesc, it.commentList))
+                                        Log.i("latestboard", it.boardDate)
+                                    }
+                                    followingAdapter.notifyDataSetChanged()
+                                }
+                                //followingItems.add(FollowingItem(.data[]))
+                            }, { fail -> Log.i("urls_failed", fail.message) })
+        }
+
+
         return v
     }
 

@@ -43,6 +43,7 @@ class FollowingAFragment : Fragment(), View.OnClickListener{
                                             followingItems.add(FollowingItem(it.userImg,it.userId,
                                                     it.likeCnt, it.boardImg, it.boardDate, it.boardWeather, it.boardTempMin.toString()+"º/"+it.boardTempMax.toString()+"º",
                                                     it.boardDesc, it.commentList))
+                                            Log.i("latestboard", it.boardDate)
                                         }
                                         followingAdapter.notifyDataSetChanged()
                                     }

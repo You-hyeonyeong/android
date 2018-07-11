@@ -1,6 +1,7 @@
 package org.weatherook.weatherook.api.model
 
 import com.google.gson.annotations.SerializedName
+import org.weatherook.weatherook.item.BoardCommentItem
 
 
 data class LatestBoardModel(
@@ -18,7 +19,7 @@ data class LatestBoardModel(
             @SerializedName("board_temp_max") val boardTempMax: Int, // 20
             @SerializedName("board_weather") val boardWeather: Int, // 0
             @SerializedName("board_date") val boardDate: String, // 07-01
-            @SerializedName("comment_list") val commentList: List<BoardCommentModel>,
+            @SerializedName("comment_list") val commentList: List<BoardCommentItem>,
             @SerializedName("comment_cnt") val commentCnt: Int, // 1
             @SerializedName("flag") val flag: Int // 0
     ) {
