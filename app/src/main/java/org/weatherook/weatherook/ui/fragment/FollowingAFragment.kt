@@ -40,7 +40,7 @@ class FollowingAFragment : Fragment(), View.OnClickListener{
                                     Log.i("latestboard", latestBoardModel.data.size.toString())
                                     for (i in 0..latestBoardModel.data.size-1){
                                         latestBoardModel.data[i].let{
-                                            followingItems.add(FollowingItem(it.userImg,it.userId,
+                                            followingItems.add(FollowingItem(it.boardIdx,it.userImg,it.userId,
                                                     it.likeCnt, it.boardImg, it.boardDate, it.boardWeather, it.boardTempMin.toString()+"º/"+it.boardTempMax.toString()+"º",
                                                     it.boardDesc, it.commentList))
                                             Log.i("latestboard", it.boardDate)
@@ -71,7 +71,7 @@ class FollowingAFragment : Fragment(), View.OnClickListener{
                                     Log.i("popularBoard", PopularBoardModel.data.size.toString())
                                     for (i in 0..PopularBoardModel.data.size-1){
                                         PopularBoardModel.data[i].let{
-                                            followingItems.add(FollowingItem(it.userImg,it.userId,
+                                            followingItems.add(FollowingItem(it.boardIdx,it.userImg,it.userId,
                                                     it.likeCnt, it.boardImg, it.boardDate, it.boardWeather, it.boardTempMin.toString()+"º/"+it.boardTempMax.toString()+"º",
                                                     it.boardDesc, it.commentList))
                                         }
@@ -128,7 +128,7 @@ class FollowingAFragment : Fragment(), View.OnClickListener{
                             Log.i("latestboard", latestBoardModel.data.size.toString())
                             for (i in 0..latestBoardModel.data.size-1){
                                 latestBoardModel.data[i].let{
-                                    followingItems.add(FollowingItem(it.userImg,it.userId,
+                                    followingItems.add(FollowingItem(it.boardIdx,it.userImg,it.userId,
                                             it.likeCnt, it.boardImg, it.boardDate, it.boardWeather, it.boardTempMin.toString()+"º/"+it.boardTempMax.toString()+"º",
                                             it.boardDesc, it.commentList))
                                 }

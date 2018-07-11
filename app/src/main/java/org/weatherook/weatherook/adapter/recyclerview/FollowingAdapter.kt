@@ -13,7 +13,9 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.item_following.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
+import org.weatherook.weatherook.item.BoardCommentItem
 import org.weatherook.weatherook.item.CommentItem
+import org.weatherook.weatherook.item.CommentTotalItem
 import org.weatherook.weatherook.item.FollowingItem
 import org.weatherook.weatherook.viewholder.FollowingViewHolder
 import org.weatherook.weatherook.ui.activity.CommentActivity
@@ -82,13 +84,19 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
         holder.followingCommentBtn.text = "댓글 "+followingItems[position].comment.size +"개 모두 보기"
         holder.followingCommentBtn.setOnClickListener {
             val intent = Intent(context, CommentActivity::class.java)
-            var array = ArrayList<String>()
+            intent.putExtra("boardIdx",followingItems[position].boardIdx)
+            /*var array = ArrayList<String>()
             for(i in 0..followingItems[position].comment.size-1){
-                array.add(Gson().toJson(followingItems[i].comment))
+                array.add(Gson().toJson(followingItems[i].comment,CommentTotalItem::class.java))
             }
-            intent.putExtra("comment", array)
+            intent.putExtra("comment", toJsonString(followingItems[position].comment))*/
             context.startActivity(intent) }
 
 
     }
+
+    fun toJsonString(list: List<BoardCommentItem>): String {
+        return Gson().toJsonTree(list).asJsonArray.toString()
+    }
+
 }

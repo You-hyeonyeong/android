@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.api.glide.GlideApp
 import org.weatherook.weatherook.item.CommentTotalItem
 import org.weatherook.weatherook.viewholder.CommentTotalViewHolder
 
@@ -26,10 +27,16 @@ class CommentTotalAdapter(var commenttotalItems : ArrayList<CommentTotalItem>, v
     override fun getItemCount(): Int = commenttotalItems.size
 
     override fun onBindViewHolder(holder: CommentTotalViewHolder, position: Int) {
-        holder.commenttotalProfile.setImageResource(commenttotalItems[position].profile)
-        holder!!.commenttotalId.text = commenttotalItems!![position].id
-        holder!!.commenttotalTime.text = commenttotalItems!![position].time
-        holder!!.commenttotalComment.text = commenttotalItems!![position].comment
+        commenttotalItems[position].let {
+            GlideApp.with(context).load(it.profile).into(holder.commenttotalProfile)
+            holder.commenttotalId.text = it.id
+            holder.commenttotalComment.text = it.comment
+            holder.commenttotalTime.text = it.date
+        }
+        /*holder.commenttotalProfile
+        holder.commenttotalId.text = commenttotalItems[position].id
+        holder.commenttotalTime.text = commenttotalItems[position].time
+        holder.commenttotalComment.text = commenttotalItems[position].comment*/
 
     }
 }
