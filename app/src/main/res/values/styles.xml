@@ -29,4 +29,6 @@
     <style name="EditTextTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="colorAccent">#555555</item>
     </style>
+
+
 </resources>

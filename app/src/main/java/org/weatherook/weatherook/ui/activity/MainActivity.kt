@@ -6,10 +6,10 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.ui.fragment.HomeFragment
 import org.weatherook.weatherook.ui.fragment.bell.BellFragment
 import org.weatherook.weatherook.ui.fragment.camera.CamHomeFragment
 import org.weatherook.weatherook.ui.fragment.filter.FilterFragment

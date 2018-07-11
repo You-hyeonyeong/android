@@ -42,8 +42,10 @@
         <activity
             android:name=".ui.activity.PopupActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-        <activity android:name=".ui.activity.CommentActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+        <activity
+            android:name=".ui.activity.CommentActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.activity.WriteActivity"></activity>
     </application>
 
 </manifest>
