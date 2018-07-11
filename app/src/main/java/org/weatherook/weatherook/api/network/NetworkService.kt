@@ -31,6 +31,10 @@ interface NetworkService {
     @POST("/auth/signin")
     fun postSignin(@Field("user_id") id : String, @Field("user_pw") pw : String) : Observable<SigninModel>
 
+    @FormUrlEncoded
+    @POST("/weather/comment")
+    fun postTempWeather(@Field("weather_temp") temp : Int, @Field("weather_weather") weather : Int) : Observable<WeatherCommentModel>
+
     @GET("/user/show")
     fun getMyBoard(@Header("token") token:String) : Observable<BoardModel>
 

@@ -3,6 +3,7 @@ package org.weatherook.weatherook.ui.fragment.home
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +11,23 @@ import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import android.widget.ImageView
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_weather_today.*
 import kotlinx.android.synthetic.main.fragment_weather_today.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.WeatherAdapter
+import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.WeatherItem
 import org.weatherook.weatherook.singleton.weatherDriver
 
 class TodayFragment : Fragment(), View.OnClickListener {
+
+    val networkService by lazy {
+        NetworkService.create()
+    }
+    var disposable: Disposable? = null
 
     private var isWeatherButtons : Boolean = false
     override fun onClick(v: View) {
@@ -54,6 +64,14 @@ class TodayFragment : Fragment(), View.OnClickListener {
             anim.fillAfter =true
             image.startAnimation(anim)
         }
+
+        val call = networkService.postTempWeather(23,0)
+        disposable = call.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                        { WeatherCommentModel ->
+                            home_weather_alarm.text = WeatherCommentModel.data.weatherTextTemp+"\n"+WeatherCommentModel.data.weatherTextWeather
+                        }, { fail ->  Log.i("TodayFragment", fail.message)})
+
         return view
     }
 
