@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.item_following.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
@@ -77,8 +78,16 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
         holder.followingTemp.text = followingItems[position].temperature
         holder.followingContent.text = followingItems[position].content
         holder.followingComment.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        holder!!.followingComment.adapter = CommentAdapter(followingItems[position].comment)
+        holder.followingComment.adapter = CommentAdapter(followingItems[position].comment)
         holder.followingCommentBtn.text = "댓글 "+followingItems[position].comment.size +"개 모두 보기"
+        holder.followingCommentBtn.setOnClickListener {
+            val intent = Intent(context, CommentActivity::class.java)
+            var array = ArrayList<String>()
+            for(i in 0..followingItems[position].comment.size-1){
+                array.add(Gson().toJson(followingItems[i].comment))
+            }
+            intent.putExtra("comment", array)
+            context.startActivity(intent) }
 
 
     }
