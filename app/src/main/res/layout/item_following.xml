@@ -181,7 +181,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
                     android:text="댓글"
-                    android:textColor="#7e707070"
+                    android:textColor="#aaaaaa"
                     android:textSize="12sp" />
 
             </LinearLayout>
