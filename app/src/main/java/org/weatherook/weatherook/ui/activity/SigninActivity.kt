@@ -58,6 +58,7 @@ class SigninActivity : AppCompatActivity(), View.OnClickListener {
                     var intent = Intent(applicationContext, MainActivity::class.java)
                     intent.putExtra("token", success.token)
                     startActivity(intent)
+                    finish()
                 },{fail-> val intent1 = Intent(applicationContext, PopupActivity::class.java)
                     startActivity(intent1)})
     }

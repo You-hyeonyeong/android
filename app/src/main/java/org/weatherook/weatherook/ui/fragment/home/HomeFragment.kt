@@ -22,9 +22,6 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.adapter.FollowingPagerAdapter
-import org.weatherook.weatherook.adapter.HomePagerAdapter
-import org.weatherook.weatherook.adapter.RecommendAdapter
 import org.weatherook.weatherook.api.glide.GlideApp
 import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.RecommendItem
