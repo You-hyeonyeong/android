@@ -7,6 +7,7 @@ import org.weatherook.weatherook.ui.fragment.FriendFollowingFragment
 import org.weatherook.weatherook.ui.fragment.my.FriendFollowerFragment
 
 
+
 class FriendPagerAdapter  (fm : FragmentManager) : FragmentPagerAdapter(fm)  {
 
     val imageCount = 2
