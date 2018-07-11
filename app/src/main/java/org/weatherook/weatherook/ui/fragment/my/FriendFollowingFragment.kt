@@ -1,14 +1,19 @@
-package org.weatherook.weatherook.ui.fragment.my
+package org.weatherook.weatherook.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_friend_follower.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.FriendAdapter
+import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.FriendItem
 
 /**
@@ -18,6 +23,13 @@ class FriendFollowingFragment : Fragment() {
 
     lateinit var friendItems : ArrayList<FriendItem>
     lateinit var friendAdapter : FriendAdapter
+
+    var token: String? = null
+
+    val networkService by lazy {
+        NetworkService.create()
+    }
+    var disposable: Disposable? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -29,20 +41,15 @@ class FriendFollowingFragment : Fragment() {
         super.onStart()
 
         friendItems = ArrayList()
-        friendItems.add(FriendItem(R.drawable.cony,"정빈이"))
-        friendItems.add(FriendItem(R.drawable.cony,"ss_2"))
-        friendItems.add(FriendItem(R.drawable.cony,"hiriyo_"))
-        friendItems.add(FriendItem(R.drawable.cony,"sultag"))
-        friendItems.add(FriendItem(R.drawable.cony,"정빈이"))
-        friendItems.add(FriendItem(R.drawable.cony,"ㅎㅎ"))
-        friendItems.add(FriendItem(R.drawable.cony,"정빈이"))
-        friendItems.add(FriendItem(R.drawable.cony,"정빈이"))
-        friendItems.add(FriendItem(R.drawable.cony,"ss_2"))
-        friendItems.add(FriendItem(R.drawable.cony,"hiriyo_"))
-        friendItems.add(FriendItem(R.drawable.cony,"sultag"))
-        friendItems.add(FriendItem(R.drawable.cony,"정빈이"))
-        friendItems.add(FriendItem(R.drawable.cony,"ㅎㅎ"))
-        friendItems.add(FriendItem(R.drawable.cony,"정빈이"))
+        if (token != null) {
+            val call = networkService.getMyFollowerProfile(token!!)
+            disposable = call.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                            { success ->
+                                for(i in 0..success.data.showFollowerIDResult.size-1)
+                                friendItems.add(FriendItem(success.data.showFollowerIDResult[i].userImg.toString(),success.data.showFollowerIDResult[i].userId))
+                            }, { fail -> Log.i("urls_failed", fail.message) })
+        }
 
 
         friendAdapter = FriendAdapter(friendItems, context!!)
