@@ -10,9 +10,6 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.SignupPagerAdapter
 
 class SignupActivity : AppCompatActivity(), View.OnClickListener {
-
-
-
     override fun onClick(v: View?) {
         when (v) {
             signup_close -> {

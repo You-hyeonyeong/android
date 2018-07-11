@@ -10,22 +10,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.3"
         >
 
            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회원가입"
-            android:textSize="16sp"
+            android:textColor="#555555"
+            android:textSize="18sp"
             android:layout_centerInParent="true"
-            android:textColor="#741dff"
             />
 
         <ImageView
             android:id="@+id/signup_close"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
@@ -34,7 +34,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#741dff"
+            android:background="#aaaaaa"
             android:layout_alignParentBottom="true"
             />
     </RelativeLayout>
@@ -43,42 +43,26 @@
         android:id="@+id/signup_viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12">
+        android:layout_weight="14">
 
     </android.support.v4.view.ViewPager>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5">
-        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
-            android:id="@+id/worm_dots_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:dotsColor="#741dff"
-            app:dotsCornerRadius="8dp"
-            app:dotsSize="12dp"
-            app:dotsSpacing="12dp"
-            app:dotsStrokeWidth="2dp"
-            android:layout_centerHorizontal="true"
-            />
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingBottom="32dp"
         android:layout_weight="2"
+        android:background="#aaaaaa"
         >
 
 
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="14dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/skip_btn"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/mainlogo_mini"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다음"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:layout_centerInParent="true"
             />
 
 
