@@ -26,10 +26,22 @@ class CommentActivity : AppCompatActivity() {
         commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
         commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
         commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
+        commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
+
 
         commenttotalAdapter = CommentTotalAdapter(commenttotalItems, applicationContext)
 
         comment_comment_recycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL,false)
         comment_comment_recycler.adapter = commenttotalAdapter
+
+        reply_close.setOnClickListener{
+            finish()
+        }
+//        reply_menu.setOnClickListener {
+//            val view = LayoutInflater.from(applicationContext).inflate(R.layout.bottom_sheet, null)
+//            val dialog = BottomSheetDialog(this)
+//            dialog.setContentView(view)
+//            dialog.show()
+//        }
     }
 }
