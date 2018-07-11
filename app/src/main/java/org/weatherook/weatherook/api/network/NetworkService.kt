@@ -1,10 +1,7 @@
 package org.weatherook.weatherook.api.network
 
 import io.reactivex.Observable
-import org.weatherook.weatherook.api.model.BoardModel
-import org.weatherook.weatherook.api.model.FollowModel
-import org.weatherook.weatherook.api.model.SigninModel
-import org.weatherook.weatherook.api.model.SignupModel
+import org.weatherook.weatherook.api.model.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,10 +31,17 @@ interface NetworkService {
     @POST("/auth/signin")
     fun postSignin(@Field("user_id") id : String, @Field("user_pw") pw : String) : Observable<SigninModel>
 
+    @FormUrlEncoded
+    @POST("/weather/comment")
+    fun postTempWeather(@Field("weather_temp") temp : Int, @Field("weather_weather") weather : Int) : Observable<WeatherCommentModel>
+
     @GET("/user/show")
     fun getMyBoard(@Header("token") token:String) : Observable<BoardModel>
 
     @GET("/user/follower")
-    fun getMyFollowerProfile(@Header("token") token:String) : Observable<FollowModel>
+    fun getMyFollowerProfile(@Header("token") token:String) : Observable<FollowerModel>
+
+    @GET("/user/following")
+    fun getMyFollowingProfile(@Header("token") token:String) : Observable<FollowingModel>
 
 }

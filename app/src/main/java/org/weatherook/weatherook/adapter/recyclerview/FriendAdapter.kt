@@ -2,6 +2,7 @@ package org.weatherook.weatherook.adapter.recyclerview
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,5 +33,6 @@ class FriendAdapter (var friendItems : ArrayList<FriendItem>, val context : Cont
     override fun onBindViewHolder(holder: FriendViewHolder, position: Int) {
         GlideApp.with(context).load(friendItems[position].profile).into(holder!!.friendProfile)
         holder!!.friendId.text = friendItems[position].id
+        Log.i("friendAdapter","onbind")
     }
 }
