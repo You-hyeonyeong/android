@@ -44,7 +44,7 @@ interface NetworkService {
     // 3시간 단위 날씨
     @FormUrlEncoded
     @POST("/weather/list")
-    fun postTimeWeather(@Field("x") x : Double, @Field("y") y : Double) : Observable<WeatherTimeModel>
+    fun postTimeWeather(@Field("x") x : Float, @Field("y") y : Float) : Observable<WeatherTimeModel>
 
     @FormUrlEncoded
     @POST("/weather/comment")

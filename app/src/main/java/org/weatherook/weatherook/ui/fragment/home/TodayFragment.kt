@@ -106,7 +106,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
             y = it.y
 
             Log.d("tag", "========================" + x + "======================" + y)
-            val call1 = networkService.postTimeWeather(x, y)
+            val call1 = networkService.postTimeWeather(x.toFloat(), y.toFloat())
             disposable = call1.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { WeatherTimeModel ->

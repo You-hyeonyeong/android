@@ -24,7 +24,9 @@ import org.weatherook.weatherook.singleton.WeatherDriver
 import java.util.*
 import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
 import org.weatherook.weatherook.adapter.viewpager.RecommendPagerAdapter
+import org.weatherook.weatherook.item.LatLongItem
 import org.weatherook.weatherook.item.WeatherDriverItem
+import org.weatherook.weatherook.singleton.LatLongDriver
 import org.weatherook.weatherook.utils.CustomViewPager
 
 
@@ -166,6 +168,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             if (address != null && address.size > 0) {
                 val currentLocationAddress = address.get(0).subLocality
                 WeatherDriver.weatherDriver.onNext(WeatherDriverItem(lat, lng))
+                LatLongDriver.LatLongDriver.onNext(LatLongItem(lat,lng))
                 //Toast.makeText(activity!!, currentLocationAddress, Toast.LENGTH_SHORT).show()
                 nowAddress = currentLocationAddress
             }
