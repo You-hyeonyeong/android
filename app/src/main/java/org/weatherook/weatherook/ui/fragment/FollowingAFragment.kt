@@ -135,7 +135,7 @@ class FollowingAFragment : Fragment(), View.OnClickListener{
                                 followingAdapter.notifyDataSetChanged()
                             }
                             //followingItems.add(FollowingItem(.data[]))
-                        }, { fail -> Log.i("urls_failed", fail.message) })
+                        }, { /*fail -> Log.i("urls_failed", fail.message)*/ })
 
         /*followingItems.add(FollowingItem(R.drawable.brown, "hiriyo", R.drawable.heart, "112", R.drawable.main_night_2, "7월 25일", "맑음", "25/31", "정빈이는 체고다 정비니 짱짱", commentItems1))
         followingItems.add(FollowingItem(R.drawable.brown, "프린스 빈", R.drawable.heart, "112", R.drawable.main_rain_2, "7월 26일", "흐림", "24/31", "정빈이는 체고다 정비니 짱짱", commentItems2))

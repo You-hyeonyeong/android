@@ -23,17 +23,40 @@
         ]]>
     </string>
     <string-array name="today_tall_spinner">
-        <item>167</item>
-        <item>168</item>
-        <item>169</item>
+        <item>130</item>
+        <item>135</item>
+        <item>140</item>
+        <item>145</item>
+        <item>150</item>
+        <item>155</item>
+        <item>160</item>
+        <item>165</item>
+        <item>170</item>
+        <item>175</item>
+        <item>180</item>
+        <item>185</item>
+        <item>190</item>
+        <item>195</item>
+        <item>200</item>
+        <item>205</item>
     </string-array>
     <string-array name="total_tall_spinner">
-        <item>167</item>
-        <item>168</item>
-        <item>169</item>
+        <item>130</item>
+        <item>135</item>
+        <item>140</item>
+        <item>145</item>
+        <item>150</item>
+        <item>155</item>
+        <item>160</item>
+        <item>165</item>
         <item>170</item>
-        <item>171</item>
-        <item>172</item>
+        <item>175</item>
+        <item>180</item>
+        <item>185</item>
+        <item>190</item>
+        <item>195</item>
+        <item>200</item>
+        <item>205</item>
     </string-array>
 
 </resources>

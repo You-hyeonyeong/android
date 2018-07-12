@@ -13,6 +13,9 @@ import kotlinx.android.synthetic.main.fragment_weather_tomorrow.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.singleton.LatLongDriver
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class TomorrowFragment : Fragment() {
 
@@ -47,11 +50,26 @@ class TomorrowFragment : Fragment() {
                                     tomorrow_pm_image.setImageResource(weatherIcon[WeatherModel.data.weatherAf.toInt()])
                                     tomorrow_am_weather.setText(weatherStr[WeatherModel.data.weatherAm.toInt()])
                                     tomorrow_pm_weather.setText(weatherStr[WeatherModel.data.weatherAf.toInt()])
-                                }, { fail -> Log.i("WeatherFragment", fail.message) })
+                                }, { /*fail -> Log.i("WeatherFragment", fail.message)*/ })
 
 
 
         }
         return view
+    }
+
+    fun tommorowdate() :String {
+        val sdf = SimpleDateFormat("MM월 dd일 E요일", Locale.KOREA)
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DATE, +1)  // 오늘 날짜에서 하루를 뺌.
+        val date = sdf.format(calendar.getTime())
+        return date
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        home_weather_tommorow_date.text = tommorowdate()
+
     }
 }

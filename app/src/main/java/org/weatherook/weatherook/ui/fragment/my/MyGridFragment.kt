@@ -29,7 +29,6 @@ class MyGridFragment : Fragment(), View.OnClickListener {
 
     }
     lateinit var myitems: ArrayList<MyGridRecyclerviewdata>
-
     lateinit var myGridRecyclerviewAdapter: MyGridRecyclerviewAdapter
 
     val networkService by lazy {
@@ -60,7 +59,7 @@ class MyGridFragment : Fragment(), View.OnClickListener {
         mypage_recycle.layoutManager = GridLayoutManager(activity, 2)
 
         if(token!=null){
-            val call = networkService.getMyBoard(token!!)
+            val call = networkService.getMyBoard(token!!,null)
             disposable = call.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { success->
