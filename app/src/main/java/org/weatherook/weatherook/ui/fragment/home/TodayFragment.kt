@@ -112,22 +112,22 @@ class TodayFragment : Fragment(), View.OnClickListener {
                                 }
                                 */
                               //  var index : Int = 0
-                                weather_item_time1.text = WeatherTimeModel.data[0].hour
+                                weather_item_time1.text = WeatherTimeModel.data[0].hour + "시"
                                 weather_item_temp1.text = WeatherTimeModel.data[0].temp.toString() + "º"
                                 weather_item_weather1.setImageResource(weatherimg[WeatherTimeModel.data[0].weather])
-                                weather_item_time2.text = WeatherTimeModel.data[1].hour
+                                weather_item_time2.text = WeatherTimeModel.data[1].hour + "시"
                                 weather_item_temp2.text = WeatherTimeModel.data[1].temp.toString() + "º"
                                 weather_item_weather2.setImageResource(weatherimg[WeatherTimeModel.data[1].weather])
-                                weather_item_time3.text = WeatherTimeModel.data[2].hour
+                                weather_item_time3.text = WeatherTimeModel.data[2].hour + "시"
                                 weather_item_temp3.text = WeatherTimeModel.data[2].temp.toString() + "º"
                                 weather_item_weather3.setImageResource(weatherimg[WeatherTimeModel.data[2].weather])
-                                weather_item_time4.text = WeatherTimeModel.data[3].hour
+                                weather_item_time4.text = WeatherTimeModel.data[3].hour + "시"
                                 weather_item_temp4.text = WeatherTimeModel.data[3].temp.toString() + "º"
                                 weather_item_weather4.setImageResource(weatherimg[WeatherTimeModel.data[3].weather])
-                                weather_item_time5.text = WeatherTimeModel.data[4].hour
+                                weather_item_time5.text = WeatherTimeModel.data[4].hour + "시"
                                 weather_item_temp5.text = WeatherTimeModel.data[4].temp.toString() + "º"
                                 weather_item_weather5.setImageResource(weatherimg[WeatherTimeModel.data[4].weather])
-                                weather_item_time6.text = WeatherTimeModel.data[5].hour
+                                weather_item_time6.text = WeatherTimeModel.data[5].hour + "시"
                                 weather_item_temp6.text = WeatherTimeModel.data[5].temp.toString() + "º"
                                 weather_item_weather6.setImageResource(weatherimg[WeatherTimeModel.data[5].weather])
 

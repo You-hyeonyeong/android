@@ -16,14 +16,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right">
-                <Button
+
+                <TextView
                     android:id="@+id/my_setting_com_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:text="완료"
+                    android:textSize="15sp"
                     android:textColor="#aaaaaa"
-                    android:textSize="15dp" />
+                    android:lineSpacingExtra="8sp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="15dp"
+                    android:textStyle="bold"
+                    android:text="완료"/>
+
             </RelativeLayout>
 
         </LinearLayout>
@@ -50,16 +55,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <Button
+
+                <TextView
                     android:id="@+id/my_setting_change_profile"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="사진바꾸기"
+                    android:layout_height="35dp"
+                    android:textSize="14sp"
+                    android:textColor="#707070"
+                    android:lineSpacingExtra="10sp"
                     android:layout_centerInParent="true"
-                    android:background="#ffffff"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:text="사진 바꾸기"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    />
 
             </RelativeLayout>
         </LinearLayout>
@@ -99,7 +108,9 @@
                     android:id="@+id/my_setting_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"/>
+                    android:background="@null"
+                    android:editable="false"
+                    />
 
             </LinearLayout>
 
@@ -167,6 +178,13 @@
                     android:text="나이"
                     android:textSize="15dp" />
 
+                <TextView
+                    android:id="@+id/my_setting_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="남"
+                    android:visibility="invisible"
+                    />
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
