@@ -12,6 +12,7 @@ import android.view.animation.Animation
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import android.widget.ImageView
+import android.widget.TextView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -28,6 +29,10 @@ import org.weatherook.weatherook.singleton.weatherDriver
 class TodayFragment : Fragment(), View.OnClickListener {
 
     var state = true
+
+    var ttime: ArrayList<TextView> = ArrayList()
+    var tweather: ArrayList<ImageView> = ArrayList()
+    var ttemp : ArrayList<TextView> = ArrayList()
     var mtime = arrayOf(weather_item_time1,weather_item_time2,weather_item_time3,weather_item_time4,weather_item_time5, weather_item_time6)
     var mweather = arrayOf(weather_item_weather1,weather_item_weather2,weather_item_weather3,weather_item_weather4,weather_item_weather5,weather_item_weather6)
     var mtemp = arrayOf(weather_item_temp1,weather_item_temp2,weather_item_temp3,weather_item_temp4,weather_item_temp5,weather_item_temp6)
@@ -35,6 +40,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
         NetworkService.create()
     }
     var disposable: Disposable? = null
+
 
     var weatherStr = arrayOf("맑음", "구름", "구름", "흐림", "비", "비", "눈")
     var weatherIcon = arrayOf(R.drawable.main_sun, R.drawable.main_cloud_sun_2, R.drawable.main_cloud_sun_2, R.drawable.main_cloud_2, R.drawable.main_cloud_2, R.drawable.main_rainy_big, R.drawable.main_snow_2)
@@ -67,6 +73,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
                 view.home_weather_location.text = it
             }
         }
+
         val image: ImageView = view.findViewById(R.id.frag_today_weatherimg)
         image.setOnClickListener {
             var anim = TranslateAnimation(TranslateAnimation.ABSOLUTE, 0f, TranslateAnimation.ABSOLUTE, 0f,
@@ -89,20 +96,57 @@ class TodayFragment : Fragment(), View.OnClickListener {
 
         LatLongDriver.LatLongDriver.subscribe {
 
-            x= it.x
+             x= it.x
             y = it.y
 
             Log.d("tag", "========================" + x + "======================" + y)
-         //   Log.d("tag", "=========================time================" + mtime[1].text)
             val call1 = networkService.postTimeWeather(x, y)
             disposable = call1.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { WeatherTimeModel ->
-                                for (i in 0..WeatherTimeModel.data.size - 1) {
-                                    mtime[i].setText(WeatherTimeModel.data[i].hour)
-                                    mweather[i].setImageResource(weatherimg[WeatherTimeModel.data[i].weather])
-                                    mtemp[i].setText(WeatherTimeModel.data[i].temp.toString()+"º")
+                                /*
+                                var index = 0
+                                for(t in ttime){
+                                    t.text = WeatherTimeModel.data[index].hour
+                                    index = index + 1
                                 }
+                                */
+                              //  var index : Int = 0
+                                weather_item_time1.text = WeatherTimeModel.data[0].hour
+                                weather_item_temp1.text = WeatherTimeModel.data[0].temp.toString() + "º"
+                                weather_item_weather1.setImageResource(weatherimg[WeatherTimeModel.data[0].weather])
+                                weather_item_time2.text = WeatherTimeModel.data[1].hour
+                                weather_item_temp2.text = WeatherTimeModel.data[1].temp.toString() + "º"
+                                weather_item_weather2.setImageResource(weatherimg[WeatherTimeModel.data[1].weather])
+                                weather_item_time3.text = WeatherTimeModel.data[2].hour
+                                weather_item_temp3.text = WeatherTimeModel.data[2].temp.toString() + "º"
+                                weather_item_weather3.setImageResource(weatherimg[WeatherTimeModel.data[2].weather])
+                                weather_item_time4.text = WeatherTimeModel.data[3].hour
+                                weather_item_temp4.text = WeatherTimeModel.data[3].temp.toString() + "º"
+                                weather_item_weather4.setImageResource(weatherimg[WeatherTimeModel.data[3].weather])
+                                weather_item_time5.text = WeatherTimeModel.data[4].hour
+                                weather_item_temp5.text = WeatherTimeModel.data[4].temp.toString() + "º"
+                                weather_item_weather5.setImageResource(weatherimg[WeatherTimeModel.data[4].weather])
+                                weather_item_time6.text = WeatherTimeModel.data[5].hour
+                                weather_item_temp6.text = WeatherTimeModel.data[5].temp.toString() + "º"
+                                weather_item_weather6.setImageResource(weatherimg[WeatherTimeModel.data[5].weather])
+
+                            //    for (i in 0..WeatherTimeModel.data.size - 1) {
+
+                               //     ttime.get(index++).text = WeatherTimeModel.data[i].hour
+                                   // index = index+1
+                                    /*
+                                    weather_item_time1.text = WeatherTimeModel.data[i].hour
+                                    weather_item_temp1.text = WeatherTimeModel.data[i].temp.toString() + "º"
+                                    weather_item_weather1.setImageResource(weatherimg[WeatherTimeModel.data[i].weather])
+                                    weather_item_time1.text = WeatherTimeModel.data[i+1].hour
+                                    weather_item_temp1.text = WeatherTimeModel.data[i+1].temp.toString() + "º"
+
+                                    mtemp[i].text = WeatherTimeModel.data[i].hour
+                                    //mtemp[i].setText(WeatherTimeModel.data[i].temp.toString()+"º")
+*/
+                           //     }
+
                             }, { fail -> Log.i("WeatherFragment", fail.message) })
             /*
             weatherItems = ArrayList()
