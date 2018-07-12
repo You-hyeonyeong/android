@@ -70,7 +70,7 @@
                     android:id="@+id/bell_time_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="분 전"
+                    android:text=" 분 게시"
                     android:textSize="10sp" />
             </LinearLayout>
 

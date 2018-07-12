@@ -63,4 +63,6 @@ interface NetworkService {
     @GET("/user/news")
     fun getBell(@Header("token")token: String) : Observable<BellModel>
 
+    @PUT("user/setting")
+    fun putSetting (@Header("user_token") user_token:String) : Observable<SettingModel>
 }

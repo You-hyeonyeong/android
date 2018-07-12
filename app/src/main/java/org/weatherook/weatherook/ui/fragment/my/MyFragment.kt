@@ -93,7 +93,7 @@ class MyFragment : Fragment(), View.OnClickListener {
                                 my_follower_num.text = success.showFollowerNumResult[0].follower.toString().toFloat().toInt().toString()/*.toInt().toString()*/
                                 Log.i("FollowerNumResult",success.showFollowerNumResult[0].follower.toString())
                                 my_following_num.text = success.showFollowingNumResult[0].following.toString()
-                            }, { fail -> Log.i("urls_failed", fail.message) })
+                            }, { /*fail -> Log.i("urls_failed", fail.message)*/ })
         }
 
         val fragmentTransaction = fragmentManager!!.beginTransaction()

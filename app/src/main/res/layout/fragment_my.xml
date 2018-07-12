@@ -63,7 +63,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:layout_margin="8dp"
-                android:src="@drawable/moon" />
+                android:src="@drawable/mainlogo1" />
 
         </RelativeLayout>
 
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="hiriyo_0"
+                android:text="로그인이 필요합니다"
                 android:textSize="16sp"
                 android:textStyle="bold" />
             <ImageView
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/setting_id_tv"
                 android:layout_centerHorizontal="true"
-                android:text="뉸누냔나 뉸뉴누냔나나~ 신나는 대학생"
+                android:text="로그인을 하시면 더 많은 기능을 사용할 수 있습니다."
                 android:textSize="14sp" />
         </RelativeLayout>
 
@@ -117,7 +117,7 @@
                     android:id="@+id/my_board_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
+                    android:text="0"
                     android:textColor="@color/weatherookTheme"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -139,7 +139,7 @@
                     android:id="@+id/my_follower_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="72"
+                    android:text="0"
                     android:textColor="@color/weatherookTheme"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -161,7 +161,7 @@
                     android:id="@+id/my_following_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="53"
+                    android:text="0"
                     android:textColor="@color/weatherookTheme"
                     android:textSize="20dp"
                     android:textStyle="bold" />

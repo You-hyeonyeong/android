@@ -61,28 +61,29 @@ class BellFragment : Fragment(), View.OnClickListener {
                                 Log.i("urls_success1", bellModel.data.toString())
                                 for (i in 0..bellModel.data.size - 1) {
                                     if (bellModel.data[i].flag == 0) {
+                                        var list = bellModel.data[i].dateModify.split(" ")
                                         likeitems.add(BellRecyclerViewData(bellModel.data[i].commentImg,
                                                 bellModel.data[i].commentId, bellModel.data[i].commentStr,
-                                                bellModel.data[i].commentDesc, bellModel.data[i].date, bellModel.data[i].boardImg))
+                                                bellModel.data[i].commentDesc, list[1], bellModel.data[i].boardImg))
                                         bellRecyclerviewAdapter.notifyDataSetChanged()
                                     }
                                     if (bellModel.data[i].flag == 1) {
-                                        likeitems.add(BellRecyclerViewData(bellModel.data[i].followImg,
+                                        var list = bellModel.data[i].dateModify.split(" ")
+                                        Log.d("sssssssssss",list[1])
+                                        likeitems.add(BellRecyclerViewData(bellModel.data[i].followImg.toString(),
                                                 bellModel.data[i].follow, bellModel.data[i].followStr,
-                                                "팔로우 하시겠습니까?", bellModel.data[i].date, "R.drawable.follow_state"))
+                                                "팔로우 하시겠습니까?", list[1], "R.drawable.follow_state"))
                                         bellRecyclerviewAdapter.notifyDataSetChanged()
                                         Log.i("urls_success3",bellModel.data.toString())
                                     } else
 
-
                                     Log.i("urls_success2", bellModel.data[i].boardImg)
                                 }
 
-                                //Log.i("urls_success3", mylistitems[i].)
                                 Log.i("urls_success4", "" + likeitems.size)
                                 //  myListRecyclerviewAdapter.notifyDataSetChanged()
 
-                            }, { fail -> Log.i("urls_failed", fail.message) })
+                            }, { /*fail -> Log.i("urls_failed", fail.message)*/ })
         }
 
 
