@@ -39,16 +39,16 @@ interface NetworkService {
     @POST("/board/comment")
     fun postComment(@Field("board_idx") idx : Int, @Field("comment_desc") comment : String) : Observable<BoardCommentModel>
 
-    @GET("/board/comment/{board_idx}")
-    fun getComment(@Field("comment_idx") comment_idx : Int, @Field("board_idx") board_idx: Int) : Observable<BoardCommentModel>
-
     @GET("/board/today/latest")
     fun getLatestBoard() : Observable<LatestBoardModel>
 
     @GET("/board/today/popular")
     fun getPopularBoard() : Observable<PopularBoardModel>
 
-    @POST("/board/follow")
+    @GET("/board/comment/{board_idx}")
+    fun getOneBoardComment(@Path("board_idx") idx : Int) : Observable<GetCommentModel>
+
+    @GET("/board/follow")
     fun postFollowBoard(@Header("token") token: String) : Observable<FollowBoardModel>
 
     @POST("/user/show")
