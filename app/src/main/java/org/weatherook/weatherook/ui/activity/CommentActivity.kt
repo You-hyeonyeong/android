@@ -46,7 +46,6 @@ class CommentActivity : AppCompatActivity() {
                                     commenttotalItems.add(CommentTotalItem(it.userImg,it.commentDate,it.commentId,it.commentDesc))
                                     commenttotalAdapter.notifyDataSetChanged()
                                 }
-
                             }
                         }, { fail -> Log.i("urls_failed", fail.message) })
 

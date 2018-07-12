@@ -13,6 +13,7 @@ import org.weatherook.weatherook.item.RecommendItem
 import java.util.ArrayList
 
 class RecommendBFragment  : Fragment(), View.OnClickListener {
+    //내일의 추천코디
     var item1 = true
     override fun onClick(v: View) {
 

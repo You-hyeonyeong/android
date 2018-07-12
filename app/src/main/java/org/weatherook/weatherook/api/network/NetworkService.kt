@@ -48,7 +48,7 @@ interface NetworkService {
     @GET("/board/comment/{board_idx}")
     fun getOneBoardComment(@Path("board_idx") idx : Int) : Observable<GetCommentModel>
 
-    @POST("/board/follow")
+    @GET("/board/follow")
     fun postFollowBoard(@Header("token") token: String) : Observable<FollowBoardModel>
 
     @POST("/user/show")
