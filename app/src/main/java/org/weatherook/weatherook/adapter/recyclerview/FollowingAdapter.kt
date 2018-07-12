@@ -65,15 +65,17 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
         GlideApp.with(context).load(followingItems[position].photo).override(1280, 960).into(holder!!.followingPhoto)
         holder.followingDate.text = followingItems[position].date
         Log.i("followingAdapter", followingItems[position].date)
+        var weather = "맑음"
         when(followingItems[position].weather){
-            0-> holder.followingWeather.text="맑음"
-            1-> holder.followingWeather.text="구름 조금"
-            2-> holder.followingWeather.text="구름 많음"
-            3-> holder.followingWeather.text="흐름"
-            4-> holder.followingWeather.text="비"
-            5-> holder.followingWeather.text="비/눈"
-            6-> holder.followingWeather.text="눈"
+            0-> weather="맑음"
+            1-> weather="구름 조금"
+            2-> weather="구름 많음"
+            3-> weather="흐름"
+            4-> weather="비"
+            5-> weather="비/눈"
+            6-> weather="눈"
         }
+        holder.followingWeather.text = weather
         //holder.followingWeather.text = followingItems[position].weather.toSt
         // ring()
         holder.followingTemp.text = followingItems[position].temperature
@@ -84,6 +86,13 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
         holder.followingCommentBtn.setOnClickListener {
             val intent = Intent(context, CommentActivity::class.java)
             intent.putExtra("boardIdx",followingItems[position].boardIdx)
+            intent.putExtra("user_profile", followingItems[position].profile)
+            intent.putExtra("user_id", followingItems[position].id)
+            intent.putExtra("like_count", followingItems[position].count)
+            intent.putExtra("date", followingItems[position].date)
+            //intent.putExtra("location", followingItems[position].count)
+            intent.putExtra("weather", weather)
+            intent.putExtra("temperature", followingItems[position].temperature)
             /*var array = ArrayList<String>()
             for(i in 0..followingItems[position].comment.size-1){
                 array.add(Gson().toJson(followingItems[i].comment,CommentTotalItem::class.java))

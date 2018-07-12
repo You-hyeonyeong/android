@@ -20,7 +20,7 @@ import org.weatherook.weatherook.singleton.WeatherDriver
 import org.weatherook.weatherook.singleton.tokenDriver
 import java.util.ArrayList
 
-class RecommendBFragment  : Fragment(), View.OnClickListener {
+class RecommendBFragment : Fragment(), View.OnClickListener {
     //내일의 추천코디
     var item1 = true
 
@@ -29,11 +29,11 @@ class RecommendBFragment  : Fragment(), View.OnClickListener {
     }
     var disposable: Disposable? = null
 
-    var token : String ?= null
+    var token: String? = null
 
     override fun onClick(v: View) {
 
-        when(v){
+        when (v) {
             home_refresh_btn -> {
                 clear()
 /*
@@ -55,7 +55,7 @@ class RecommendBFragment  : Fragment(), View.OnClickListener {
     lateinit var recommendAdapter: RecommendAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_recommend_tomorrow, container, false)
-        tokenDriver.tokenDriver.subscribe{
+        tokenDriver.tokenDriver.subscribe {
             token = it
             Log.i("recommend", token)
         }
@@ -65,32 +65,32 @@ class RecommendBFragment  : Fragment(), View.OnClickListener {
 
         recommendAdapter = RecommendAdapter(recommendItems, context!!)
         //     recommendAdapter.setOnItemClickListener(this)
-        v.home_recommend_recycler.layoutManager = GridLayoutManager(context,2)
+        v.home_recommend_recycler.layoutManager = GridLayoutManager(context, 2)
         v.home_recommend_recycler.adapter = recommendAdapter
 
         WeatherDriver.weatherDriver.subscribe { it ->
             try {
-                if(token!=null){
-                    val call = networkService.postRecommend(token!!,it.x.toFloat(),it.y.toFloat(),3)
-                    disposable = call.subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread()).subscribe(
-                                    { success->
-                                        if(recommendItems.size==0){
-                                            Log.i("urls_success1", success.data.size.toString())
-                                            var num : Int = 0
-                                            if(success.data.size>4){
-                                                num=4
-                                            }else{
-                                                num = success.data.size
-                                            }
 
-                                            for(i in 0..num-1){
-                                                recommendItems.add(RecommendItem(success.data[i].commendImg))
-                                                recommendAdapter.notifyDataSetChanged()
-                                            }
+                val call = networkService.postRecommend(token, it.x.toFloat(), it.y.toFloat(), 3)
+                disposable = call.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                                { success ->
+                                    if (recommendItems.size == 0) {
+                                        Log.i("urls_success1", success.data.size.toString())
+                                        var num: Int = 0
+                                        if (success.data.size > 4) {
+                                            num = 4
+                                        } else {
+                                            num = success.data.size
                                         }
-                                    },{fail-> Log.i("urls_failed", fail.message)})
-                }
+
+                                        for (i in 0..num - 1) {
+                                            recommendItems.add(RecommendItem(success.data[i].commendImg))
+                                            recommendAdapter.notifyDataSetChanged()
+                                        }
+                                    }
+                                }, { fail -> Log.i("urls_failed", fail.message) })
+
             } catch (e: Exception) {
             }
         }
@@ -108,7 +108,7 @@ class RecommendBFragment  : Fragment(), View.OnClickListener {
         //recommendAdapter.notifyDataSetChanged()
     }
 
-    fun clear(){
+    fun clear() {
         recommendItems.clear()
     }
 
