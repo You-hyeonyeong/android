@@ -5,5 +5,6 @@ package org.weatherook.weatherook.item
  */
 data class FriendItem (
         var profile : String,
-        var id : String
+        var id : String,
+        var desc: String
 )

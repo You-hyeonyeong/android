@@ -84,8 +84,8 @@
 
         <ImageView
             android:id="@+id/bell_board_img"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:gravity="right"
             android:scaleType="centerCrop" />
     </LinearLayout>

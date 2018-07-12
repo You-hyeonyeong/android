@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_bell.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.BellRecyclerviewAdapter
 import org.weatherook.weatherook.api.network.NetworkService
@@ -41,15 +42,27 @@ class BellFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = View.inflate(activity, R.layout.fragment_bell, null)
         val like_recycle: RecyclerView = view!!.findViewById(R.id.like_recycle)
-        likeitems = ArrayList()
 
         tokenDriver.tokenDriver.subscribe {
             token = it
             Log.i("list", token)
         }
 
+
+//          likeitems.add(BellRecyclerViewData(R.drawable.main_night_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오", "14", R.drawable.brown))
+//          likeitems.add(BellRecyclerViewData(R.drawable.main_snow_2, "프린스정", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오", "15", R.drawable.brown))
+//         likeitems.add(BellRecyclerViewData(R.drawable.main_cloud_sun_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오", "220", R.drawable.brown))
+//
+
+        return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        likeitems = ArrayList()
         bellRecyclerviewAdapter = BellRecyclerviewAdapter(likeitems, context!!)
-        bellRecyclerviewAdapter.setOnItemClickListener(this)
+       // bellRecyclerviewAdapter.setOnItemClickListener(this)
         like_recycle.adapter = bellRecyclerviewAdapter
         like_recycle.layoutManager = LinearLayoutManager(activity)
 
@@ -76,27 +89,14 @@ class BellFragment : Fragment(), View.OnClickListener {
                                         bellRecyclerviewAdapter.notifyDataSetChanged()
                                         Log.i("urls_success3",bellModel.data.toString())
                                     } else
-
-                                    Log.i("urls_success2", bellModel.data[i].boardImg)
+                                        Log.i("urls_success2", bellModel.data[i].boardImg)
                                 }
-
                                 Log.i("urls_success4", "" + likeitems.size)
-                                //  myListRecyclerviewAdapter.notifyDataSetChanged()
+                                // bellRecyclerviewAdapter.notifyDataSetChanged()
 
                             }, { /*fail -> Log.i("urls_failed", fail.message)*/ })
         }
 
-
-        //  likeitems.add(BellRecyclerViewData(R.drawable.main_night_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오", "14", R.drawable.brown))
-        //  likeitems.add(BellRecyclerViewData(R.drawable.main_snow_2, "프린스정", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오", "15", R.drawable.brown))
-        // likeitems.add(BellRecyclerViewData(R.drawable.main_cloud_sun_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오", "220", R.drawable.brown))
-
-
-        return view
-    }
-
-    override fun onStart() {
-        super.onStart()
 
 
     }

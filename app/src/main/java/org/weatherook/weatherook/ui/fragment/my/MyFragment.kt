@@ -34,7 +34,6 @@ class MyFragment : Fragment(), View.OnClickListener {
 
         when (p0) {
             my_grid_img -> {
-
                 my_grid_img.isSelected = true
                 my_list_img.isSelected = false
                 val fragmentTransaction = fragmentManager!!.beginTransaction()
@@ -81,7 +80,7 @@ class MyFragment : Fragment(), View.OnClickListener {
         super.onStart()
 
         if (token != null) {
-            val call = networkService.getMyBoard(token!!)
+            val call = networkService.getMyBoard(token!!,null)
             disposable = call.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { success ->

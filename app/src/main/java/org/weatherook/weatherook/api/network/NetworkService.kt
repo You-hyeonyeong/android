@@ -39,28 +39,36 @@ interface NetworkService {
     @POST("/weather/list")
     fun postTimeWeather(@Field("x") x : Double, @Field("y") y : Double) : Observable<WeatherTimeModel>
 
+    //갬성글
     @FormUrlEncoded
     @POST("/weather/comment")
     fun postTempWeather(@Field("weather_temp") temp : Int, @Field("weather_weather") weather : Int) : Observable<WeatherCommentModel>
+
 
     @FormUrlEncoded
     @POST("/board/comment")
     fun postComment(@Field("board_idx") idx : Int, @Field("comment_desc") comment : String) : Observable<BoardCommentModel>
 
+    //마이페이지 정보 다 불러오기
+    @FormUrlEncoded
+    @POST("/user/show")
+    fun getMyBoard(@Header("token") token:String, @Field("other_id") otherid : String?) : Observable<MyBoardModel>
+
+    //메인 최신순
     @GET("/board/today/latest")
     fun getLatestBoard() : Observable<LatestBoardModel>
 
+    //메인 인기순
     @GET("/board/today/popular")
     fun getPopularBoard() : Observable<PopularBoardModel>
 
-    @GET("/board/comment/{board_idx}")
-    fun getOneBoardComment(@Path("board_idx") idx : Int) : Observable<GetCommentModel>
-
+    //메인 팔로잉하는 글 보기
     @GET("/board/follow")
     fun postFollowBoard(@Header("token") token: String) : Observable<FollowBoardModel>
 
-    @POST("/user/show")
-    fun getMyBoard(@Header("token") token:String) : Observable<MyBoardModel>
+    //한 게시물 댓글보기
+    @GET("/board/comment/{board_idx}")
+    fun getOneBoardComment(@Path("board_idx") idx : Int) : Observable<GetCommentModel>
 
     @GET("/user/follower")
     fun getMyFollowerProfile(@Header("token") token:String) : Observable<FollowerModel>
@@ -71,6 +79,4 @@ interface NetworkService {
     @GET("/user/news")
     fun getBell(@Header("token")token: String) : Observable<BellModel>
 
-    @PUT("user/setting")
-    fun putSetting (@Header("user_token") user_token:String) : Observable<SettingModel>
 }

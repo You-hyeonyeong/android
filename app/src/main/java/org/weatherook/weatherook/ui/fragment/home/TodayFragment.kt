@@ -2,8 +2,6 @@ package org.weatherook.weatherook.ui.fragment.home
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,11 +17,13 @@ import kotlinx.android.synthetic.main.fragment_weather_today.*
 import kotlinx.android.synthetic.main.fragment_weather_today.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.WeatherAdapter
-import org.weatherook.weatherook.api.model.WeatherModel
 import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.WeatherItem
 import org.weatherook.weatherook.singleton.LatLongDriver
 import org.weatherook.weatherook.singleton.weatherDriver
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class TodayFragment : Fragment(), View.OnClickListener {
 
@@ -53,6 +53,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
            // home_weather_recycler.visibility = View.INVISIBLE
             home_weather_grid.visibility = View.INVISIBLE
         }
+
     }
 
     lateinit var weatherItems: ArrayList<WeatherItem>
@@ -103,7 +104,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
                                     mweather[i].setImageResource(weatherimg[WeatherTimeModel.data[i].weather])
                                     mtemp[i].setText(WeatherTimeModel.data[i].temp.toString()+"º")
                                 }
-                            }, { fail -> Log.i("WeatherFragment", fail.message) })
+                            }, {/* fail -> Log.i("WeatherFragment", fail.message)*/ })
             /*
             weatherItems = ArrayList()
 
@@ -137,12 +138,25 @@ class TodayFragment : Fragment(), View.OnClickListener {
                                 home_weather_tempmax.setText(WeatherModel.data.tempAm.toString())
                                 home_weather_tempmin.setText(WeatherModel.data.tempAf.toString())
 
-                            }, { fail -> Log.i("WeatherFragment", fail.message) })
+                            }, { /*fail -> Log.i("WeatherFragment", fail.message)*/ })
 
         }
 
 
         return view
+    }
+
+  /*  fun time() {
+        val now = System.currentTimeMillis()
+        val date = Date(now)
+        val CurDateFormat = SimpleDateFormat("yyyy년 MM월 dd일")
+        val strCurDate = CurDateFormat.format(date)
+    }*/
+
+    fun doYearMonthDay(): String {
+        val formatter = SimpleDateFormat("MM월 dd일 E요일", Locale.KOREA)
+        val date = Date()
+        return formatter.format(date)
     }
 
 
@@ -151,5 +165,8 @@ class TodayFragment : Fragment(), View.OnClickListener {
 
         home_weather_change.setOnClickListener(this)
         home_weather_grid.setOnClickListener(this)
+
+        home_weather_date.text = doYearMonthDay()
+
     }
 }

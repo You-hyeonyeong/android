@@ -58,7 +58,7 @@ class MyListFragment : Fragment(), View.OnClickListener {
         mypage_recycle.adapter = myListRecyclerviewAdapter
 
         if(token!=null){
-            val call = networkService.getMyBoard(token!!)
+            val call = networkService.getMyBoard(token!!,null)
             disposable = call.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { success->

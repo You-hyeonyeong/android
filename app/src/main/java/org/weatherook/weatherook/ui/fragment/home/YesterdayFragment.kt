@@ -1,6 +1,5 @@
 package org.weatherook.weatherook.ui.fragment.home
 
-import android.database.Observable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -12,9 +11,10 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_weather_yesterday.*
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.api.model.WeatherModel
 import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.singleton.LatLongDriver
+import java.text.SimpleDateFormat
+import java.util.*
 
 class YesterdayFragment : Fragment() {
 
@@ -49,10 +49,26 @@ class YesterdayFragment : Fragment() {
                                 yesterday_pm_image.setImageResource(weatherIcon[WeatherModel.data.weatherAf.toInt()])
                                 yesterday_am_weather.setText(weatherStr[WeatherModel.data.weatherAm.toInt()])
                                 yesterday_pm_weather.setText(weatherStr[WeatherModel.data.weatherAf.toInt()])
-                            }, { fail -> Log.i("WeatherFragment", fail.message) })
+                            }, { /*fail -> Log.i("WeatherFragment", fail.message)*/ })
 
 
         }
+
+
         return view
+    }
+
+    fun yesterdaydate() :String {
+        val sdf = SimpleDateFormat("MM월 dd일 E요일", Locale.KOREA)
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DATE, -1)  // 오늘 날짜에서 하루를 뺌.
+        val date = sdf.format(calendar.getTime())
+        return date
+    }
+
+    override fun onStart() {
+        super.onStart()
+        home_weather_yesterday_date.text = yesterdaydate()
+
     }
 }

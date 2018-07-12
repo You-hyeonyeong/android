@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Looper
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
-import android.support.v7.widget.GridLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,24 +15,19 @@ import android.widget.Toast
 import com.google.android.gms.location.*
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
-import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.api.glide.GlideApp
-import org.weatherook.weatherook.api.network.NetworkService
-import org.weatherook.weatherook.item.RecommendItem
 import org.weatherook.weatherook.adapter.viewpager.FollowingPagerAdapter
 import org.weatherook.weatherook.adapter.viewpager.HomePagerAdapter
-import org.weatherook.weatherook.singleton.weatherDriver
-import java.util.*
-import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
 import org.weatherook.weatherook.adapter.viewpager.RecommendPagerAdapter
+import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.LatLongItem
 import org.weatherook.weatherook.singleton.LatLongDriver
+import org.weatherook.weatherook.singleton.weatherDriver
 import org.weatherook.weatherook.utils.CustomViewPager
+import java.util.*
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -155,7 +149,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             override fun onLocationAvailability(locationAvailability: LocationAvailability?) {
                 try {
                     if (!locationAvailability!!.isLocationAvailable) {
-                        Toast.makeText(activity!!, "위치 불러오기에 실패함", Toast.LENGTH_SHORT).show()
+                     //   Toast.makeText(activity!!, "위치 불러오기에 실패함", Toast.LENGTH_SHORT).show()
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
