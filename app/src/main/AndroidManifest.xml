@@ -36,8 +36,8 @@
         <activity android:name=".api.camera.CameraActivity" />
         <activity android:name=".ui.activity.MySettingActivity" />
         <activity android:name=".ui.activity.MyStoryActivity" />
-        <activity android:name=".ui.activity.SigninActivity" />
-        <activity android:name=".ui.activity.SignupActivity" />
+        <activity android:name=".ui.activity.SigninActivity"   android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".ui.activity.SignupActivity"    android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".ui.activity.SettingsActivity" />
         <activity
             android:name=".ui.activity.PopupActivity"
