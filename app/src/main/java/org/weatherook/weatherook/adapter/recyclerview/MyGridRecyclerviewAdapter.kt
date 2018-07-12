@@ -37,7 +37,7 @@ class MyGridRecyclerviewAdapter(private var myrecyclerviewItems: ArrayList<MyGri
 
     override fun onBindViewHolder(holder: MyRecyclerviewViewHolder, position: Int) {
        // holder!!.MyImage.setImageResource(myrecyclerviewItems[position].myimage)  Glide가 더 성능이 좋음
-        GlideApp.with(context).load(myrecyclerviewItems[position].url).into(holder!!.MyImage)
+        GlideApp.with(context).load(myrecyclerviewItems[position].url).override(1280, 960).into(holder!!.MyImage)
         Log.i("grid_onbind", myrecyclerviewItems[position].url)
     }
 }

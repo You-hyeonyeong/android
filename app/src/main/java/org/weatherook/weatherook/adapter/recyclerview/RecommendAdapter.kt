@@ -31,7 +31,7 @@ class RecommendAdapter(var recommendItems : ArrayList<RecommendItem>, val contex
     override fun getItemCount(): Int = recommendItems.size
 
     override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
-        GlideApp.with(context).load(recommendItems[position].cody).into(holder.recommendCody)
+        GlideApp.with(context).load(recommendItems[position].cody).override(1280, 960).into(holder.recommendCody)
         val intent :Intent = Intent(context, SigninActivity::class.java)
         //intent.putExtra("url", recommendItems[position].cody)
     //   holder.recommendCody.setOnClickListener {
