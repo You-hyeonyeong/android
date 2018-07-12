@@ -62,14 +62,14 @@ class MyListFragment : Fragment(), View.OnClickListener {
             disposable = call.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { success->
-                                Log.i("urls_success1", success.data.showBoardNumResult.toString())
-                                for(i in 0..success.data.showBoardNumResult[0].boardNum-1){
-                                    mylistitems.add(MyListRecyclerviewData(success.data.showUserPageResult[0].userImg.toString(),
-                                            success.data.showUserPageResult[0].userId,success.data.showUserPageResult[0].userDesc.toString(),
-                                            success.data.showBoardAllResult[i].boardImg, success.data.showBoardAllResult[i].boardDesc,
-                                            success.data.showBoardAllResult[i].boardDate, success.data.showBoardAllResult[i].boardWeather,
-                                            success.data.showBoardAllResult[i].boardTempMin, success.data.showBoardAllResult[i].boardTempMax))
-                                    Log.i("urls_success2", success.data.showBoardAllResult[i].boardImg)
+                                Log.i("urls_success1", success.showBoardNumResult.toString())
+                                for(i in 0..success.showBoardNumResult[0].boardNum-1){
+                                    mylistitems.add(MyListRecyclerviewData(success.showUserPageResult[0].userImg.toString(),
+                                            success.showUserPageResult[0].userId,success.showUserPageResult[0].userDesc.toString(),
+                                            success.data[i].boardImg, success.data[i].boardDesc,
+                                            success.data[i].boardDate, success.data[i].boardWeather,
+                                            success.data[i].boardTempMin, success.data[i].boardTempMax))
+                                    Log.i("urls_success2", success.data[i].boardImg)
                                 }
 
                                     //Log.i("urls_success3", mylistitems[i].)

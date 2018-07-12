@@ -23,10 +23,6 @@ class BellFragment :  Fragment(), View.OnClickListener{
         val view : View = View.inflate(activity, R.layout.fragment_bell, null)
         val like_recycle : RecyclerView = view!!.findViewById(R.id.like_recycle)
 
-        likeitems.add(BellRecyclerViewData(R.drawable.main_night_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오","14", R.drawable.brown))
-        likeitems.add(BellRecyclerViewData(R.drawable.main_snow_2, "프린스정", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오","15", R.drawable.brown))
-        likeitems.add(BellRecyclerViewData(R.drawable.main_cloud_sun_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오","220", R.drawable.brown))
-
         bellRecyclerviewAdapter = BellRecyclerviewAdapter(likeitems, context!!)
         bellRecyclerviewAdapter.setOnItemClickListener(this)
         like_recycle.adapter = bellRecyclerviewAdapter
@@ -37,6 +33,8 @@ class BellFragment :  Fragment(), View.OnClickListener{
     override fun onStart() {
         super.onStart()
 
-
+        likeitems.add(BellRecyclerViewData(R.drawable.main_night_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오","14", R.drawable.brown))
+        likeitems.add(BellRecyclerViewData(R.drawable.main_snow_2, "프린스정", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오","15", R.drawable.brown))
+        likeitems.add(BellRecyclerViewData(R.drawable.main_cloud_sun_2, "유클라", "님이 댓글을 남겼습니다.", "오늘 너무 더워요오","220", R.drawable.brown))
     }
 }

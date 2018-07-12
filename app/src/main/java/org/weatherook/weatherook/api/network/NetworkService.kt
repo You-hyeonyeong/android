@@ -43,8 +43,24 @@ interface NetworkService {
     @POST("/weather/comment")
     fun postTempWeather(@Field("weather_temp") temp : Int, @Field("weather_weather") weather : Int) : Observable<WeatherCommentModel>
 
-    @GET("/user/show")
-    fun getMyBoard(@Header("token") token:String) : Observable<BoardModel>
+    @FormUrlEncoded
+    @POST("/board/comment")
+    fun postComment(@Field("board_idx") idx : Int, @Field("comment_desc") comment : String) : Observable<BoardCommentModel>
+
+    @GET("/board/today/latest")
+    fun getLatestBoard() : Observable<LatestBoardModel>
+
+    @GET("/board/today/popular")
+    fun getPopularBoard() : Observable<PopularBoardModel>
+
+    @GET("/board/comment/{board_idx}")
+    fun getOneBoardComment(@Path("board_idx") idx : Int) : Observable<GetCommentModel>
+
+    @GET("/board/follow")
+    fun postFollowBoard(@Header("token") token: String) : Observable<FollowBoardModel>
+
+    @POST("/user/show")
+    fun getMyBoard(@Header("token") token:String) : Observable<MyBoardModel>
 
     @GET("/user/follower")
     fun getMyFollowerProfile(@Header("token") token:String) : Observable<FollowerModel>

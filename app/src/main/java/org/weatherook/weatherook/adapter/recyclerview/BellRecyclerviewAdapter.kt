@@ -29,11 +29,11 @@ class BellRecyclerviewAdapter(private var bellrecyclerviewItems : ArrayList<Bell
     override fun getItemCount(): Int = bellrecyclerviewItems.size
 
     override fun onBindViewHolder(holder: BellRecyclerViewHolder, position: Int) {
-        GlideApp.with(context).load(bellrecyclerviewItems[position].bellprofile).into(holder!!.bellProfile)
-        holder!!.bellName.text = bellrecyclerviewItems[position].bellname
-        holder!!.bellRingTxt.text = bellrecyclerviewItems[position].bellringtxt
-        holder!!.bellReply.text = bellrecyclerviewItems[position].bellreply
-        holder!!.bellTime.text = bellrecyclerviewItems[position].belltime
-        GlideApp.with(context).load(bellrecyclerviewItems[position].bellboardimg).into(holder!!.bellBoardImg)
+        GlideApp.with(context).load(bellrecyclerviewItems[position].bellprofile).into(holder.bellProfile)
+        holder.bellName.text = bellrecyclerviewItems[position].bellname
+        holder.bellRingTxt.text = bellrecyclerviewItems[position].bellringtxt
+        holder.bellReply.text = bellrecyclerviewItems[position].bellreply
+        holder.bellTime.text = bellrecyclerviewItems[position].belltime
+        GlideApp.with(context).load(bellrecyclerviewItems[position].bellboardimg).into(holder.bellBoardImg)
     }
 }
