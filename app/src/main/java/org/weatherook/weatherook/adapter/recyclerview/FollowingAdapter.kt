@@ -63,7 +63,7 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
         holder.followingId.text = followingItems[position].id
         //GlideApp.with(context).load(followingItems[position].heart).into(holder!!.followingHeart)
         holder.followingCount.text = followingItems[position].count.toString()
-        GlideApp.with(context).load(followingItems[position].photo).into(holder!!.followingPhoto)
+        GlideApp.with(context).load(followingItems[position].photo).override(1280, 960).into(holder!!.followingPhoto)
         holder.followingDate.text = followingItems[position].date
         Log.i("followingAdapter", followingItems[position].date)
         when(followingItems[position].weather){

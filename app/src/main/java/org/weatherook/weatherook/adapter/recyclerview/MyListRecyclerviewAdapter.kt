@@ -57,7 +57,7 @@ class MyListRecyclerviewAdapter(private var mylistrecyclerviewItems: ArrayList<M
             }
         }
         GlideApp.with(context).load(mylistrecyclerviewItems[position].user_img).into(holder!!.MyStoryProfile)
-        GlideApp.with(context).load(mylistrecyclerviewItems[position].board_img).into(holder!!.MyStoryImg)
+        GlideApp.with(context).load(mylistrecyclerviewItems[position].board_img).override(1280, 960).into(holder!!.MyStoryImg)
 
     }
 }
