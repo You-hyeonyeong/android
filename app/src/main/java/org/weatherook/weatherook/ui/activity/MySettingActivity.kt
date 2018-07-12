@@ -194,10 +194,11 @@ class MySettingActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         if (token != null) {
-            val call = networkService.putUserSetting(token!!, UserSettingUpdateData( desc, gender,age,"https://s3.ap-northeast-2.amazonaws.com/weatherook/jonghyun.jpeg",height,weight,styleList))
+            val call = networkService.putUserSetting(token!!, UserSettingUpdateData( desc, gender,age,image.toString(),height,weight,styleList))
             disposable = call.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             {success->
+                                Log.d("tag1", "===========================이미지 : " + image.toString() + "========================")
                                 Log.d("tag","풋 성공========================================================")
                             }, { fail -> Log.i("TodayFragment", fail.message) })
 

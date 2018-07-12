@@ -1,5 +1,7 @@
 package org.weatherook.weatherook.item
 
+import okhttp3.MultipartBody
+
 data class UserSettingUpdateData (
         val user_desc : String,
         val user_gender : String,
