@@ -119,6 +119,8 @@ class SignupCFragment : Fragment(), View.OnClickListener {
     }
 
     val canSubmit = arrayOf(false, false)
+
+    val styleList = ArrayList<String>()
     override fun onStart() {
         super.onStart()
 
@@ -135,7 +137,7 @@ class SignupCFragment : Fragment(), View.OnClickListener {
         style.add(signup_i)
         style.add(signup_j)
 
-        var index = 0
+        /*var index = 0
         for (st in style) {
             st.setOnClickListener {
                 if (!st.isSelected) {
@@ -149,6 +151,31 @@ class SignupCFragment : Fragment(), View.OnClickListener {
                 }
             }
             index = index + 1
+        }*/
+        for(st in style){
+            st.setOnClickListener {
+                if(!st.isSelected){
+                    st.isSelected = true
+                    st.setTextColor(resources.getColor(android.R.color.white))
+                    if(!styleList.contains(st.text.toString())){
+                        styleList.add(st.text.toString())
+                        if(styleList.size!=0){
+                            signupDriver.onNext(true)
+                        }
+                        Log.i("stylelist",styleList.toString())
+                    }
+                }else{
+                    st.isSelected=false
+                    st.setTextColor(Color.parseColor("#aaaaaa"))
+                    if(styleList.contains(st.text.toString())){
+                        styleList.remove(st.text.toString())
+                        Log.i("stylelist",styleList.toString())
+                        if(styleList.size==0){
+                            signupDriver.onNext(false)
+                        }
+                    }
+                }
+            }
         }
         val signupAgeObservable = RxTextView.textChanges(signup_age)
 
@@ -171,7 +198,8 @@ class SignupCFragment : Fragment(), View.OnClickListener {
                 signupDriver.onNext(false)
             } else {
                 canSubmit[0] = true
-                if (canSubmit[0]) {// && canSubmit[1]
+                c_age=Integer.parseInt(it.toString())
+                if (canSubmit[0]&&styleList.size!=0) {// && canSubmit[1]
                     Log.d("tag", "===================합격===================")
                     signupDriver.onNext(true)
                 }
@@ -233,21 +261,41 @@ class SignupCFragment : Fragment(), View.OnClickListener {
 //        styleList.add("댄디")
 //        styleList.add("빈티지")
 
-        val styleList = ArrayList<String>()
+        /*val styleList = ArrayList<String>()
         styleList.add(signup_a.text.toString())
-        styleList.add("댄디")
+        styleList.add("댄디")*/
 
-        val signupModel = SignupModel("appjamida","we0001", "여",22,162,50, styleList)
+        val signupModel = SignupModel("appjamidda","we0001", "여",22,162,50, styleList)
         Log.d("temp", Gson().toJson(signupModel))
-        val call = networkService.postSignup(signupModel)
+        val call = networkService.postSignup(c_id!!,c_pw!!,c_age!!,c_gender!!,c_height!!,c_height!!,styleList)
         disposable = call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe({ success ->
                     Log.d("temp", success.toString())
-                    startActivity(Intent(context, SigninActivity::class.java))
+                    //startActivity(Intent(context, SigninActivity::class.java))
                 }, { fail ->
+
                     Log.d("temp", fail.toString())
+                    Log.d("temp",fail.message.toString())
                     Toast.makeText(context, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 })
+    }
+    var c_id :String ?=null
+    var c_pw :String ?=null
+    var c_gender :String ?=null
+    var c_height :Int ?=null
+    var c_weight :Int ?=null
+    var c_age : Int?= null
 
+    fun displayReceivedData1(id : String,pw:String, gender : String, height : Int, weight : Int){
+        c_id = id
+        c_pw = pw
+        c_gender = gender
+        c_height = height
+        c_weight = weight
+        Log.i("c_id",c_id)
+        Log.i("c_pw",c_pw)
+        Log.i("c_gender",c_gender)
+        Log.i("c_height",c_height.toString())
+        Log.i("c_weight",c_weight.toString())
     }
 }

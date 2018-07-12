@@ -1,6 +1,7 @@
 package org.weatherook.weatherook.api.network
 
 import io.reactivex.Observable
+import okhttp3.OkHttpClient
 import org.weatherook.weatherook.api.model.*
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -25,7 +26,9 @@ interface NetworkService {
     //회원가입
     @FormUrlEncoded
     @POST("/auth")
-    fun postSignup(@Body idpw: SignupModel) : Observable<SignupModel>
+    fun postSignup(@Field("user_id") id : String, @Field("user_pw") pw : String,
+    @Field("user_age")age :Int, @Field("user_gender") gender : String, @Field("user_height") height: Int,
+                   @Field("user_weight") weight : Int,@Field("user_stylelist")list:ArrayList<String>) : Observable<SignupModel>
 
     //로그인
     @FormUrlEncoded

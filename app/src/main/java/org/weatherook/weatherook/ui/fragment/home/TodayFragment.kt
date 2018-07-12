@@ -28,7 +28,6 @@ import org.weatherook.weatherook.item.WeatherItem
 import org.weatherook.weatherook.singleton.WeatherDriver
 import java.util.*
 import org.weatherook.weatherook.singleton.LatLongDriver
-import org.weatherook.weatherook.singleton.weatherDriver
 
 class TodayFragment : Fragment(), View.OnClickListener {
 
