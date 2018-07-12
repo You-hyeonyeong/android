@@ -64,10 +64,10 @@ class MyGridFragment : Fragment(), View.OnClickListener {
             disposable = call.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { success->
-                                Log.i("urls_success1", success.data.showBoardNumResult.toString())
-                                for(i in 0..success.data.showBoardNumResult[0].boardNum-1){
-                                    myitems.add(MyGridRecyclerviewdata(success.data.showBoardAllResult[i].boardImg))
-                                    Log.i("urls_success2", success.data.showBoardAllResult[i].boardImg)
+                                Log.i("urls_success1", success.showBoardNumResult.toString())
+                                for(i in 0..success.showBoardNumResult[0].boardNum-1){
+                                    myitems.add(MyGridRecyclerviewdata(success.data[i].boardImg))
+                                    Log.i("urls_success2", success.data[i].boardImg)
                                     Log.i("urls_success3", myitems[i].url)
                                     Log.i("urls_success4", ""+myitems.size)
                                     myGridRecyclerviewAdapter.notifyDataSetChanged()

@@ -5,9 +5,11 @@ import android.content.Intent
 import android.support.design.widget.BottomSheetDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.item_following.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
@@ -56,16 +58,36 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
 
     override fun onBindViewHolder(holder: FollowingViewHolder, position: Int) {
         GlideApp.with(context).load(followingItems[position].profile).into(holder!!.followingProfile)
-        holder!!.followingId.text = followingItems[position].id
-        GlideApp.with(context).load(followingItems[position].heart).into(holder!!.followingHeart)
-        holder!!.followingCount.text = followingItems[position].count
+        holder.followingId.text = followingItems[position].id
+        //GlideApp.with(context).load(followingItems[position].heart).into(holder!!.followingHeart)
+        holder.followingCount.text = followingItems[position].count.toString()
         GlideApp.with(context).load(followingItems[position].photo).into(holder!!.followingPhoto)
-        holder!!.followingDate.text = followingItems[position].date
-        holder!!.followingWeather.text = followingItems[position].weather
-        holder!!.followingTemp.text = followingItems[position].temperature
-        holder!!.followingContent.text = followingItems[position].content
-        holder!!.followingComment.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        holder!!.followingComment.adapter = CommentAdapter(followingItems[position].comment)
+        holder.followingDate.text = followingItems[position].date
+        Log.i("followingAdapter", followingItems[position].date)
+        when(followingItems[position].weather){
+            0-> holder.followingWeather.text="맑음"
+            1-> holder.followingWeather.text="구름 조금"
+            2-> holder.followingWeather.text="구름 많음"
+            3-> holder.followingWeather.text="흐름"
+            4-> holder.followingWeather.text="비"
+            5-> holder.followingWeather.text="비/눈"
+            6-> holder.followingWeather.text="눈"
+        }
+        //holder.followingWeather.text = followingItems[position].weather.toSt
+        // ring()
+        holder.followingTemp.text = followingItems[position].temperature
+        holder.followingContent.text = followingItems[position].content
+        holder.followingComment.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        holder.followingComment.adapter = CommentAdapter(followingItems[position].comment)
+        holder.followingCommentBtn.text = "댓글 "+followingItems[position].comment.size +"개 모두 보기"
+        holder.followingCommentBtn.setOnClickListener {
+            val intent = Intent(context, CommentActivity::class.java)
+            var array = ArrayList<String>()
+            for(i in 0..followingItems[position].comment.size-1){
+                array.add(Gson().toJson(followingItems[i].comment))
+            }
+            intent.putExtra("comment", array)
+            context.startActivity(intent) }
 
 
     }

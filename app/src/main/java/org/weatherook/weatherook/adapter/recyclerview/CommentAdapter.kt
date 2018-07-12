@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.item.BoardCommentItem
 import org.weatherook.weatherook.item.CommentItem
 import org.weatherook.weatherook.viewholder.CommentViewHolder
 
-class CommentAdapter(var commentItems : ArrayList<CommentItem>?) : RecyclerView.Adapter<CommentViewHolder>() {
+class CommentAdapter(var commentItems : List<BoardCommentItem>?) : RecyclerView.Adapter<CommentViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
@@ -21,7 +22,7 @@ class CommentAdapter(var commentItems : ArrayList<CommentItem>?) : RecyclerView.
     override fun getItemCount(): Int = commentItems!!.size
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
-        holder!!.commentId.text = commentItems!![position].id
-        holder!!.commentComment.text = commentItems!![position].comment
+        holder!!.commentId.text = commentItems!![position].commentId
+        holder!!.commentComment.text = commentItems!![position].commentDesc
     }
 }

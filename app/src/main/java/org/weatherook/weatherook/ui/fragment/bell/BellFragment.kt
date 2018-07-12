@@ -96,7 +96,7 @@ class BellFragment : Fragment(), View.OnClickListener {
 
     override fun onStart() {
         super.onStart()
+
+
     }
-
-
 }

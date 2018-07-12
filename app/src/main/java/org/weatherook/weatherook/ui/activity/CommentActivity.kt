@@ -3,6 +3,7 @@ package org.weatherook.weatherook.ui.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_comment.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.CommentTotalAdapter
@@ -17,6 +18,7 @@ class CommentActivity : AppCompatActivity() {
         setContentView(R.layout.activity_comment)
 
         commenttotalItems = ArrayList()
+        //commenttotalItems = Gson().fromJson(intent.getStringExtra("comment"))
         commenttotalItems.clear()
 
         commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
