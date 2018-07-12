@@ -31,6 +31,7 @@ import org.weatherook.weatherook.singleton.weatherDriver
 import java.util.*
 import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
 import org.weatherook.weatherook.adapter.viewpager.RecommendPagerAdapter
+import org.weatherook.weatherook.item.WeatherDriverItem
 import org.weatherook.weatherook.utils.CustomViewPager
 
 
@@ -41,7 +42,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view : View = View.inflate(activity, R.layout.fragment_home, null)
+        val view: View = View.inflate(activity, R.layout.fragment_home, null)
         val permissionlistener = object : PermissionListener {
             override fun onPermissionGranted() {
                 //Toast.makeText(activity, "Permission Granted", Toast.LENGTH_SHORT).show()
@@ -62,25 +63,25 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onStart() {
-            super.onStart()
-          //  val following_recycle: RecyclerView = view!!.findViewById(R.id.home_following_recycler)
+        super.onStart()
+        //  val following_recycle: RecyclerView = view!!.findViewById(R.id.home_following_recycler)
 
 /*
             home_scroll.setOnTouchListener { v, event ->  Log.d("tag",home_tab.top.toString())
                 true }
 */
-  //      home_scroll.pageScroll(View.FOCUS_UP)
-    //    home_scroll.isSmoothScrollingEnabled = true
-     //   home_scroll.
+        //      home_scroll.pageScroll(View.FOCUS_UP)
+        //    home_scroll.isSmoothScrollingEnabled = true
+        //   home_scroll.
 
-            val extensiblePageIndicator = view!!.findViewById(R.id.flexibleIndicator) as ExtensiblePageIndicator
-            val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
-            val adapter = HomePagerAdapter(childFragmentManager)
+        val extensiblePageIndicator = view!!.findViewById(R.id.flexibleIndicator) as ExtensiblePageIndicator
+        val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
+        val adapter = HomePagerAdapter(childFragmentManager)
 
 
-            viewPager.adapter = adapter
-            viewPager.currentItem = 1
-            extensiblePageIndicator.initViewPager(viewPager)
+        viewPager.adapter = adapter
+        viewPager.currentItem = 1
+        extensiblePageIndicator.initViewPager(viewPager)
 
         val rviewPager = view!!.findViewById<CustomViewPager>(R.id.recommend_viewPager)
         val radapter = RecommendPagerAdapter(childFragmentManager)
@@ -89,17 +90,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
         rviewPager.setPagingEnabled(false)
 
 
-
         val fviewPager = view!!.findViewById<ViewPager>(R.id.home_following_viewPager)
-            val fadapter = FollowingPagerAdapter(childFragmentManager)
+        val fadapter = FollowingPagerAdapter(childFragmentManager)
 
-            fviewPager.adapter = fadapter
-            home_tab.setupWithViewPager(fviewPager)
+        fviewPager.adapter = fadapter
+        home_tab.setupWithViewPager(fviewPager)
 
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
-
-
 
 
             }
@@ -110,16 +108,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
             override fun onPageSelected(position: Int) {
                 //
-                if(position==2){
+                if (position == 2) {
                     rviewPager.currentItem = 1
-                }
-                else if(position==1){
+                } else if (position == 1) {
                     rviewPager.currentItem = 0
                 }
             }
         })
-        }
-
+    }
 
 
     lateinit var locationRequest: LocationRequest
@@ -163,17 +159,18 @@ class HomeFragment : Fragment(), View.OnClickListener {
         try {
             getAddress(activity!!, location.latitude, location.longitude)
         } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
     fun getAddress(context: Context, lat: Double, lng: Double): String {
         var nowAddress = "현재 위치를 확인할 수 없습니다."
         val geocoder = Geocoder(context, Locale.KOREA)
-        var address =geocoder.getFromLocation(lat, lng, 1)
+        var address = geocoder.getFromLocation(lat, lng, 1)
         try {
             if (address != null && address.size > 0) {
                 val currentLocationAddress = address.get(0).subLocality
-                weatherDriver.weatherDriver.onNext(currentLocationAddress)
+                weatherDriver.weatherDriver.onNext(WeatherDriverItem(lat, lng))
                 //Toast.makeText(activity!!, currentLocationAddress, Toast.LENGTH_SHORT).show()
                 nowAddress = currentLocationAddress
             }

@@ -60,4 +60,7 @@ interface NetworkService {
     @GET("/user/following")
     fun getMyFollowingProfile(@Header("token") token:String) : Observable<FollowingModel>
 
+    @POST("/board/commend")
+    fun postRecommend(@Header("token") token:String , @Field("x") lat:Int, @Field("y") long:Int,@Field("date_type") date:Int) : Observable<RecommendModel>
+
 }

@@ -1,5 +1,7 @@
 package org.weatherook.weatherook.ui.fragment.home
 
+import android.content.Context
+import android.location.Geocoder
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -19,8 +21,10 @@ import kotlinx.android.synthetic.main.fragment_weather_today.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.WeatherAdapter
 import org.weatherook.weatherook.api.network.NetworkService
+import org.weatherook.weatherook.item.WeatherDriverItem
 import org.weatherook.weatherook.item.WeatherItem
 import org.weatherook.weatherook.singleton.weatherDriver
+import java.util.*
 
 class TodayFragment : Fragment(), View.OnClickListener {
 
@@ -50,7 +54,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
         view.home_weather_location
         weatherDriver.weatherDriver.subscribe {
             if(it!=null){
-                view.home_weather_location.text = it
+                view.home_weather_location.text = getAddress(context!!,it)
             }
         }
         val image : ImageView = view.findViewById(R.id.frag_today_weatherimg)
@@ -73,6 +77,21 @@ class TodayFragment : Fragment(), View.OnClickListener {
                         }, { fail ->  Log.i("TodayFragment", fail.message)})
 
         return view
+    }
+
+    fun getAddress(context: Context, item : WeatherDriverItem): String {
+        var nowAddress = "현재 위치를 확인할 수 없습니다."
+        val geocoder = Geocoder(context, Locale.KOREA)
+        var address = geocoder.getFromLocation(item.x, item.y, 1)
+        try {
+            if (address != null && address.size > 0) {
+                val currentLocationAddress = address.get(0).subLocality
+                nowAddress = currentLocationAddress
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return nowAddress
     }
 
     override fun onStart() {
