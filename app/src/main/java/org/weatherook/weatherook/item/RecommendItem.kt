@@ -2,6 +2,6 @@ package org.weatherook.weatherook.item
 
 data class RecommendItem (
 
-    var cody : Int
+    var cody : String
 
 )

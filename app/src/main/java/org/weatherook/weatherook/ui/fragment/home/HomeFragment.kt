@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.os.Looper
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
-import android.support.v7.widget.GridLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,18 +14,13 @@ import android.widget.Toast
 import com.google.android.gms.location.*
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
-import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.weatherook.weatherook.R
-import org.weatherook.weatherook.api.glide.GlideApp
 import org.weatherook.weatherook.api.network.NetworkService
-import org.weatherook.weatherook.item.RecommendItem
 import org.weatherook.weatherook.adapter.viewpager.FollowingPagerAdapter
 import org.weatherook.weatherook.adapter.viewpager.HomePagerAdapter
-import org.weatherook.weatherook.singleton.weatherDriver
+import org.weatherook.weatherook.singleton.WeatherDriver
 import java.util.*
 import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
 import org.weatherook.weatherook.adapter.viewpager.RecommendPagerAdapter
@@ -170,7 +163,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         try {
             if (address != null && address.size > 0) {
                 val currentLocationAddress = address.get(0).subLocality
-                weatherDriver.weatherDriver.onNext(WeatherDriverItem(lat, lng))
+                WeatherDriver.weatherDriver.onNext(WeatherDriverItem(lat, lng))
                 //Toast.makeText(activity!!, currentLocationAddress, Toast.LENGTH_SHORT).show()
                 nowAddress = currentLocationAddress
             }

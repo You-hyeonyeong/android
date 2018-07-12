@@ -84,7 +84,7 @@ class SignupCFragment : Fragment(), View.OnClickListener {
         styleList.add(signup_a.text.toString())
         styleList.add("댄디")
 
-        val signupModel = SignupModel("cp_park4","we0001", "여",22,162,50, styleList)
+        val signupModel = SignupModel("appjamida","we0001", "여",22,162,50, styleList)
         Log.d("temp", Gson().toJson(signupModel))
         val call = networkService.postSignup(signupModel)
         disposable = call.subscribeOn(Schedulers.io())

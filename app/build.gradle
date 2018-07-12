@@ -58,4 +58,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.flying.xiaopo:sticker:1.6.0'
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
 }
