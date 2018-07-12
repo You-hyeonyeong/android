@@ -12,22 +12,31 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.singleton.tokenDriver
+import org.weatherook.weatherook.ui.fragment.MyGridFragment
+import org.weatherook.weatherook.ui.fragment.MyListFragment
 
 class UserPageActivity : AppCompatActivity(), View.OnClickListener {
+
+    /*fun replaceFragment() {
+        var myListFragment : MyListFragment() = MyListFragment
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.mypage_recycle, myListFragment).commit()
+    }*/
+
     override fun onClick(v: View?) {
         when (v) {
             my_grid_img -> {
                 my_grid_img.isSelected = true
                 my_list_img.isSelected = false
-                //val fragmentTransaction = fragmentManager.beginTransaction()
-                //fragmentTransaction.replace(R.id.mypage_recycle, MyGridFragment()).commit()
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.mypage_recycle, MyGridFragment()).commit()
             }
 
             my_list_img -> {
                 my_list_img.isSelected = true
                 my_grid_img.isSelected = false
-                //val fragmentTransaction = fragmentManager!!.beginTransaction()
-                //fragmentTransaction.replace(R.id.mypage_recycle, MyListFragment()).commit()
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.mypage_recycle, MyListFragment()).commit()
 
             }
         }
@@ -35,7 +44,6 @@ class UserPageActivity : AppCompatActivity(), View.OnClickListener {
 
     var token : String ?= null
     var userId : String ?= null
-
 
     val networkService by lazy {
         NetworkService.create()
@@ -61,8 +69,8 @@ class UserPageActivity : AppCompatActivity(), View.OnClickListener {
     override fun onStart() {
         super.onStart()
 
-       // val fragmentTransaction = fragmentManager!!.beginTransaction()
-        //fragmentTransaction.replace(R.id.mypage_recycle, MyGridFragment()).commit()
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.mypage_recycle, MyGridFragment()).commit()
 
         if (token != null) {
             val call = networkService.getMyBoard(token!!,userId!!)
