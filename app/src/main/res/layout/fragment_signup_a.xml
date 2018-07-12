@@ -30,14 +30,7 @@
                     android:background="@drawable/rounded_rightgray"
 
                     />
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/signup_id_layout"
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:textColorHint="#aaaaaa"
-                    android:theme="@style/EditTextTheme"
-                    >
+
                 <EditText
                     android:id="@+id/signup_id_tv"
                     android:layout_width="220dp"
@@ -48,8 +41,9 @@
                     android:background="@null"
                     android:singleLine="true"
                     android:lines="1"
+                    android:layout_centerInParent="true"
                     />
-                </android.support.design.widget.TextInputLayout>
+
 
             </RelativeLayout>
 
@@ -64,13 +58,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_rightgray"
                     />
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/signup_pw_layout"
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent"
-                    android:textColorHint="#aaaaaa"
-                    android:theme="@style/EditTextTheme"
-                    android:layout_centerInParent="true">
+
                 <EditText
                     android:id="@+id/signup_pw_tv"
                     android:layout_width="220dp"
@@ -81,10 +69,10 @@
                     android:background="@null"
                     android:singleLine="true"
                     android:lines="1"
+                    android:layout_centerInParent="true"
                     android:password="true"
                     />
 
-                </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
 
             <RelativeLayout
@@ -98,14 +86,7 @@
                     android:background="@drawable/rounded_rightgray"
                     />
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/signup_check_layout"
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:theme="@style/EditTextTheme"
-                    android:textColorHint="#aaaaaa"
-                    >
+
                 <EditText
                     android:id="@+id/signup_check_tv"
                     android:layout_width="220dp"
@@ -118,9 +99,8 @@
                     android:singleLine="true"
                     android:lines="1"
                     android:password="true"
-                    />
-                </android.support.design.widget.TextInputLayout>
 
+                    />
 
             </RelativeLayout>
 
