@@ -25,7 +25,7 @@
                     android:id="@+id/home_weather_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="마포구"
+                    android:text="없음"
                     android:textColor="#000000"
                     android:textSize="24sp" />
 
@@ -120,12 +120,11 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <GridLayout
+        <LinearLayout
             android:id="@+id/home_weather_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="6"
-            android:rowCount="1"
+            android:gravity="center"
             android:orientation="horizontal"
             android:visibility="invisible"
             >
@@ -143,6 +142,7 @@
                     android:layout_marginBottom="4dp"
                     android:layout_centerHorizontal="true"
                     />
+
                 <ImageView
                     android:id="@+id/weather_item_weather1"
                     android:layout_width="53dp"
@@ -327,7 +327,7 @@
                     android:layout_centerHorizontal="true"
                     />
             </RelativeLayout>
-        </GridLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/home_weather_alarm"

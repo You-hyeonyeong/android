@@ -15,19 +15,20 @@ import android.widget.Toast
 import com.google.android.gms.location.*
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
-import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.adapter.viewpager.FollowingPagerAdapter
 import org.weatherook.weatherook.adapter.viewpager.HomePagerAdapter
-import org.weatherook.weatherook.adapter.viewpager.RecommendPagerAdapter
-import org.weatherook.weatherook.api.network.NetworkService
-import org.weatherook.weatherook.item.LatLongItem
-import org.weatherook.weatherook.singleton.LatLongDriver
-import org.weatherook.weatherook.singleton.weatherDriver
-import org.weatherook.weatherook.utils.CustomViewPager
+import org.weatherook.weatherook.singleton.WeatherDriver
 import java.util.*
+import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
+import org.weatherook.weatherook.adapter.viewpager.RecommendPagerAdapter
+import org.weatherook.weatherook.item.LatLongItem
+import org.weatherook.weatherook.item.WeatherDriverItem
+import org.weatherook.weatherook.singleton.LatLongDriver
+import org.weatherook.weatherook.utils.CustomViewPager
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -37,7 +38,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view : View = View.inflate(activity, R.layout.fragment_home, null)
+        val view: View = View.inflate(activity, R.layout.fragment_home, null)
         val permissionlistener = object : PermissionListener {
             override fun onPermissionGranted() {
                 //Toast.makeText(activity, "Permission Granted", Toast.LENGTH_SHORT).show()
@@ -58,25 +59,25 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onStart() {
-            super.onStart()
-          //  val following_recycle: RecyclerView = view!!.findViewById(R.id.home_following_recycler)
+        super.onStart()
+        //  val following_recycle: RecyclerView = view!!.findViewById(R.id.home_following_recycler)
 
 /*
             home_scroll.setOnTouchListener { v, event ->  Log.d("tag",home_tab.top.toString())
                 true }
 */
-  //      home_scroll.pageScroll(View.FOCUS_UP)
-    //    home_scroll.isSmoothScrollingEnabled = true
-     //   home_scroll.
+        //      home_scroll.pageScroll(View.FOCUS_UP)
+        //    home_scroll.isSmoothScrollingEnabled = true
+        //   home_scroll.
 
-            val extensiblePageIndicator = view!!.findViewById(R.id.flexibleIndicator) as ExtensiblePageIndicator
-            val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
-            val adapter = HomePagerAdapter(childFragmentManager)
+        val extensiblePageIndicator = view!!.findViewById(R.id.flexibleIndicator) as ExtensiblePageIndicator
+        val viewPager = view!!.findViewById<ViewPager>(R.id.weather_viewPager)
+        val adapter = HomePagerAdapter(childFragmentManager)
 
 
-            viewPager.adapter = adapter
-            viewPager.currentItem = 1
-            extensiblePageIndicator.initViewPager(viewPager)
+        viewPager.adapter = adapter
+        viewPager.currentItem = 1
+        extensiblePageIndicator.initViewPager(viewPager)
 
         val rviewPager = view!!.findViewById<CustomViewPager>(R.id.recommend_viewPager)
         val radapter = RecommendPagerAdapter(childFragmentManager)
@@ -85,14 +86,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
         rviewPager.setPagingEnabled(false)
 
 
-
         val fviewPager = view!!.findViewById<ViewPager>(R.id.home_following_viewPager)
-            val fadapter = FollowingPagerAdapter(childFragmentManager)
+        val fadapter = FollowingPagerAdapter(childFragmentManager)
 
-            fviewPager.adapter = fadapter
-            home_tab.setupWithViewPager(fviewPager)
+        fviewPager.adapter = fadapter
+        home_tab.setupWithViewPager(fviewPager)
 
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
 
 
@@ -106,16 +106,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
             override fun onPageSelected(position: Int) {
                 //
-                if(position==2){
+                if (position == 2) {
                     rviewPager.currentItem = 1
-                }
-                else if(position==1){
+                } else if (position == 1) {
                     rviewPager.currentItem = 0
                 }
             }
         })
-        }
-
+    }
 
 
     lateinit var locationRequest: LocationRequest
@@ -140,16 +138,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
         FusedLocationProviderClient(activity!!).requestLocationUpdates(locationRequest, object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 onLocationChanged(locationResult!!.lastLocation)
-                locationResult!!.lastLocation.latitude
-                locationResult!!.lastLocation.longitude
-                Log.d("tag","================위도" + locationResult!!.lastLocation.latitude.toInt() + "경도" + locationResult!!.lastLocation.longitude)
-                LatLongDriver.LatLongDriver.onNext(LatLongItem(locationResult!!.lastLocation.latitude, locationResult!!.lastLocation.longitude))
             }
 
             override fun onLocationAvailability(locationAvailability: LocationAvailability?) {
                 try {
                     if (!locationAvailability!!.isLocationAvailable) {
-                     //   Toast.makeText(activity!!, "위치 불러오기에 실패함", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity!!, "위치 불러오기에 실패함", Toast.LENGTH_SHORT).show()
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -163,17 +157,19 @@ class HomeFragment : Fragment(), View.OnClickListener {
         try {
             getAddress(activity!!, location.latitude, location.longitude)
         } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
     fun getAddress(context: Context, lat: Double, lng: Double): String {
         var nowAddress = "현재 위치를 확인할 수 없습니다."
         val geocoder = Geocoder(context, Locale.KOREA)
-        var address =geocoder.getFromLocation(lat, lng, 1)
+        var address = geocoder.getFromLocation(lat, lng, 1)
         try {
             if (address != null && address.size > 0) {
                 val currentLocationAddress = address.get(0).subLocality
-                weatherDriver.weatherDriver.onNext(currentLocationAddress)
+                WeatherDriver.weatherDriver.onNext(WeatherDriverItem(lat, lng))
+                LatLongDriver.LatLongDriver.onNext(LatLongItem(lat,lng))
                 //Toast.makeText(activity!!, currentLocationAddress, Toast.LENGTH_SHORT).show()
                 nowAddress = currentLocationAddress
             }

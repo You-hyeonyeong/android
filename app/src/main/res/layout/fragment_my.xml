@@ -23,16 +23,18 @@
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
+            android:src="@drawable/mainlogo_mini"
             android:gravity="center"
             android:textSize="18sp"
             android:text="클로젯" />
         <Button
             android:id="@+id/my_setting_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:background="#ffffff"
+            android:layout_marginRight="15dp"
             android:text="설정"
             android:textColor="#aaaaaa"
             android:textSize="15sp"
@@ -84,7 +86,7 @@
             <ImageView
                 android:id="@+id/my_profile_edit_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="24dp"
                 android:layout_marginLeft="5dp"
                 android:src="@drawable/editpencil"
                 android:layout_toRightOf="@+id/setting_id_tv" />

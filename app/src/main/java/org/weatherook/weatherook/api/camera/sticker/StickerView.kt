@@ -40,6 +40,7 @@ abstract class StickerView : FrameLayout {
     private lateinit var iv_scale: ImageView
     private lateinit var iv_delete: ImageView
     private lateinit var iv_flip: ImageView
+    private lateinit var iv_move: ImageView
 
     // For scalling
     private var this_orgX = -1f
@@ -78,10 +79,19 @@ abstract class StickerView : FrameLayout {
         iv_scale = ImageView(context)
         iv_delete = ImageView(context)
         iv_flip = ImageView(context)
+        iv_move = ImageView(context)
 
         this.iv_scale.setImageResource(R.drawable.ic_action_zoomin)
         this.iv_delete.setImageResource(R.drawable.ic_action_remove)
-        iv_flip.setImageResource(R.drawable.ic_action_flip)
+        this.iv_flip.setImageResource(R.drawable.ic_action_flip)
+        this.iv_move.setImageResource(R.drawable.ic_action_move)
+
+        this.tag="DraggableViewGroup"
+        this.iv_border.tag="iv_border"
+        this.iv_scale.tag="iv_scale"
+        this.iv_delete.tag="iv_delete"
+        this.iv_flip.tag="iv_flip"
+        this.iv_move.tag="iv_move"
 
         val margin = convertDpToPixel(BUTTON_SIZE_DP, getContext()) / 2
         val size = convertDpToPixel(SELF_SIZE_DP, getContext())
@@ -122,13 +132,21 @@ abstract class StickerView : FrameLayout {
         )
         iv_flip_params.gravity = Gravity.TOP or Gravity.LEFT
 
+        val iv_move_params = FrameLayout.LayoutParams(
+                convertDpToPixel(BUTTON_SIZE_DP, getContext()),
+                convertDpToPixel(BUTTON_SIZE_DP, getContext())
+        )
+        iv_move_params.gravity = Gravity.BOTTOM or Gravity.LEFT
+
         this.layoutParams = this_params
         this.addView(getMainView(), iv_main_params)
         this.addView(iv_border, iv_border_params)
         this.addView(iv_scale, iv_scale_params)
         this.addView(iv_delete, iv_delete_params)
         this.addView(iv_flip, iv_flip_params)
+        this.addView(iv_move, iv_move_params)
         this.setOnTouchListener(mTouchListener)
+        this.iv_move.setOnTouchListener(mTouchListener)
         this.iv_scale.setOnTouchListener(mTouchListener)
         this.iv_delete.setOnClickListener(OnClickListener {
             if (this@StickerView.parent != null) {
@@ -140,20 +158,20 @@ abstract class StickerView : FrameLayout {
             Log.v("flip view", "flip the view")
 
             val mainView = getMainView()
-            mainView.setRotationY(if (mainView.getRotationY() == -180f) 0f else -180f)
-            mainView.invalidate()
+            mainView?.setRotationY(if (mainView.getRotationY() == -180f) 0f else -180f)
+            mainView?.invalidate()
             requestLayout()
         })
     }
 
     fun isFlip(): Boolean {
-        return getMainView().getRotationY() === -180f
+        return getMainView()?.getRotationY() === -180f
     }
 
-    protected abstract fun getMainView() : View
+    protected abstract fun getMainView() : View?
 
-    private val mTouchListener = OnTouchListener { view, event ->
-        if (view.tag == "DraggableViewGroup") {
+    val mTouchListener = OnTouchListener { view, event ->
+        if (view.tag == "iv_move") {
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     Log.v(TAG, "sticker view action down")
