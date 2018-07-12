@@ -11,6 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_recommend_today.*
+import kotlinx.android.synthetic.main.fragment_recommend_today.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.RecommendAdapter
 import org.weatherook.weatherook.api.network.NetworkService
@@ -30,6 +31,23 @@ class RecommendAFragment  : Fragment(), View.OnClickListener {
 
     var item1 = true
     override fun onClick(v: View) {
+
+        when(v){
+            recommend_refresh_btn -> {
+                clear()
+/*
+                if(!item1){
+                    additem1()
+                    item1 = true
+                }
+
+                else {
+                    additem2()
+                    item1= false
+                }
+                onResume()*/
+            }
+        }
 
         /*when(v){
             recommend_refresh_btn -> {
@@ -57,19 +75,13 @@ class RecommendAFragment  : Fragment(), View.OnClickListener {
             token = it
             Log.i("recommend", token)
         }
-        return v
-    }
 
-    override fun onStart() {
-        super.onStart()
-
-        recommend_refresh_btn.setOnClickListener(this)
         recommendItems = ArrayList()
 
         recommendAdapter = RecommendAdapter(recommendItems, context!!)
         //     recommendAdapter.setOnItemClickListener(this)
-        home_recommend_recycler.layoutManager = GridLayoutManager(context,2)
-        home_recommend_recycler.adapter = recommendAdapter
+        v.home_recommend_recycler.layoutManager = GridLayoutManager(context,2)
+        v.home_recommend_recycler.adapter = recommendAdapter
 
         WeatherDriver.weatherDriver.subscribe { it ->
             try {
@@ -78,16 +90,33 @@ class RecommendAFragment  : Fragment(), View.OnClickListener {
                     disposable = call.subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread()).subscribe(
                                     { success->
-                                        Log.i("urls_success1", success.data.size.toString())
-                                        for(i in 0..success.data.size-1){
-                                            recommendItems.add(RecommendItem(success.data[i].commendImg))
-                                            recommendAdapter.notifyDataSetChanged()
+                                        if(recommendItems.size==0){
+                                            Log.i("urls_success1", success.data.size.toString())
+                                            var num : Int = 0
+                                            if(success.data.size>4){
+                                                num=4
+                                            }else{
+                                                num = success.data.size
+                                            }
+
+                                            for(i in 0..num-1){
+                                                recommendItems.add(RecommendItem(success.data[i].commendImg))
+                                                recommendAdapter.notifyDataSetChanged()
+                                            }
                                         }
                                     },{fail-> Log.i("urls_failed", fail.message)})
                 }
             } catch (e: Exception) {
             }
         }
+        return v
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        recommend_refresh_btn.setOnClickListener(this)
+
 
         /*if(token!=null){
             val call = networkService.postRecommend(token!!)
@@ -103,6 +132,10 @@ class RecommendAFragment  : Fragment(), View.OnClickListener {
 
         //additem1()
 
+    }
+
+    fun clear(){
+        recommendItems.clear()
     }
 
     override fun onResume() {

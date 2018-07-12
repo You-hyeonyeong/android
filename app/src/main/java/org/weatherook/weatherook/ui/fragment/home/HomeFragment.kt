@@ -93,6 +93,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
             override fun onPageScrollStateChanged(state: Int) {
 
 
+
+
             }
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
