@@ -1,15 +1,58 @@
 package org.weatherook.weatherook.ui.fragment.home
 
+import android.database.Observable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_weather_yesterday.*
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.api.model.WeatherModel
+import org.weatherook.weatherook.api.network.NetworkService
+import org.weatherook.weatherook.singleton.LatLongDriver
 
-class YesterdayFragment: Fragment() {
+class YesterdayFragment : Fragment() {
+
+
+    var state = true
+    val networkService by lazy {
+        NetworkService.create()
+    }
+    var disposable: Disposable? = null
+
+    var x: Double = 0.0
+    var y: Double = 0.0
+
+    var weatherStr = arrayOf("맑음", "구름", "구름", "흐림", "비", "비", "눈")
+    var weatherIcon = arrayOf(R.drawable.main_sun, R.drawable.main_cloud_sun_2, R.drawable.main_cloud_sun_2, R.drawable.main_cloud_2, R.drawable.main_cloud_2, R.drawable.main_rainy_big, R.drawable.main_snow_2)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = View.inflate(activity, R.layout.fragment_weather_yesterday, null)
+
+        LatLongDriver.LatLongDriver.subscribe {
+            x = it.x
+            y = it.y
+
+            Log.d("tag", "========================" + x + "======================" + y)
+
+            val call = networkService.postWeather(x, y, 1)
+            disposable = call.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                            { WeatherModel ->
+                                yesterday_am_temp.setText(WeatherModel.data.tempAm.toString() + "º")
+                                yesterday_pm_temp.setText(WeatherModel.data.tempAf.toString() + "º")
+                                yesterday_am_image.setImageResource(weatherIcon[WeatherModel.data.weatherAm.toInt()])
+                                yesterday_pm_image.setImageResource(weatherIcon[WeatherModel.data.weatherAf.toInt()])
+                                yesterday_am_weather.setText(weatherStr[WeatherModel.data.weatherAm.toInt()])
+                                yesterday_pm_weather.setText(weatherStr[WeatherModel.data.weatherAf.toInt()])
+                            }, { fail -> Log.i("WeatherFragment", fail.message) })
+
+
+        }
         return view
     }
 }

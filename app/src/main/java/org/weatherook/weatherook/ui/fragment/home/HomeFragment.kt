@@ -31,6 +31,8 @@ import org.weatherook.weatherook.singleton.weatherDriver
 import java.util.*
 import com.merhold.extensiblepageindicator.ExtensiblePageIndicator
 import org.weatherook.weatherook.adapter.viewpager.RecommendPagerAdapter
+import org.weatherook.weatherook.item.LatLongItem
+import org.weatherook.weatherook.singleton.LatLongDriver
 import org.weatherook.weatherook.utils.CustomViewPager
 
 
@@ -144,6 +146,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
         FusedLocationProviderClient(activity!!).requestLocationUpdates(locationRequest, object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
                 onLocationChanged(locationResult!!.lastLocation)
+                locationResult!!.lastLocation.latitude
+                locationResult!!.lastLocation.longitude
+                Log.d("tag","================위도" + locationResult!!.lastLocation.latitude.toInt() + "경도" + locationResult!!.lastLocation.longitude)
+                LatLongDriver.LatLongDriver.onNext(LatLongItem(locationResult!!.lastLocation.latitude, locationResult!!.lastLocation.longitude))
             }
 
             override fun onLocationAvailability(locationAvailability: LocationAvailability?) {
