@@ -3,6 +3,7 @@ package org.weatherook.weatherook.api.network
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import org.weatherook.weatherook.api.model.*
+import org.weatherook.weatherook.item.UserSettingUpdateData
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,10 +36,12 @@ interface NetworkService {
     @POST("/auth/signin")
     fun postSignin(@Field("user_id") id : String, @Field("user_pw") pw : String) : Observable<SigninModel>
 
+    //어제, 오늘, 내일 날씨
     @FormUrlEncoded
     @POST("/weather")
     fun postWeather(@Field("x") x : Double, @Field("y") y : Double, @Field("date_type") date : Int) : Observable<WeatherModel>
 
+    // 3시간 단위 날씨
     @FormUrlEncoded
     @POST("/weather/list")
     fun postTimeWeather(@Field("x") x : Double, @Field("y") y : Double) : Observable<WeatherTimeModel>
@@ -72,6 +75,11 @@ interface NetworkService {
     @GET("/user/following")
     fun getMyFollowingProfile(@Header("token") token:String) : Observable<FollowingModel>
 
+    @GET("/user/setting")
+    fun getUserSetting(@Header("token") token:String) : Observable<UserSettingModel>
+
+    @PUT("/user/setting")
+    fun putUserSetting(@Header("token") token:String, @Body updateData : UserSettingUpdateData): Observable<UserSettingUpdateModel>
     @FormUrlEncoded
     @POST("/board/commend")
     fun postRecommend(@Header("token") token:String , @Field("x") lat:Float, @Field("y") long:Float,@Field("date_type") date:Int) : Observable<RecommendModel>
