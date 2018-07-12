@@ -1,7 +1,5 @@
 package org.weatherook.weatherook.item
 
-import org.weatherook.weatherook.api.model.BoardCommentModel
-
 data class FollowingItem (
         var boardIdx : Int,
         var profile : String,

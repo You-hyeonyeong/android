@@ -47,7 +47,7 @@ class CommentActivity : AppCompatActivity() {
                                     commenttotalAdapter.notifyDataSetChanged()
                                 }
                             }
-                        }, { fail -> Log.i("urls_failed", fail.message) })
+                        }, {/* fail -> Log.i("urls_failed", fail.message) */})
 
         /*commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
         commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))

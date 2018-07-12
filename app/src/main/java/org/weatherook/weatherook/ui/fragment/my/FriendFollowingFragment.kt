@@ -20,7 +20,10 @@ import org.weatherook.weatherook.singleton.tokenDriver
 /**
  * Created by HYEON on 2018-07-08.
  */
-class FriendFollowingFragment : Fragment() {
+class FriendFollowingFragment : Fragment(), View.OnClickListener {
+    override fun onClick(v: View?) {
+
+    }
 
     lateinit var friendItems : ArrayList<FriendItem>
     lateinit var friendAdapter : FriendAdapter
@@ -41,6 +44,7 @@ class FriendFollowingFragment : Fragment() {
         }
         friendItems = ArrayList()
         friendAdapter = FriendAdapter(friendItems, context!!)
+        //friendAdapter.setOnItemClickListener(this)
         Log.i("followingFragmentc", "oncreateview")
         val friend_following_rv : RecyclerView = v.findViewById(R.id.friend_following_recycle)
         friend_following_rv.layoutManager = GridLayoutManager(context,4)
@@ -51,7 +55,7 @@ class FriendFollowingFragment : Fragment() {
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { success ->
                                 for(i in 0..success.data.showFollowingIDResult.size-1){
-                                    friendItems.add(FriendItem(success.data.showFollowingIDResult[i].userImg,success.data.showFollowingIDResult[i].userId))
+                                    friendItems.add(FriendItem(success.data.showFollowingIDResult[i].userImg,success.data.showFollowingIDResult[i].userId,success.data.showFollowingIDResult[i].userDesc.toString()))
                                     Log.i("following_success",success.data.showFollowingIDResult[i].userImg)
                                     friendAdapter.notifyDataSetChanged()
                                 }
@@ -64,6 +68,8 @@ class FriendFollowingFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+
 
 
     }

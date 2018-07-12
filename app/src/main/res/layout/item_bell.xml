@@ -70,7 +70,7 @@
                     android:id="@+id/bell_time_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="분 전"
+                    android:text=" 분 게시"
                     android:textSize="10sp" />
             </LinearLayout>
 
@@ -84,8 +84,8 @@
 
         <ImageView
             android:id="@+id/bell_board_img"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:gravity="right"
             android:scaleType="centerCrop" />
     </LinearLayout>
