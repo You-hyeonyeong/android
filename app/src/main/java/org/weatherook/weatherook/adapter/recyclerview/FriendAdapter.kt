@@ -1,6 +1,7 @@
 package org.weatherook.weatherook.adapter.recyclerview
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import org.weatherook.weatherook.item.FriendItem
+import org.weatherook.weatherook.ui.activity.UserPageActivity
 import org.weatherook.weatherook.viewholder.FriendViewHolder
 
 /**
@@ -16,15 +18,15 @@ import org.weatherook.weatherook.viewholder.FriendViewHolder
  */
 class FriendAdapter (var friendItems : ArrayList<FriendItem>, val context : Context) : RecyclerView.Adapter<FriendViewHolder>() {
 
-    private lateinit var onItemClick: View.OnClickListener
+    /*lateinit var onItemClick: View.OnClickListener
 
     fun setOnItemClickListener(l: View.OnClickListener) {
         onItemClick = l
-    }
+    }*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendViewHolder {
         val mainView : View = LayoutInflater.from(parent.context).inflate(R.layout.item_friend,parent,false)
-//        mainView.setOnClickListener(onItemClick)
+        //mainView.setOnClickListener(onItemClick)
         return FriendViewHolder(mainView)
     }
 
@@ -33,6 +35,13 @@ class FriendAdapter (var friendItems : ArrayList<FriendItem>, val context : Cont
     override fun onBindViewHolder(holder: FriendViewHolder, position: Int) {
         GlideApp.with(context).load(friendItems[position].profile).into(holder!!.friendProfile)
         holder!!.friendId.text = friendItems[position].id
+        holder.friendProfile.setOnClickListener {
+            var intent : Intent = Intent(context, UserPageActivity::class.java)
+            friendItems[position].let{
+                intent.putExtra("id",it.id)
+            }
+
+            context.startActivity(intent) }
         Log.i("friendAdapter","onbind")
     }
 }

@@ -15,11 +15,10 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import org.weatherook.weatherook.item.BoardCommentItem
 import org.weatherook.weatherook.item.CommentItem
-import org.weatherook.weatherook.item.CommentTotalItem
 import org.weatherook.weatherook.item.FollowingItem
-import org.weatherook.weatherook.viewholder.FollowingViewHolder
 import org.weatherook.weatherook.ui.activity.CommentActivity
 import org.weatherook.weatherook.utils.KeyboardVisibility
+import org.weatherook.weatherook.viewholder.FollowingViewHolder
 
 
 class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commentLayoutManager: LinearLayoutManager, val context : Context) : RecyclerView.Adapter<FollowingViewHolder>() {

@@ -4,8 +4,6 @@ import android.content.Context
 import android.location.Geocoder
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -22,13 +20,13 @@ import kotlinx.android.synthetic.main.fragment_weather_today.*
 import kotlinx.android.synthetic.main.fragment_weather_today.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.WeatherAdapter
-import org.weatherook.weatherook.api.model.WeatherModel
 import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.WeatherDriverItem
 import org.weatherook.weatherook.item.WeatherItem
 import org.weatherook.weatherook.singleton.WeatherDriver
 import java.util.*
 import org.weatherook.weatherook.singleton.LatLongDriver
+import java.text.SimpleDateFormat
 
 class TodayFragment : Fragment(), View.OnClickListener {
 
@@ -62,6 +60,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
            // home_weather_recycler.visibility = View.INVISIBLE
             home_weather_grid.visibility = View.INVISIBLE
         }
+
     }
 
     lateinit var weatherItems: ArrayList<WeatherItem>
@@ -195,6 +194,19 @@ class TodayFragment : Fragment(), View.OnClickListener {
         return view
     }
 
+  /*  fun time() {
+        val now = System.currentTimeMillis()
+        val date = Date(now)
+        val CurDateFormat = SimpleDateFormat("yyyy년 MM월 dd일")
+        val strCurDate = CurDateFormat.format(date)
+    }*/
+
+    fun doYearMonthDay(): String {
+        val formatter = SimpleDateFormat("MM월 dd일 E요일", Locale.KOREA)
+        val date = Date()
+        return formatter.format(date)
+    }
+
 
     fun getAddress(context: Context, item : WeatherDriverItem): String {
         var nowAddress = "현재 위치를 확인할 수 없습니다."
@@ -216,5 +228,8 @@ class TodayFragment : Fragment(), View.OnClickListener {
 
         home_weather_change.setOnClickListener(this)
         home_weather_grid.setOnClickListener(this)
+
+        home_weather_date.text = doYearMonthDay()
+
     }
 }

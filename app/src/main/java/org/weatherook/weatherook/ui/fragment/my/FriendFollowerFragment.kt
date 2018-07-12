@@ -17,7 +17,11 @@ import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.FriendItem
 import org.weatherook.weatherook.singleton.tokenDriver
 
-class FriendFollowerFragment : Fragment() {
+class FriendFollowerFragment : Fragment(),View.OnClickListener {
+    override fun onClick(v: View?) {
+        //
+
+    }
 
     lateinit var friendItems: ArrayList<FriendItem>
     lateinit var friendAdapter: FriendAdapter
@@ -47,7 +51,7 @@ class FriendFollowerFragment : Fragment() {
                             { success ->
                                 Log.i("followerFragmentNum", success.data.showFollowerIDResult.size.toString())
                                 for (i in 0..success.data.showFollowerIDResult.size - 1){
-                                    friendItems.add(FriendItem(success.data.showFollowerIDResult[i].userImg, success.data.showFollowerIDResult[i].userId))
+                                    friendItems.add(FriendItem(success.data.showFollowerIDResult[i].userImg, success.data.showFollowerIDResult[i].userId,success.data.showFollowerIDResult[i].userDesc.toString()))
                                     Log.i("followerFragment", success.data.showFollowerIDResult[i].userImg)
                                     friendAdapter.notifyDataSetChanged()
                                     Log.i("followerFragment", success.message.toString())
