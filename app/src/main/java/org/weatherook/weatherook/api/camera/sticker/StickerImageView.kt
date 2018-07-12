@@ -12,7 +12,7 @@ import android.widget.ImageView
 class StickerImageView : StickerView {
 
     var ownerId: String? = null
-    private lateinit var iv_main: ImageView
+    var iv_main: ImageView? = null
 
     var imageBitmap: Bitmap
         get() = (this.iv_main!!.drawable as BitmapDrawable).bitmap
@@ -24,10 +24,11 @@ class StickerImageView : StickerView {
 
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {}
 
-    public override fun getMainView(): View {
+    public override fun getMainView(): View? {
         if (this.iv_main == null) {
             this.iv_main = ImageView(context)
             this.iv_main!!.scaleType = ImageView.ScaleType.FIT_XY
+            this.iv_main!!.isClickable = true
         }
         return iv_main
     }

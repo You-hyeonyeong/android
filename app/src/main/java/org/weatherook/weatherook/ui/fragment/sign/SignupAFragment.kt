@@ -1,5 +1,6 @@
 package org.weatherook.weatherook.ui.fragment
 
+import android.app.Activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -18,6 +19,9 @@ class SignupAFragment : Fragment() {
 
     //lateinit var list: ArrayList<EditText>
     val canSubmit = arrayOf(false, false)
+
+    var a_id: String? = null
+    var a_pw: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_signup_a, container, false)
@@ -39,6 +43,7 @@ class SignupAFragment : Fragment() {
 
         signupIdObservable.subscribe {
             val temp = it.toString()
+            a_id = it.toString()
             Log.d("rxtest", temp)
             if (temp.length == 0) {
                 canSubmit[0] = false
@@ -58,7 +63,13 @@ class SignupAFragment : Fragment() {
                         if (t1.toString().length < 6) {
                             false
                         } else {
-                            t1.toString().equals(t2.toString())
+                            if (t1.toString().equals(t2.toString())) {
+                                a_pw = t1.toString()
+                                SM!!.sendData(a_id!!,a_pw!!)
+                                true
+                            } else {
+                                false
+                            }
                         }
                     }
             )
@@ -66,14 +77,13 @@ class SignupAFragment : Fragment() {
             temp2.subscribe {
                 Log.d("rxtest", "비밀번호 : $it")
                 canSubmit[1] = it
-                if (!canSubmit[1]){
-                    if((signup_pw_tv.text.length != 0 && signup_check_tv.text.length != 0) &&
-                           (signup_pw_tv.text.length  >= 6 || signup_check_tv.text.length >=6 ))
-                       signup_check_msg.text = "비밀번호가 일치하지 않습니다."
+                if (!canSubmit[1]) {
+                    if ((signup_pw_tv.text.length != 0 && signup_check_tv.text.length != 0) &&
+                            (signup_pw_tv.text.length >= 6 || signup_check_tv.text.length >= 6))
+                        signup_check_msg.text = "비밀번호가 일치하지 않습니다."
                     else
                         signup_check_msg.text = ""
-                }
-                else signup_check_msg.text = " "
+                } else signup_check_msg.text = " "
                 if (canSubmit[0] && canSubmit[1]) {
                     signupDriver.onNext(true)
                 } else {
@@ -81,6 +91,21 @@ class SignupAFragment : Fragment() {
                 }
             }
 
+        }
+    }
+
+    var SM: SendMessage? = null
+
+    interface SendMessage {
+        fun sendData(id: String, pw: String)
+    }
+
+    override fun onAttach(activity: Activity?) {
+        super.onAttach(activity)
+        try {
+            SM = activity as SendMessage
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 }

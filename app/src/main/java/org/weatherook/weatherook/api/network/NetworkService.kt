@@ -1,6 +1,7 @@
 package org.weatherook.weatherook.api.network
 
 import io.reactivex.Observable
+import okhttp3.OkHttpClient
 import org.weatherook.weatherook.api.model.*
 import org.weatherook.weatherook.item.UserSettingUpdateData
 import retrofit2.Retrofit
@@ -24,8 +25,11 @@ interface NetworkService {
         }
     }
     //회원가입
+    @FormUrlEncoded
     @POST("/auth")
-    fun postSignup(@Body idpw: SignupModel) : Observable<SignupModel>
+    fun postSignup(@Field("user_id") id : String, @Field("user_pw") pw : String,
+    @Field("user_age")age :Int, @Field("user_gender") gender : String, @Field("user_height") height: Int,
+                   @Field("user_weight") weight : Int,@Field("user_stylelist")list:ArrayList<String>) : Observable<SignupModel>
 
     //로그인
     @FormUrlEncoded
@@ -76,4 +80,8 @@ interface NetworkService {
 
     @PUT("/user/setting")
     fun putUserSetting(@Header("token") token:String, @Body updateData : UserSettingUpdateData): Observable<UserSettingUpdateModel>
+    @FormUrlEncoded
+    @POST("/board/commend")
+    fun postRecommend(@Header("token") token:String , @Field("x") lat:Float, @Field("y") long:Float,@Field("date_type") date:Int) : Observable<RecommendModel>
+
 }

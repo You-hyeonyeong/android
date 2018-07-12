@@ -1,5 +1,7 @@
 package org.weatherook.weatherook.ui.fragment.home
 
+import android.content.Context
+import android.location.Geocoder
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -22,9 +24,11 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.WeatherAdapter
 import org.weatherook.weatherook.api.model.WeatherModel
 import org.weatherook.weatherook.api.network.NetworkService
+import org.weatherook.weatherook.item.WeatherDriverItem
 import org.weatherook.weatherook.item.WeatherItem
+import org.weatherook.weatherook.singleton.WeatherDriver
+import java.util.*
 import org.weatherook.weatherook.singleton.LatLongDriver
-import org.weatherook.weatherook.singleton.weatherDriver
 
 class TodayFragment : Fragment(), View.OnClickListener {
 
@@ -49,7 +53,6 @@ class TodayFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
         if (!isWeatherButtons) {
             isWeatherButtons = true
-
             home_weather_alarm.visibility = View.INVISIBLE
            // home_weather_recycler.visibility = View.VISIBLE
             home_weather_grid.visibility = View.VISIBLE
@@ -68,13 +71,16 @@ class TodayFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = View.inflate(activity!!, R.layout.fragment_weather_today, null)
         view.home_weather_location
-        weatherDriver.weatherDriver.subscribe {
-            if (it != null) {
-                view.home_weather_location.text = it
+        WeatherDriver.weatherDriver.subscribe {
+            try {
+                if(it!=null){
+                    view.home_weather_location.text = getAddress(context!!,it)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
-
-        val image: ImageView = view.findViewById(R.id.frag_today_weatherimg)
+        val image : ImageView = view.findViewById(R.id.frag_today_weatherimg)
         image.setOnClickListener {
             var anim = TranslateAnimation(TranslateAnimation.ABSOLUTE, 0f, TranslateAnimation.ABSOLUTE, 0f,
                     TranslateAnimation.RELATIVE_TO_PARENT, -0.05f, TranslateAnimation.RELATIVE_TO_PARENT, 0.05f)
@@ -96,7 +102,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
 
         LatLongDriver.LatLongDriver.subscribe {
 
-             x= it.x
+            x= it.x
             y = it.y
 
             Log.d("tag", "========================" + x + "======================" + y)
@@ -189,6 +195,21 @@ class TodayFragment : Fragment(), View.OnClickListener {
         return view
     }
 
+
+    fun getAddress(context: Context, item : WeatherDriverItem): String {
+        var nowAddress = "현재 위치를 확인할 수 없습니다."
+        val geocoder = Geocoder(context, Locale.KOREA)
+        var address = geocoder.getFromLocation(item.x, item.y, 1)
+        try {
+            if (address != null && address.size > 0) {
+                val currentLocationAddress = address.get(0).subLocality
+                nowAddress = currentLocationAddress
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return nowAddress
+    }
 
     override fun onStart() {
         super.onStart()

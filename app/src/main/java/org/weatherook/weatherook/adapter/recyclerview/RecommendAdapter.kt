@@ -9,6 +9,7 @@ import org.weatherook.weatherook.item.RecommendItem
 import org.weatherook.weatherook.ui.activity.SigninActivity
 import org.weatherook.weatherook.viewholder.RecommendViewHolder
 import android.view.*
+import org.weatherook.weatherook.api.glide.GlideApp
 
 
 class RecommendAdapter(var recommendItems : ArrayList<RecommendItem>, val context: Context) : RecyclerView.Adapter<RecommendViewHolder>() {
@@ -30,7 +31,7 @@ class RecommendAdapter(var recommendItems : ArrayList<RecommendItem>, val contex
     override fun getItemCount(): Int = recommendItems.size
 
     override fun onBindViewHolder(holder: RecommendViewHolder, position: Int) {
-        holder.recommendCody.setImageResource(recommendItems[position].cody)
+        GlideApp.with(context).load(recommendItems[position].cody).into(holder.recommendCody)
         val intent :Intent = Intent(context, SigninActivity::class.java)
         //intent.putExtra("url", recommendItems[position].cody)
     //   holder.recommendCody.setOnClickListener {

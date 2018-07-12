@@ -9,10 +9,14 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.fragment_signup_b.*
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.SignupBFragment
+import org.weatherook.weatherook.SignupCFragment
 import org.weatherook.weatherook.adapter.viewpager.SignupPagerAdapter
 import org.weatherook.weatherook.singleton.SignupDriver.signupDriver
+import org.weatherook.weatherook.ui.fragment.SignupAFragment
+import org.weatherook.weatherook.utils.KeyboardVisibility
 
-class SignupActivity : AppCompatActivity(), View.OnClickListener {
+class SignupActivity : AppCompatActivity(), View.OnClickListener, SignupAFragment.SendMessage, SignupBFragment.SendMessage1 {
 
 
     var next :Boolean = false
@@ -39,6 +43,9 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
                             inactiveNext()
 
                         } else {
+                            val tag = "android:switcher:" + R.id.signup_viewPager + ":" + 2
+                            val f = supportFragmentManager.findFragmentByTag(tag) as SignupCFragment
+                            f.signup()
                             finish()
                         }
 
@@ -61,6 +68,8 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -132,8 +141,20 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
         else return false
     }
 
-    fun checkCOk(){
-
+    override fun sendData(id: String, pw: String) {
+        val tag = "android:switcher:" + R.id.signup_viewPager + ":" + 1
+        val f = supportFragmentManager.findFragmentByTag(tag) as SignupBFragment
+        f.displayReceivedData(id, pw)
     }
 
+    override fun sendData1(id: String, pw: String, gender: String, height: Int, weight: Int) {
+        val tag = "android:switcher:" + R.id.signup_viewPager + ":" + 2
+        val f = supportFragmentManager.findFragmentByTag(tag) as SignupCFragment
+        f.displayReceivedData1(id, pw, gender, height, weight)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        KeyboardVisibility.hideKeyboard(this)
+    }
 }

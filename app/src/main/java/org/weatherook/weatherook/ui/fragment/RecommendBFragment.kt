@@ -19,7 +19,7 @@ class RecommendBFragment  : Fragment(), View.OnClickListener {
 
         when(v){
             home_refresh_btn -> {
-                clear()
+                /*clear()
 
                 if(!item1){
                     additem1()
@@ -30,7 +30,7 @@ class RecommendBFragment  : Fragment(), View.OnClickListener {
                     additem2()
                     item1= false
                 }
-                onResume()
+                onResume()*/
             }
         }
     }
@@ -48,7 +48,7 @@ class RecommendBFragment  : Fragment(), View.OnClickListener {
         home_refresh_btn.setOnClickListener(this)
         recommendItems = ArrayList()
 
-        additem1()
+        //additem1()
 
         recommendAdapter = RecommendAdapter(recommendItems, context!!)
         //     recommendAdapter.setOnItemClickListener(this)
@@ -66,7 +66,7 @@ class RecommendBFragment  : Fragment(), View.OnClickListener {
         recommendItems.clear()
     }
 
-    fun additem2(){
+    /*fun additem2(){
         recommendItems.add(RecommendItem(R.drawable.heartcolor))
         recommendItems.add(RecommendItem(R.drawable.heartcolor))
         recommendItems.add(RecommendItem(R.drawable.heartcolor))
@@ -80,7 +80,7 @@ class RecommendBFragment  : Fragment(), View.OnClickListener {
         recommendItems.add(RecommendItem(R.drawable.main_rain_2))
         recommendItems.add(RecommendItem(R.drawable.main_sun))
 
-    }
+    }*/
 
 
 }
