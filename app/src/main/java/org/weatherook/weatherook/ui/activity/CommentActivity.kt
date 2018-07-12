@@ -49,17 +49,7 @@ class CommentActivity : AppCompatActivity() {
                             }
                         }, {/* fail -> Log.i("urls_failed", fail.message) */})
 
-        /*commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
-        commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
-        commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
-        commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
-        commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
-        commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
-        commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
-        commenttotalItems.add(CommentTotalItem(R.drawable.main_rain,"지금","13분전","우억"))
 
-
-        commenttotalAdapter = CommentTotalAdapter(commenttotalItems, applicationContext)*/
         commenttotalAdapter = CommentTotalAdapter(commenttotalItems, applicationContext)
         comment_comment_recycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL,false)
         comment_comment_recycler.adapter = commenttotalAdapter

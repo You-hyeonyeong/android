@@ -21,9 +21,10 @@ import org.weatherook.weatherook.singleton.tokenDriver
 /**
  * Created by HYEON on 2018-07-04.
  */
-class MyGridFragment : Fragment(), View.OnClickListener {
+class UserGridFragment : Fragment(), View.OnClickListener {
 
     var token : String ?= null
+    var userId : String ?=null
 
     override fun onClick(p0: View?) {
 
@@ -43,6 +44,8 @@ class MyGridFragment : Fragment(), View.OnClickListener {
             token = it
             Log.i("grid", token)
         }
+        userId = activity!!.intent.getStringExtra("id")
+
         return view
     }
 
@@ -59,7 +62,7 @@ class MyGridFragment : Fragment(), View.OnClickListener {
         mypage_recycle.layoutManager = GridLayoutManager(activity, 2)
 
         if(token!=null){
-            val call = networkService.getMyBoard(token!!,null)
+            val call = networkService.getMyBoard(token!!,userId)
             disposable = call.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { success->

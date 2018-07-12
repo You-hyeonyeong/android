@@ -17,7 +17,6 @@ import org.weatherook.weatherook.item.BoardCommentItem
 import org.weatherook.weatherook.item.CommentItem
 import org.weatherook.weatherook.item.FollowingItem
 import org.weatherook.weatherook.ui.activity.CommentActivity
-import org.weatherook.weatherook.utils.KeyboardVisibility
 import org.weatherook.weatherook.viewholder.FollowingViewHolder
 
 
@@ -41,17 +40,7 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
             dialog.setContentView(view)
             dialog.show()
         }
-        mainView.following_commentwrite_btn.setOnClickListener{
-            mainView.following_comment_visible.visibility = View.VISIBLE
-            mainView.following_comment_write.requestFocus()
-            KeyboardVisibility.showKeyboard(context)
 
-        }
-
-        mainView.following_commentshow_btn.setOnClickListener {
-            val intent1 = Intent(context, CommentActivity::class.java)
-            mainView.context.startActivity(intent1)
-        }
         return FollowingViewHolder(mainView)
     }
 
