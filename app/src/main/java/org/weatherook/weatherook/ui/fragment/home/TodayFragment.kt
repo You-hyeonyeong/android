@@ -28,6 +28,9 @@ import org.weatherook.weatherook.singleton.weatherDriver
 class TodayFragment : Fragment(), View.OnClickListener {
 
     var state = true
+    var mtime = arrayOf(weather_item_time1,weather_item_time2,weather_item_time3,weather_item_time4,weather_item_time5, weather_item_time6)
+    var mweather = arrayOf(weather_item_weather1,weather_item_weather2,weather_item_weather3,weather_item_weather4,weather_item_weather5,weather_item_weather6)
+    var mtemp = arrayOf(weather_item_temp1,weather_item_temp2,weather_item_temp3,weather_item_temp4,weather_item_temp5,weather_item_temp6)
     val networkService by lazy {
         NetworkService.create()
     }
@@ -40,13 +43,15 @@ class TodayFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
         if (!isWeatherButtons) {
             isWeatherButtons = true
-            home_weather_alarm.visibility = View.INVISIBLE
-            home_weather_recycler.visibility = View.VISIBLE
 
+            home_weather_alarm.visibility = View.INVISIBLE
+           // home_weather_recycler.visibility = View.VISIBLE
+            home_weather_grid.visibility = View.VISIBLE
         } else {
             isWeatherButtons = false
             home_weather_alarm.visibility = View.VISIBLE
-            home_weather_recycler.visibility = View.INVISIBLE
+           // home_weather_recycler.visibility = View.INVISIBLE
+            home_weather_grid.visibility = View.INVISIBLE
         }
     }
 
@@ -88,6 +93,18 @@ class TodayFragment : Fragment(), View.OnClickListener {
             y = it.y
 
             Log.d("tag", "========================" + x + "======================" + y)
+         //   Log.d("tag", "=========================time================" + mtime[1].text)
+            val call1 = networkService.postTimeWeather(x, y)
+            disposable = call1.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                            { WeatherTimeModel ->
+                                for (i in 0..WeatherTimeModel.data.size - 1) {
+                                    mtime[i].setText(WeatherTimeModel.data[i].hour)
+                                    mweather[i].setImageResource(weatherimg[WeatherTimeModel.data[i].weather])
+                                    mtemp[i].setText(WeatherTimeModel.data[i].temp.toString()+"º")
+                                }
+                            }, { fail -> Log.i("WeatherFragment", fail.message) })
+            /*
             weatherItems = ArrayList()
 
             weatherAdapter = WeatherAdapter(weatherItems)
@@ -107,7 +124,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
                                 }
                             }, { fail -> Log.i("WeatherFragment", fail.message) })
 
-
+*/
             val call2 = networkService.postWeather(x, y, 2)
             disposable = call2.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
@@ -133,6 +150,6 @@ class TodayFragment : Fragment(), View.OnClickListener {
         super.onStart()
 
         home_weather_change.setOnClickListener(this)
-
+        home_weather_grid.setOnClickListener(this)
     }
 }
