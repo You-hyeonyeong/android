@@ -13,6 +13,7 @@ class StickerImageView : StickerView {
 
     var ownerId: String? = null
     var iv_main: ImageView? = null
+    var onclick : OnClickListener?=null
 
     var imageBitmap: Bitmap
         get() = (this.iv_main!!.drawable as BitmapDrawable).bitmap
@@ -40,5 +41,7 @@ class StickerImageView : StickerView {
     fun setImageDrawable(drawable: Drawable) {
         this.iv_main!!.setImageDrawable(drawable)
     }
+
+
 
 }

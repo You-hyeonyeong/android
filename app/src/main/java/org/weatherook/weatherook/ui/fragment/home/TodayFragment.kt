@@ -91,12 +91,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
             image.startAnimation(anim)
         }
 
-        val call = networkService.postTempWeather(23, 0)
-        disposable = call.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(
-                        { WeatherCommentModel ->
-                            home_weather_alarm.text = WeatherCommentModel.data.weatherTextTemp + "\n" + WeatherCommentModel.data.weatherTextWeather
-                        }, { fail -> Log.i("TodayFragment", fail.message) })
+
 
 
         LatLongDriver.LatLongDriver.subscribe {
@@ -109,14 +104,12 @@ class TodayFragment : Fragment(), View.OnClickListener {
             disposable = call1.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(
                             { WeatherTimeModel ->
-                                /*
-                                var index = 0
-                                for(t in ttime){
-                                    t.text = WeatherTimeModel.data[index].hour
-                                    index = index + 1
-                                }
-                                */
-                              //  var index : Int = 0
+                                val call = networkService.postTempWeather(WeatherTimeModel.data[0].temp, WeatherTimeModel.data[0].weather)
+                                disposable = call.subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                                                { WeatherCommentModel ->
+                                                    home_weather_alarm.text = WeatherCommentModel.data.weatherTextTemp + "\n" + WeatherCommentModel.data.weatherTextWeather
+                                                }, { fail -> Log.i("TodayFragment", fail.message) })
                                 weather_item_time1.text = WeatherTimeModel.data[0].hour + "시"
                                 weather_item_temp1.text = WeatherTimeModel.data[0].temp.toString() + "º"
                                 weather_item_weather1.setImageResource(weatherimg[WeatherTimeModel.data[0].weather])
@@ -135,45 +128,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
                                 weather_item_time6.text = WeatherTimeModel.data[5].hour + "시"
                                 weather_item_temp6.text = WeatherTimeModel.data[5].temp.toString() + "º"
                                 weather_item_weather6.setImageResource(weatherimg[WeatherTimeModel.data[5].weather])
-
-                            //    for (i in 0..WeatherTimeModel.data.size - 1) {
-
-                               //     ttime.get(index++).text = WeatherTimeModel.data[i].hour
-                                   // index = index+1
-                                    /*
-                                    weather_item_time1.text = WeatherTimeModel.data[i].hour
-                                    weather_item_temp1.text = WeatherTimeModel.data[i].temp.toString() + "º"
-                                    weather_item_weather1.setImageResource(weatherimg[WeatherTimeModel.data[i].weather])
-                                    weather_item_time1.text = WeatherTimeModel.data[i+1].hour
-                                    weather_item_temp1.text = WeatherTimeModel.data[i+1].temp.toString() + "º"
-
-                                    mtemp[i].text = WeatherTimeModel.data[i].hour
-                                    //mtemp[i].setText(WeatherTimeModel.data[i].temp.toString()+"º")
-*/
-                           //     }
-
                             }, { fail -> Log.i("WeatherFragment", fail.message) })
-            /*
-            weatherItems = ArrayList()
-
-            weatherAdapter = WeatherAdapter(weatherItems)
-            weatherAdapter.setOnItemClickListener(this)
-            val weatherRecycler: RecyclerView = view.findViewById(R.id.home_weather_recycler)
-
-            weatherRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            weatherRecycler.adapter = weatherAdapter
-
-            val call1 = networkService.postTimeWeather(x, y)
-            disposable = call1.subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread()).subscribe(
-                            { WeatherTimeModel ->
-                                for (i in 0..WeatherTimeModel.data.size - 1) {
-                                    weatherItems.add(WeatherItem(WeatherTimeModel.data[i].hour + "시", weatherimg[WeatherTimeModel.data[i].weather], WeatherTimeModel.data[i].temp.toString() + "º"))
-                                    weatherAdapter.notifyDataSetChanged()
-                                }
-                            }, { fail -> Log.i("WeatherFragment", fail.message) })
-
-*/
             val call2 = networkService.postWeather(x, y, 2)
             disposable = call2.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe(

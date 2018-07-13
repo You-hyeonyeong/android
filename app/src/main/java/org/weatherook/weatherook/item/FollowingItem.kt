@@ -2,7 +2,7 @@ package org.weatherook.weatherook.item
 
 data class FollowingItem (
         var boardIdx : Int,
-        var profile : String,
+        var profile : String?,
         var id : String,
         //var heart : Int,
         var count : Int,
@@ -10,6 +10,6 @@ data class FollowingItem (
         var date : String,
         var weather : Int,
         var temperature : String,
-        var content : String,
+        var content : String?,
         var comment : List<BoardCommentItem>
 )

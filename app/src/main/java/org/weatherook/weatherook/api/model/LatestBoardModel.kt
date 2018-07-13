@@ -10,11 +10,11 @@ data class LatestBoardModel(
 ) {
 
     data class Data(
-            @SerializedName("user_img") val userImg: String, // https://s3.ap-northeast-2.amazonaws.com/weatherook/siyun.jpeg
+            @SerializedName("user_img") val userImg: String?, // https://s3.ap-northeast-2.amazonaws.com/weatherook/siyun.jpeg
             @SerializedName("user_id") val userId: String, // blueberry3
             @SerializedName("board_idx") val boardIdx: Int, // 4
             @SerializedName("board_img") val boardImg: String, // https://weatherook.s3.ap-northeast-2.amazonaws.com/1531062031824.PNG
-            @SerializedName("board_desc") val boardDesc: String, // 오랜만이얌
+            @SerializedName("board_desc") val boardDesc: String?, // 오랜만이얌
             @SerializedName("like_cnt") val likeCnt: Int, // 1
             @SerializedName("board_temp_min") val boardTempMin: Int, // 14
             @SerializedName("board_temp_max") val boardTempMax: Int, // 20

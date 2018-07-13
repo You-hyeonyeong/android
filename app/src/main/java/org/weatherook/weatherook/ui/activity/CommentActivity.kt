@@ -40,7 +40,7 @@ class CommentActivity : AppCompatActivity() {
         disposable = call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(
                         { GetCommentModel ->
-                            Log.i("latestboard", GetCommentModel.data.size.toString())
+                            Log.i("commendboard", GetCommentModel.data.size.toString())
                             for (i in 0..GetCommentModel.data.size-1){
                                 GetCommentModel.data[i].let {
                                     commenttotalItems.add(CommentTotalItem(it.userImg,it.commentDate,it.commentId,it.commentDesc))

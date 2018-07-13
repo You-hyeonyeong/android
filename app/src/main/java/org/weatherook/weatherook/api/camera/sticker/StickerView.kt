@@ -38,7 +38,7 @@ abstract class StickerView : FrameLayout {
 
     private lateinit var iv_border: BorderView
     private lateinit var iv_scale: ImageView
-    private lateinit var iv_delete: ImageView
+    public lateinit var iv_delete: ImageView
     private lateinit var iv_flip: ImageView
     private lateinit var iv_move: ImageView
 
@@ -166,6 +166,22 @@ abstract class StickerView : FrameLayout {
 
     fun isFlip(): Boolean {
         return getMainView()?.getRotationY() === -180f
+    }
+
+    public fun shouldShowButtons(tf: Boolean){
+        if(tf){
+            iv_flip.visibility= View.VISIBLE
+            iv_move.visibility=View.VISIBLE
+            iv_scale.visibility=View.VISIBLE
+            iv_delete.visibility=View.VISIBLE
+            iv_border.visibility = View.VISIBLE
+        }else{
+            iv_border.visibility = View.INVISIBLE
+            iv_flip.visibility= View.INVISIBLE
+            iv_move.visibility=View.INVISIBLE
+            iv_scale.visibility=View.INVISIBLE
+            iv_delete.visibility=View.INVISIBLE
+        }
     }
 
     protected abstract fun getMainView() : View?

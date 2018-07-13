@@ -11,10 +11,10 @@ data class PopularBoardModel(
 
     data class Data(
             @SerializedName("board_idx") val boardIdx: Int, // 19
-            @SerializedName("user_img") val userImg: String, // https://s3.ap-northeast-2.amazonaws.com/weatherook/hyunyoung.jpeg
+            @SerializedName("user_img") val userImg: String?, // https://s3.ap-northeast-2.amazonaws.com/weatherook/hyunyoung.jpeg
             @SerializedName("user_id") val userId: String, // graycode
             @SerializedName("board_img") val boardImg: String, // https://weatherook.s3.ap-northeast-2.amazonaws.com/1531063432130.PNG
-            @SerializedName("board_desc") val boardDesc: String, // 열일!!♥~~
+            @SerializedName("board_desc") val boardDesc: String?, // 열일!!♥~~
             @SerializedName("like_cnt") val likeCnt: Int, // 0
             @SerializedName("board_temp_min") val boardTempMin: Int, // 18
             @SerializedName("board_temp_max") val boardTempMax: Int, // 29

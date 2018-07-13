@@ -56,7 +56,66 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"/>
 
+        <ImageView
+            android:id="@+id/sticker_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="8dp"
+            android:src="@drawable/sticker_cute"/>
+
     </FrameLayout>
+
+    <GridLayout
+        android:id="@+id/camhome_sticker_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:columnCount="3"
+        android:background="#90909090"
+        android:elevation="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/subConstraintLayout"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/sticker1"
+            android:src="@drawable/camera_sticker"
+            android:layout_columnWeight="1"/>
+        <ImageView
+            android:id="@+id/sticker2"
+            android:src="@drawable/camera_sticker2"
+            android:layout_height="match_parent"
+            android:layout_columnWeight="1"/>
+        <ImageView
+            android:id="@+id/sticker3"
+            android:src="@drawable/camera_sticker3"
+            android:layout_columnWeight="1"/>
+        <ImageView
+            android:id="@+id/sticker4"
+            android:src="@drawable/camera_sticker4"
+            android:layout_columnWeight="1"/>
+        <ImageView
+            android:id="@+id/sticker5"
+            android:src="@drawable/camera_sticker5"
+            android:layout_columnWeight="1"/>
+        <ImageView
+            android:id="@+id/sticker6"
+            android:src="@drawable/camera_sticker6"
+            android:layout_columnWeight="1"/>
+        <ImageView
+            android:id="@+id/sticker7"
+            android:src="@drawable/camera_sticker7"
+            android:layout_columnWeight="1"/>
+        <ImageView
+            android:id="@+id/sticker8"
+            android:src="@drawable/camera_sticker8"
+            android:layout_columnWeight="1"/>
+        <ImageView
+            android:id="@+id/sticker9"
+            android:src="@drawable/camera_sticker9"
+            android:layout_columnWeight="1"/>
+
+    </GridLayout>
 
     <!--<ImageView
         android:id="@+id/camhome_container"

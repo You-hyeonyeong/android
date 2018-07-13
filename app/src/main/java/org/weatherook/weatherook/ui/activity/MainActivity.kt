@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import org.weatherook.weatherook.R
@@ -17,6 +18,8 @@ import org.weatherook.weatherook.ui.fragment.my.MyFragment
 import org.weatherook.weatherook.singleton.tokenDriver
 import org.weatherook.weatherook.ui.fragment.*
 import org.weatherook.weatherook.utils.BottomNavigationViewHelper
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.i("date", SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.KOREA).format(Calendar.getInstance().time))
 
         val fragmentManager : FragmentManager = supportFragmentManager
 

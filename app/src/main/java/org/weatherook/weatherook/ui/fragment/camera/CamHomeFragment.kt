@@ -1,7 +1,6 @@
 package org.weatherook.weatherook.ui.fragment.camera
 
 import android.content.Intent
-import android.graphics.PointF
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -13,9 +12,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.davemorrissey.labs.subscaleview.ImageSource
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView.SCALE_TYPE_CENTER_CROP
-import org.weatherook.weatherook.api.glide.GlideApp
 import kotlinx.android.synthetic.main.fragment_camhome.*
+import kotlinx.android.synthetic.main.fragment_camhome.view.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.camera.CameraActivity
 import org.weatherook.weatherook.api.camera.sticker.StickerImageView
@@ -27,6 +27,10 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
     override fun onClick(v: View?) {
         //do nothing
     }
+    var stickerTabList = ArrayList<ImageView>()
+    var stickerIDList = ArrayList<Int>()
+    var stickerList = ArrayList<StickerImageView>()
+    var onStickerList : ArrayList<StickerImageView>?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = View.inflate(activity, R.layout.fragment_camhome, null)
@@ -68,11 +72,53 @@ class CamHomeFragment : Fragment() , View.OnClickListener{
                 e.printStackTrace()
             }
         }
+        val camhome_container: SubsamplingScaleImageView = view.findViewById(R.id.camhome_container)
+        camhome_container.setOnClickListener {
+            for(i in stickerList){
+                i.shouldShowButtons(false)
+            }
+        }
 
         val canvas : FrameLayout = view.findViewById(R.id.sticker_frame)
-        val iv_sticker = StickerImageView(context!!)
+
+        stickerTabList.add(view.sticker1)
+        stickerTabList.add(view.sticker2)
+        stickerTabList.add(view.sticker3)
+        stickerTabList.add(view.sticker4)
+        stickerTabList.add(view.sticker5)
+        stickerTabList.add(view.sticker6)
+        stickerTabList.add(view.sticker7)
+        stickerTabList.add(view.sticker8)
+        stickerTabList.add(view.sticker9)
+
+        stickerIDList.add(R.drawable.camera_sticker)
+        stickerIDList.add(R.drawable.camera_sticker2)
+        stickerIDList.add(R.drawable.camera_sticker3)
+        stickerIDList.add(R.drawable.camera_sticker4)
+        stickerIDList.add(R.drawable.camera_sticker5)
+        stickerIDList.add(R.drawable.camera_sticker6)
+        stickerIDList.add(R.drawable.camera_sticker7)
+        stickerIDList.add(R.drawable.camera_sticker8)
+        stickerIDList.add(R.drawable.camera_sticker9)
+        for(i in stickerTabList){
+            i.setOnClickListener {
+                val iv_sticker = StickerImageView(context!!)
+                //iv_sticker.setImageDrawable(i.drawable)
+                stickerList.add(iv_sticker)
+                iv_sticker.iv_main!!.setOnClickListener{iv_sticker.shouldShowButtons(true)
+                    iv_sticker.iv_delete.setOnClickListener { stickerList.remove(iv_sticker) }}
+                iv_sticker.setImageResource(stickerIDList.get(stickerTabList.indexOf(i)))
+                canvas.addView(iv_sticker)
+                view.camhome_sticker_container.visibility=View.INVISIBLE
+            }
+        }
+        view.sticker_btn.setOnClickListener {
+            view.camhome_sticker_container.visibility=View.VISIBLE
+        }
+
+        /*val iv_sticker = StickerImageView(context!!)
         iv_sticker.setImageDrawable(getResources().getDrawable( R.drawable.moon))
-        canvas.addView(iv_sticker)
+        canvas.addView(iv_sticker)*/
 
         return view
     }
