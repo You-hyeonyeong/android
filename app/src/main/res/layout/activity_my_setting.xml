@@ -438,7 +438,7 @@
                     android:layout_marginRight="10dp"
                     android:gravity="center"
                     android:textSize="13dp"
-                    android:text="엘레강스"
+                    android:text="심플"
                     android:textColor="@color/gray"
                     android:background="@drawable/graybtn_state"/>
                 <TextView
