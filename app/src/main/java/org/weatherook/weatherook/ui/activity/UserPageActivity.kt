@@ -12,8 +12,8 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.glide.GlideApp
 import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.singleton.tokenDriver
-import org.weatherook.weatherook.ui.fragment.MyGridFragment
-import org.weatherook.weatherook.ui.fragment.MyListFragment
+import org.weatherook.weatherook.ui.fragment.UserGridFragment
+import org.weatherook.weatherook.ui.fragment.UserListFragment
 
 class UserPageActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -29,14 +29,14 @@ class UserPageActivity : AppCompatActivity(), View.OnClickListener {
                 my_grid_img.isSelected = true
                 my_list_img.isSelected = false
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.id.mypage_recycle, MyGridFragment()).commit()
+                fragmentTransaction.replace(R.id.mypage_recycle, UserGridFragment()).commit()
             }
 
             my_list_img -> {
                 my_list_img.isSelected = true
                 my_grid_img.isSelected = false
                 val fragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.replace(R.id.mypage_recycle, MyListFragment()).commit()
+                fragmentTransaction.replace(R.id.mypage_recycle, UserListFragment()).commit()
 
             }
         }
@@ -70,7 +70,7 @@ class UserPageActivity : AppCompatActivity(), View.OnClickListener {
         super.onStart()
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.mypage_recycle, MyGridFragment()).commit()
+        fragmentTransaction.replace(R.id.mypage_recycle, UserGridFragment()).commit()
 
         if (token != null) {
             val call = networkService.getMyBoard(token!!,userId!!)
@@ -87,7 +87,7 @@ class UserPageActivity : AppCompatActivity(), View.OnClickListener {
                                 my_following_num.text = success.showFollowingNumResult[0].following.toString()
                             }, { /*fail -> Log.i("urls_failed", fail.message)*/ })
         }
-
+        my_grid_img.isSelected = true
         my_grid_img.setOnClickListener(this)
         my_list_img.setOnClickListener(this)
 
