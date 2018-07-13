@@ -61,7 +61,7 @@ class FilterFragment :  Fragment(), View.OnClickListener{
                 today_style.add(today_style_btn8)
                 today_style.add(today_style_btn9)
                 today_style.add(today_style_btn10)
-
+//
                 for (ts in today_style) {
                     if(ts.isSelected){
                         stylelist.add(ts.text.toString())
