@@ -46,6 +46,8 @@ class FilterTodayFragment : Fragment(),View.OnClickListener, SeekBar.OnSeekBarCh
     override fun onClick(p0: View?) {
         when (p0) {
             today_women -> {
+                today_women.isSelected = true
+                today_men.isSelected = false
                 today_women.setTextColor(resources.getColor(R.color.weatherookTheme))
                 today_women.setTypeface(null, Typeface.BOLD)
                 today_men.setTextColor(Color.GRAY)
@@ -53,6 +55,8 @@ class FilterTodayFragment : Fragment(),View.OnClickListener, SeekBar.OnSeekBarCh
 
             }
             today_men -> {
+                today_women.isSelected = false
+                today_men.isSelected = true
                 today_men.setTextColor(resources.getColor(R.color.weatherookTheme))
                 today_men.setTypeface(null, Typeface.BOLD)
                 today_women.setTextColor(Color.GRAY)
@@ -77,6 +81,7 @@ class FilterTodayFragment : Fragment(),View.OnClickListener, SeekBar.OnSeekBarCh
         today_spinner_tall.adapter = todaySpinner
         today_women.setOnClickListener(this)
         today_men.setOnClickListener(this)
+        today_women.isSelected = true
 
         today_style.add(today_style_btn1)
         today_style.add(today_style_btn2)

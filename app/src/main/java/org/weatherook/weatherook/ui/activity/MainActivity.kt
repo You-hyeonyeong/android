@@ -9,13 +9,13 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.singleton.tokenDriver
 import org.weatherook.weatherook.ui.fragment.HomeFragment
 import org.weatherook.weatherook.ui.fragment.bell.BellFragment
 import org.weatherook.weatherook.ui.fragment.camera.CamHomeFragment
+import org.weatherook.weatherook.ui.fragment.filter.FilterCompleteFragment
 import org.weatherook.weatherook.ui.fragment.filter.FilterFragment
 import org.weatherook.weatherook.ui.fragment.my.MyFragment
-import org.weatherook.weatherook.singleton.tokenDriver
-import org.weatherook.weatherook.ui.fragment.*
 import org.weatherook.weatherook.utils.BottomNavigationViewHelper
 
 
@@ -73,4 +73,13 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
+   /*override fun sendData(gender: String, tall: Int, size: String, stylelist: ArrayList<String>) {
+        //val tag = "android:switcher:" + R.id.signup_viewPager + ":" + 2
+        val f = supportFragmentManager.findFragmentByTag("filtercomplete") as FilterCompleteFragment
+        f.displayReceivedData(gender, tall, size, stylelist)
+    }*/
+
+
+
 }
