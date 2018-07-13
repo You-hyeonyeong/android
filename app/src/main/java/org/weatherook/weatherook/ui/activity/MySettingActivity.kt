@@ -116,6 +116,8 @@ class MySettingActivity : AppCompatActivity(), View.OnClickListener {
 
                     val bitmap = BitmapFactory.decodeStream(input, null, options) // InputStream 으로부터 Bitmap 을 만들어 준다.
                     val baos = ByteArrayOutputStream()
+
+
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
                     val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
                     val photo = File(this.data.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
