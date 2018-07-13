@@ -1,12 +1,17 @@
 package org.weatherook.weatherook.api.network
 
+import android.graphics.Bitmap
 import io.reactivex.Observable
+import okhttp3.MultipartBody
+import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import org.weatherook.weatherook.api.model.*
 import org.weatherook.weatherook.item.UserSettingUpdateData
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import java.io.File
 
 
 interface NetworkService {
@@ -59,6 +64,13 @@ interface NetworkService {
     @POST("/user/show")
     fun getMyBoard(@Header("token") token:String, @Field("other_id") otherid : String?) : Observable<MyBoardModel>
 
+    @Multipart
+    @POST("/board")
+    fun postBoard(@Header("token") token:String, @Part img: MultipartBody.Part?, @Part("board_desc") desc: RequestBody
+                  , @Part("board_auth") auth:RequestBody, @Part("board_date") date:RequestBody, @Part("board_stylelist") stylelist:RequestBody?,
+                  @Part("board_weather") weather:RequestBody, @Part("board_temp_min") tempmin:RequestBody, @Part("board_temp_max") tempmax:RequestBody)
+    : Observable<PostBoardModel>
+
     @FormUrlEncoded
     @POST("/board/commend")
     fun postRecommend(@Header("token") token:String? , @Field("x") lat:Float, @Field("y") long:Float,@Field("date_type") date:Int) : Observable<RecommendModel>
@@ -67,6 +79,11 @@ interface NetworkService {
     @FormUrlEncoded
     @POST("/board/comment")
     fun postcomment(@Header("token") token:String? , @Field("board_idx") idx : Int, @Field("comment_desc") comment : String ) : Observable<PostCommentModel>
+
+    //오늘의 게시물 필터링
+    @FormUrlEncoded
+    @POST("/board/today/filter")
+    fun postTodayFilter(@Field("gender") gender : String, @Field("height") height: Int,@Field("size") size : String,@Field("stylelist") stylelist : ArrayList<String>)
 
     //메인 최신순
     @GET("/board/today/latest")

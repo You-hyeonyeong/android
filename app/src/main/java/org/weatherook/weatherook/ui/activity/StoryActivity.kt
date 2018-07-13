@@ -15,10 +15,6 @@ class StoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_story)
 
-        storyitem = ArrayList()
-        storyitem.clear()
-
-        //정빈이꺼 복 붙
 
     }
 }

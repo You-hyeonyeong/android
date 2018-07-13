@@ -99,7 +99,7 @@
         android:layout_margin="8dp"
         android:fillViewport="true">
 
-        <EditText
+        <TextView
             android:id="@+id/write_editText"
             android:layout_width="match_parent"
             android:layout_height="0dp"

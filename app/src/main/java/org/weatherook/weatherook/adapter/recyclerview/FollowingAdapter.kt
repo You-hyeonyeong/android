@@ -47,7 +47,11 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
     override fun getItemCount(): Int = followingItems.size
 
     override fun onBindViewHolder(holder: FollowingViewHolder, position: Int) {
-        GlideApp.with(context).load(followingItems[position].profile).into(holder!!.followingProfile)
+        if(followingItems[position].profile!=null){
+            GlideApp.with(context).load(followingItems[position].profile).into(holder.followingProfile)
+        }else{
+            GlideApp.with(context).load(R.drawable.profile_none).into(holder.followingProfile)
+        }
         holder.followingId.text = followingItems[position].id
         //GlideApp.with(context).load(followingItems[position].heart).into(holder!!.followingHeart)
         holder.followingCount.text = followingItems[position].count.toString()
