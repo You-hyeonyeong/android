@@ -23,7 +23,7 @@ import org.weatherook.weatherook.ui.fragment.my.MyFragment
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var fragmentManager: FragmentManager
-
+//
     lateinit var homeFragment : Fragment
     val searchFragment = FilterFragment()
     lateinit var cameraFragment: Fragment
