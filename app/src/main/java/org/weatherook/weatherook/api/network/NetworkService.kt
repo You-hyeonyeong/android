@@ -92,6 +92,6 @@ interface NetworkService {
     fun putUserSetting(@Header("token") token:String, @Body updateData : UserSettingUpdateData): Observable<UserSettingUpdateModel>
     @FormUrlEncoded
     @POST("/board/commend")
-    fun postRecommend(@Header("token") token:String , @Field("x") lat:Float, @Field("y") long:Float,@Field("date_type") date:Int) : Observable<RecommendModel>
+    fun postRecommend(@Header("token") token:String? , @Field("x") lat:Float, @Field("y") long:Float,@Field("date_type") date:Int) : Observable<RecommendModel>
 
 }

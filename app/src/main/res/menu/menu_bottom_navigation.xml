@@ -4,35 +4,35 @@
     <item
         android:id="@+id/action_home"
         android:enabled="true"
-        android:title="home"
+        android:title=""
         app:showAsAction="ifRoom"
         android:icon="@drawable/home_state"
         android:visible="true"/>
     <item
         android:id="@+id/action_search"
         android:enabled="true"
-        android:title="search"
+        android:title=""
         app:showAsAction="ifRoom"
         android:icon="@drawable/search_state"
         android:visible="true"/>
     <item
         android:id="@+id/action_camera"
         android:enabled="true"
-        android:title="camera"
+        android:title=""
         app:showAsAction="ifRoom"
         android:icon="@drawable/cam_state"
         android:visible="true"/>
     <item
         android:id="@+id/action_liked"
         android:enabled="true"
-        android:title="liked"
+        android:title=""
         app:showAsAction="ifRoom"
         android:icon="@drawable/heart_state"
         android:visible="true"/>
     <item
         android:id="@+id/action_my"
         android:enabled="true"
-        android:title="my"
+        android:title=""
         app:showAsAction="ifRoom"
         android:icon="@drawable/mypage_state"
         android:visible="true"/>
