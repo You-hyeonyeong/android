@@ -204,7 +204,7 @@
                 android:background="#7a7a7a" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/following_write_profile"
+                android:id="@+id/reply_write_profile"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_centerVertical="true"
@@ -214,21 +214,22 @@
                 />
 
             <EditText
-                android:id="@+id/following_comment_write"
+                android:id="@+id/reply_comment_write"
                 android:layout_width="270dp"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@id/following_write_profile"
+                android:layout_toRightOf="@id/reply_write_profile"
                 android:background="@null"
                 android:focusable="true"
                 android:hint="댓글..." />
 
             <TextView
+                android:id="@+id/reply_complete_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/following_comment_write"
+                android:layout_toRightOf="@id/reply_comment_write"
                 android:textSize="15sp"
                 android:text="게시" />
         </RelativeLayout>

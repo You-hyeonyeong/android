@@ -77,7 +77,7 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
             intent.putExtra("boardIdx",followingItems[position].boardIdx)
             intent.putExtra("user_profile", followingItems[position].profile)
             intent.putExtra("user_id", followingItems[position].id)
-            intent.putExtra("like_count", followingItems[position].count)
+            intent.putExtra("like_count", followingItems[position].count.toString())
             intent.putExtra("date", followingItems[position].date)
             //intent.putExtra("location", followingItems[position].count)
             intent.putExtra("weather", weather)

@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName
 
 data class GetCommentModel(
         @SerializedName("message") val message: String, // Successfully get comment list
-        @SerializedName("data") val data: List<Data>
+        @SerializedName("data") val data: List<Data>,
+        @SerializedName("user_img") val userImg: String // https://weatherook.s3.ap-northeast-2.amazonaws.com/1531433783608.jpeg
 ) {
 
     data class Data(
