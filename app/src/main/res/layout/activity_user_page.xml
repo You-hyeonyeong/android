@@ -82,13 +82,6 @@
                         android:text="로그인이 필요합니다"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-                    <ImageView
-                        android:id="@+id/my_profile_edit_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="5dp"
-                        android:src="@drawable/editpencil"
-                        android:layout_toRightOf="@+id/setting_id_tv" />
 
                     <TextView
                         android:id="@+id/setting_self_tv"
@@ -197,10 +190,10 @@
                 <Button
                     android:id="@+id/my_grid_img"
                     android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_height="19dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/mypagelist1_state"/>
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/mypagelist1_state" />
 
                 <Button
                     android:id="@+id/my_list_img"

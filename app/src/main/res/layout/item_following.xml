@@ -158,53 +158,7 @@
 
             </android.support.v7.widget.RecyclerView>
 
-            <LinearLayout
-                android:id="@+id/following_comment_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/following_comment_recycler"
-                android:layout_marginTop="10dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/following_comment_profile"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_launcher_background"
-
-                    />
-
-                <TextView
-                    android:id="@+id/following_comment_visible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:text="댓글"
-                    android:textColor="#aaaaaa"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/following_comment_write"
-                android:layout_width="300dp"
-                android:layout_height="35dp"
-                android:layout_below="@id/following_comment_info"
-                android:layout_marginTop="5dp"
-                android:hint="댓글"
-                android:background="@null"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/following_commentwrite_btn"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:layout_below="@id/following_comment_info"
-                android:layout_toRightOf="@id/following_comment_write"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:text="작성하기" />
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

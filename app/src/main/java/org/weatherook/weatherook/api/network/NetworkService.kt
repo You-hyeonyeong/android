@@ -71,6 +71,15 @@ interface NetworkService {
                   @Part("board_weather") weather:RequestBody, @Part("board_temp_min") tempmin:RequestBody, @Part("board_temp_max") tempmax:RequestBody)
     : Observable<PostBoardModel>
 
+    @FormUrlEncoded
+    @POST("/board/commend")
+    fun postRecommend(@Header("token") token:String? , @Field("x") lat:Float, @Field("y") long:Float,@Field("date_type") date:Int) : Observable<RecommendModel>
+
+    //게시글 댓글 달기
+    @FormUrlEncoded
+    @POST("/board/comment")
+    fun postcomment(@Header("token") token:String? , @Field("board_idx") idx : Int, @Field("comment_desc") comment : String ) : Observable<PostCommentModel>
+
     //메인 최신순
     @GET("/board/today/latest")
     fun getLatestBoard() : Observable<LatestBoardModel>
@@ -85,7 +94,7 @@ interface NetworkService {
 
     //한 게시물 댓글보기
     @GET("/board/comment/{board_idx}")
-    fun getOneBoardComment(@Path("board_idx") idx : Int) : Observable<GetCommentModel>
+    fun getOneBoardComment(@Header("token") token:String, @Path("board_idx") idx : Int) : Observable<GetCommentModel>
 
     @GET("/user/follower")
     fun getMyFollowerProfile(@Header("token") token:String) : Observable<FollowerModel>
@@ -101,8 +110,6 @@ interface NetworkService {
 
     @PUT("/user/setting")
     fun putUserSetting(@Header("token") token:String, @Body updateData : UserSettingUpdateData): Observable<UserSettingUpdateModel>
-    @FormUrlEncoded
-    @POST("/board/commend")
-    fun postRecommend(@Header("token") token:String? , @Field("x") lat:Float, @Field("y") long:Float,@Field("date_type") date:Int) : Observable<RecommendModel>
+
 
 }
