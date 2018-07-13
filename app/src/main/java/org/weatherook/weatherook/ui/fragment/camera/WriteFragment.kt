@@ -21,7 +21,8 @@ class WriteFragment : Fragment(), View.OnClickListener {
         when(v) {
             write_editText ->{
                 var intent = Intent(activity, WriteActivity::class.java)
-                startActivity(intent)
+                intent.putExtra("token",activity!!.intent.getStringExtra("token"))
+                activity!!.startActivity(intent)
             }
         }
     }

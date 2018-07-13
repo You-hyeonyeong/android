@@ -99,7 +99,6 @@ class CommentActivity : AppCompatActivity(), View.OnClickListener {
                             }
                         }, {/* fail -> Log.i("urls_failed", fail.message) */})
 
-
         commenttotalAdapter = CommentTotalAdapter(commenttotalItems, applicationContext)
         comment_comment_recycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL,false)
         comment_comment_recycler.adapter = commenttotalAdapter
