@@ -19,7 +19,6 @@ import org.weatherook.weatherook.ui.fragment.bell.BellFragment
 import org.weatherook.weatherook.ui.fragment.camera.CamHomeFragment
 import org.weatherook.weatherook.ui.fragment.filter.FilterFragment
 import org.weatherook.weatherook.ui.fragment.my.MyFragment
-import org.weatherook.weatherook.singleton.tokenDriver
 import org.weatherook.weatherook.ui.fragment.*
 import java.text.SimpleDateFormat
 import java.util.*

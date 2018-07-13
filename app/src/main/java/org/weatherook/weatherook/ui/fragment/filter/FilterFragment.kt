@@ -12,6 +12,8 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.filter_today.*
 import kotlinx.android.synthetic.main.fragment_filter.*
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.item.FilterItem
+import org.weatherook.weatherook.singleton.FilterDriver
 
 class FilterFragment :  Fragment(), View.OnClickListener{
 
@@ -68,6 +70,7 @@ class FilterFragment :  Fragment(), View.OnClickListener{
                     }
                 }
                 Log.d("tag", "============================ : " + gender + tall+ size + stylelist+ "=============================")
+                FilterDriver.filterDriver.onNext(FilterItem(gender,tall,size,stylelist))
 
 
             }

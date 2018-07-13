@@ -13,6 +13,7 @@ import org.weatherook.weatherook.R
 import org.weatherook.weatherook.adapter.recyclerview.FollowingAdapter
 import org.weatherook.weatherook.item.CommentItem
 import org.weatherook.weatherook.item.FollowingItem
+import org.weatherook.weatherook.singleton.FilterDriver
 
 /**
  * Created by HYEON on 2018-07-09.
@@ -37,6 +38,7 @@ class FilterCompleteFragment : Fragment(),View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, conatiner: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view : View = View.inflate(activity, R.layout.fragment_filter_complete, null)
+        FilterDriver.filterDriver.subscribe {  }
 
         return view
     }
