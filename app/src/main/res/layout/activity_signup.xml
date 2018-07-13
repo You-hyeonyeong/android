@@ -49,13 +49,13 @@
             />
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
+    <org.weatherook.weatherook.utils.CustomViewPager
         android:id="@+id/signup_viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="14">
 
-    </android.support.v4.view.ViewPager>
+    </org.weatherook.weatherook.utils.CustomViewPager>
 
 
     <RelativeLayout

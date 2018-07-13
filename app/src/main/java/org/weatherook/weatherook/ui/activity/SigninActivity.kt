@@ -4,13 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_signin.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.network.NetworkService
-import kotlin.jvm.java
 
 class SigninActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -59,7 +59,8 @@ class SigninActivity : AppCompatActivity(), View.OnClickListener {
                     intent.putExtra("token", success.token)
                     startActivity(intent)
                     finish()
-                },{fail-> val intent1 = Intent(applicationContext, PopupActivity::class.java)
-                    startActivity(intent1)})
+                },{fail-> Toast.makeText(applicationContext,"비밀번호와 아이디가 일치하지 않습니다.",Toast.LENGTH_LONG).show()
+                        /*val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                    startActivity(intent1)*/})
     }
 }

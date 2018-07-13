@@ -1,8 +1,9 @@
 package org.weatherook.weatherook.ui.activity
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
@@ -12,6 +13,7 @@ import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import org.weatherook.weatherook.R
+import org.weatherook.weatherook.singleton.tokenDriver
 import org.weatherook.weatherook.ui.fragment.HomeFragment
 import org.weatherook.weatherook.ui.fragment.bell.BellFragment
 import org.weatherook.weatherook.ui.fragment.camera.CamHomeFragment
@@ -27,7 +29,7 @@ import java.util.*
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var fragmentManager: FragmentManager
-
+//
     lateinit var homeFragment : Fragment
     val searchFragment = FilterFragment()
     lateinit var cameraFragment: Fragment
@@ -45,31 +47,49 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 replaceFragment(HomeFragment())
             }
             main_btn_search -> {
-                clearSelected()
-                main_btn_search.isSelected = true
-                replaceFragment(FilterFragment())
-            }
-            main_btn_add -> {
-                clearSelected()
-                main_btn_add.isSelected = true
-                if (Build.VERSION.SDK_INT >= 21) {
-                    replaceFragment(CamHomeFragment())
+                if(intent.getStringExtra("token")== null) {
+                    val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                    startActivity(intent1)
                 } else {
+                    clearSelected()
+                    main_btn_search.isSelected = true
                     replaceFragment(FilterFragment())
                 }
-
+            }
+            main_btn_add -> {
+                if(intent.getStringExtra("token")== null) {
+                    val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                    startActivity(intent1)
+                } else {
+                    clearSelected()
+                    main_btn_add.isSelected = true
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        replaceFragment(CamHomeFragment())
+                    } else {
+                        replaceFragment(FilterFragment())
+                    }
+                }
             }
             main_btn_news -> {
-                clearSelected()
-                main_btn_news.isSelected = true
-                replaceFragment( BellFragment())
+                if(intent.getStringExtra("token")== null) {
+                    val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                    startActivity(intent1)
+                } else {
+                    clearSelected()
+                    main_btn_news.isSelected = true
+                    replaceFragment(BellFragment())
+                }
             }
             main_btn_mine -> {
-                clearSelected()
-                main_btn_mine.isSelected = true
-                replaceFragment(MyFragment())
+                if (intent.getStringExtra("token") == null) {
+                    val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                    startActivity(intent1)
+                } else {
+                    clearSelected()
+                    main_btn_mine.isSelected = true
+                    replaceFragment(MyFragment())
+                }
             }
-
         }
     }
 
@@ -77,7 +97,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.i("date", SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.KOREA).format(Calendar.getInstance().time))
+
+
+        val view = window.decorView
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (view != null) {
+                // 23 버전 이상일 때 상태바 하얀 색상에 회색 아이콘 색상을 설정
+                view.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                window.statusBarColor = Color.parseColor("#f2f2f2")
+            }
+        } else if (Build.VERSION.SDK_INT >= 21) {
+            // 21 버전 이상일 때
+            window.statusBarColor = Color.BLACK
+        }
 
         val fragmentManager : FragmentManager = supportFragmentManager
         addFragment(HomeFragment())

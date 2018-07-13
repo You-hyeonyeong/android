@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import org.weatherook.weatherook.ui.fragment.FollowingAFragment
 import org.weatherook.weatherook.ui.fragment.FollowingBFragment
 
-class FollowingPagerAdapter  (fm : FragmentManager) : FragmentPagerAdapter(fm)  {
+class FollowingPagerAdapter (fm : FragmentManager) : FragmentPagerAdapter(fm)  {
 
     val imageCount = 2
     override fun getItem(position: Int): Fragment {

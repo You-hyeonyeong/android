@@ -27,17 +27,17 @@
                     android:gravity="center"
                     android:textSize="18sp"
                     android:text="클로젯" />
-                <Button
-                    android:id="@+id/my_setting_btn"
-                    android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/friend_plus_btn"
+                    android:layout_width="35dp"
+                    android:clickable="true"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_centerVertical="true"
                     android:background="#ffffff"
-                    android:text="설정"
-                    android:textColor="#aaaaaa"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:src="@drawable/friendplus_state"
+                   />
 
 
             </RelativeLayout>
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/setting_profile_img"
+                        android:id="@+id/setting_profile_img1"
                         android:layout_width="88dp"
                         android:layout_height="88dp"
                         android:layout_centerHorizontal="true"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/setting_id_tv"
+                        android:id="@+id/setting_id_tv1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -84,10 +84,10 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/setting_self_tv"
+                        android:id="@+id/setting_self_tv1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/setting_id_tv"
+                        android:layout_below="@+id/setting_id_tv1"
                         android:layout_centerHorizontal="true"
                         android:text="로그인을 하시면 더 많은 기능을 사용할 수 있습니다."
                         android:textSize="14sp" />
@@ -110,7 +110,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/my_board_num"
+                            android:id="@+id/my_board_num1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
@@ -132,7 +132,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/my_follower_num"
+                            android:id="@+id/my_follower_num1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
@@ -154,7 +154,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/my_following_num"
+                            android:id="@+id/my_following_num1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
@@ -188,7 +188,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/my_grid_img"
+                    android:id="@+id/my_grid_img1"
                     android:layout_width="23dp"
                     android:layout_height="19dp"
                     android:layout_gravity="center"
@@ -196,7 +196,7 @@
                     android:background="@drawable/mypagelist1_state" />
 
                 <Button
-                    android:id="@+id/my_list_img"
+                    android:id="@+id/my_list_img1"
                     android:layout_width="23dp"
                     android:layout_height="23dp"
                     android:layout_gravity="center"

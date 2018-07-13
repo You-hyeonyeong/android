@@ -4,6 +4,7 @@ package org.weatherook.weatherook.ui.fragment.filter
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import org.weatherook.weatherook.item.FollowingItem
  * Created by HYEON on 2018-07-09.
  */
 class FilterCompleteFragment : Fragment(),View.OnClickListener {
+
     override fun onClick(p0: View?) {
 
         when(p0){
@@ -41,6 +43,7 @@ class FilterCompleteFragment : Fragment(),View.OnClickListener {
 
     override fun onStart() {
         super.onStart()
+        Log.i("completeFragment",this.id.toString())
 
         commentItems1 = ArrayList()
         commentItems2 = ArrayList()
@@ -69,6 +72,23 @@ class FilterCompleteFragment : Fragment(),View.OnClickListener {
 
 
     }
+
+    var c_gender : String="여"
+    var c_tall : Int?=null
+    var c_size : String?=null
+    var c_style : ArrayList<String>?=null
+
+
+    fun displayReceivedData(gender : String, tall:Int, size :String, style : ArrayList<String>){
+        c_gender = gender
+        c_tall = tall
+        c_size = size
+        c_style = style
+        Log.i("c_gender",c_gender)
+        Log.i("c_tall",c_tall.toString())
+
+    }
+
 
 
 }

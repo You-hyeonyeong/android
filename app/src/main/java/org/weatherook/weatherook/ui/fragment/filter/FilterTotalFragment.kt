@@ -106,6 +106,8 @@ class FilterTotalFragment : Fragment(), View.OnClickListener, SeekBar.OnSeekBarC
         total_spinner_tall.adapter = totalSpinner
         total_women.setOnClickListener(this)
         total_men.setOnClickListener(this)
+        total_women.isSelected = true
+
 
         total_style.add(total_style_btn1)
         total_style.add(total_style_btn2)

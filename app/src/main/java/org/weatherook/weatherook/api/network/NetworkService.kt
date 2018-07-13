@@ -80,6 +80,11 @@ interface NetworkService {
     @POST("/board/comment")
     fun postcomment(@Header("token") token:String? , @Field("board_idx") idx : Int, @Field("comment_desc") comment : String ) : Observable<PostCommentModel>
 
+    //오늘의 게시물 필터링
+    @FormUrlEncoded
+    @POST("/board/today/filter")
+    fun postTodayFilter(@Field("gender") gender : String, @Field("height") height: Int,@Field("size") size : String,@Field("stylelist") stylelist : ArrayList<String>)
+
     //메인 최신순
     @GET("/board/today/latest")
     fun getLatestBoard() : Observable<LatestBoardModel>
