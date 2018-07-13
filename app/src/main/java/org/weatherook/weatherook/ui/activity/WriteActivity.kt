@@ -2,14 +2,9 @@ package org.weatherook.weatherook.ui.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_comment.*
 import kotlinx.android.synthetic.main.activity_write.*
 import org.weatherook.weatherook.R
 import org.weatherook.weatherook.api.network.NetworkService
@@ -68,13 +63,17 @@ class WriteActivity : AppCompatActivity(),View.OnClickListener {
             }
         }
 
+/*
         val call = networkService.getOneBoardComment(intent.getStringExtra("token")!!,boardIdx)
         disposable = call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(
                         { GetCommentModel ->
                             Log.i("사진이들어오꺼야", GetCommentModel.data.size.toString())
                             Glide.with(this).load(GetCommentModel.userImg).into(reply_write_profile)
-                        }, {/* fail -> Log.i("urls_failed", fail.message) */})
+                        }, {*/
+/* fail -> Log.i("urls_failed", fail.message) *//*
+})
+*/
 
     }
 

@@ -36,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="13분전"
+            android:textSize="13sp"
 
             />
 

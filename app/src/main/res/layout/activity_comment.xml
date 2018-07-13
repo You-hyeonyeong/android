@@ -159,7 +159,7 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/following_content"
+                android:id="@+id/following_reply_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/reply_info"

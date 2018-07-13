@@ -82,6 +82,8 @@ class FollowingAdapter(var followingItems : ArrayList<FollowingItem>, var commen
             //intent.putExtra("location", followingItems[position].count)
             intent.putExtra("weather", weather)
             intent.putExtra("temperature", followingItems[position].temperature)
+            intent.putExtra("board_desc", followingItems[position].content)
+
             /*var array = ArrayList<String>()
             for(i in 0..followingItems[position].comment.size-1){
                 array.add(Gson().toJson(followingItems[i].comment,CommentTotalItem::class.java))

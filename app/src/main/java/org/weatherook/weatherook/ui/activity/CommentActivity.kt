@@ -68,6 +68,7 @@ class CommentActivity : AppCompatActivity(), View.OnClickListener {
         reply_date.text = intent.getStringExtra("date")
         reply_weather.text = intent.getStringExtra("weather")
         reply_temp.text = intent.getStringExtra("temperature")
+        following_reply_content.text = intent.getStringExtra("board_desc")
 
 
         total()
@@ -92,8 +93,9 @@ class CommentActivity : AppCompatActivity(), View.OnClickListener {
                             Glide.with(this).load(GetCommentModel.userImg).into(reply_write_profile)
                             commenttotalItems.clear()
                             for (i in 0..GetCommentModel.data.size-1){
+                                var list = GetCommentModel.data[i].commentDate.split(" ")
                                 GetCommentModel.data[i].let {
-                                    commenttotalItems.add(CommentTotalItem(it.userImg,it.commentDate,it.commentId,it.commentDesc))
+                                    commenttotalItems.add(CommentTotalItem(it.userImg,list[2]+":"+list[3]+" 게시",it.commentId,it.commentDesc))
                                     commenttotalAdapter.notifyDataSetChanged()
                                 }
                             }

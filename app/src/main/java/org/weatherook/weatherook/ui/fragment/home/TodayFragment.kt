@@ -8,9 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.BounceInterpolator
-import android.view.animation.TranslateAnimation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,10 +21,12 @@ import org.weatherook.weatherook.adapter.recyclerview.WeatherAdapter
 import org.weatherook.weatherook.api.network.NetworkService
 import org.weatherook.weatherook.item.WeatherDriverItem
 import org.weatherook.weatherook.item.WeatherItem
-import org.weatherook.weatherook.singleton.WeatherDriver
-import java.util.*
 import org.weatherook.weatherook.singleton.LatLongDriver
+import org.weatherook.weatherook.singleton.WeatherDriver
 import java.text.SimpleDateFormat
+import java.util.*
+
+
 
 class TodayFragment : Fragment(), View.OnClickListener {
 
@@ -45,7 +45,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
 
 
     var weatherStr = arrayOf("맑음", "구름", "구름", "흐림", "비", "비", "눈")
-    var weatherIcon = arrayOf(R.drawable.main_sun, R.drawable.main_cloud_sun_2, R.drawable.main_cloud_sun_2, R.drawable.main_cloud_2, R.drawable.main_cloud_2, R.drawable.main_rainy_big, R.drawable.main_snow_2)
+    var weatherIcon = arrayOf(R.drawable.main_sun, R.drawable.main_sun, R.drawable.main_cloud_sun_2, R.drawable.main_cloud_2, R.drawable.main_cloud_2, R.drawable.main_rainy_big, R.drawable.main_snow_2)
     var weatherimg = arrayOf(R.drawable.main_sun2, R.drawable.main_cloud_sun, R.drawable.main_cloud_sun, R.drawable.main_cloud, R.drawable.main_rainy, R.drawable.main_rainy, R.drawable.main_snow)
     private var isWeatherButtons: Boolean = false
     override fun onClick(v: View) {
@@ -81,14 +81,19 @@ class TodayFragment : Fragment(), View.OnClickListener {
         }
         val image : ImageView = view.findViewById(R.id.frag_today_weatherimg)
         image.setOnClickListener {
-            var anim = TranslateAnimation(TranslateAnimation.ABSOLUTE, 0f, TranslateAnimation.ABSOLUTE, 0f,
+            val animation = AnimationUtils.loadAnimation(context, R.anim.rotation_anim)
+            image.startAnimation(animation)
+
+
+
+            /* var anim = TranslateAnimation(TranslateAnimation.ABSOLUTE, 0f, TranslateAnimation.ABSOLUTE, 0f,
                     TranslateAnimation.RELATIVE_TO_PARENT, -0.05f, TranslateAnimation.RELATIVE_TO_PARENT, 0.05f)
             anim.duration = 1000
-            anim.repeatCount = -1
+            anim.repeatCount = 10
             anim.repeatMode = Animation.REVERSE
             anim.interpolator = BounceInterpolator()
             anim.fillAfter = true
-            image.startAnimation(anim)
+            image.startAnimation(anim)*/
         }
 
         val call = networkService.postTempWeather(23, 0)
