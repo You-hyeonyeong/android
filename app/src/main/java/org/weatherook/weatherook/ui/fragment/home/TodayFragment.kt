@@ -186,7 +186,7 @@ class TodayFragment : Fragment(), View.OnClickListener {
                                 home_weather_tempmax.setText(WeatherModel.data.tempAm.toString())
                                 home_weather_tempmin.setText(WeatherModel.data.tempAf.toString())
 
-                            }, { fail -> Log.i("WeatherFragment", fail.message) })
+                            }, { /*fail -> Log.i("WeatherFragment", fail.message)*/ })
 
         }
 
