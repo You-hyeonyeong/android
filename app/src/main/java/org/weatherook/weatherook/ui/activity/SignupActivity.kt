@@ -2,7 +2,6 @@ package org.weatherook.weatherook.ui.activity
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
@@ -14,6 +13,7 @@ import org.weatherook.weatherook.SignupCFragment
 import org.weatherook.weatherook.adapter.viewpager.SignupPagerAdapter
 import org.weatherook.weatherook.singleton.SignupDriver.signupDriver
 import org.weatherook.weatherook.ui.fragment.SignupAFragment
+import org.weatherook.weatherook.utils.CustomViewPager
 import org.weatherook.weatherook.utils.KeyboardVisibility
 
 class SignupActivity : AppCompatActivity(), View.OnClickListener, SignupAFragment.SendMessage, SignupBFragment.SendMessage1 {
@@ -79,11 +79,11 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener, SignupAFragmen
         signup_next_btn.setOnClickListener(this)
         signup_back.setOnClickListener(this)
 
-        val viewPager = findViewById<ViewPager>(R.id.signup_viewPager)
+        val viewPager = findViewById<CustomViewPager>(R.id.signup_viewPager)
         val adapter = SignupPagerAdapter(supportFragmentManager)
 
         viewPager.adapter = adapter
-
+        viewPager.setPagingEnabled(false)
         signupDriver
                 .filter { it }
                 .subscribe{ Log.d("rxtest","===============it's true==============");

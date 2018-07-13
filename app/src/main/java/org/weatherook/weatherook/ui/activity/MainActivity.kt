@@ -1,14 +1,13 @@
 package org.weatherook.weatherook.ui.activity
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import org.weatherook.weatherook.R
@@ -18,8 +17,6 @@ import org.weatherook.weatherook.ui.fragment.bell.BellFragment
 import org.weatherook.weatherook.ui.fragment.camera.CamHomeFragment
 import org.weatherook.weatherook.ui.fragment.filter.FilterFragment
 import org.weatherook.weatherook.ui.fragment.my.MyFragment
-import org.weatherook.weatherook.ui.fragment.*
-import org.weatherook.weatherook.ui.fragment.camera.CameraFragment
 
 
 
@@ -44,31 +41,49 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 replaceFragment(HomeFragment())
             }
             main_btn_search -> {
-                clearSelected()
-                main_btn_search.isSelected = true
-                replaceFragment(FilterFragment())
-            }
-            main_btn_add -> {
-                clearSelected()
-                main_btn_add.isSelected = true
-                if (Build.VERSION.SDK_INT >= 21) {
-                    replaceFragment(CamHomeFragment())
+                if(intent.getStringExtra("token")== null) {
+                    val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                    startActivity(intent1)
                 } else {
+                    clearSelected()
+                    main_btn_search.isSelected = true
                     replaceFragment(FilterFragment())
                 }
-
+            }
+            main_btn_add -> {
+                if(intent.getStringExtra("token")== null) {
+                    val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                    startActivity(intent1)
+                } else {
+                    clearSelected()
+                    main_btn_add.isSelected = true
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        replaceFragment(CamHomeFragment())
+                    } else {
+                        replaceFragment(FilterFragment())
+                    }
+                }
             }
             main_btn_news -> {
-                clearSelected()
-                main_btn_news.isSelected = true
-                replaceFragment( BellFragment())
+                if(intent.getStringExtra("token")== null) {
+                    val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                    startActivity(intent1)
+                } else {
+                    clearSelected()
+                    main_btn_news.isSelected = true
+                    replaceFragment(BellFragment())
+                }
             }
             main_btn_mine -> {
-                clearSelected()
-                main_btn_mine.isSelected = true
-                replaceFragment(MyFragment())
+                if (intent.getStringExtra("token") == null) {
+                    val intent1 = Intent(applicationContext, PopupActivity::class.java)
+                    startActivity(intent1)
+                } else {
+                    clearSelected()
+                    main_btn_mine.isSelected = true
+                    replaceFragment(MyFragment())
+                }
             }
-
         }
     }
 
